@@ -13,7 +13,7 @@ describe('Todo Controller', function () {
     }
   };
 
-    // Load the module containing the app, only 'ng' is loaded by default.
+  // Load the module containing the app, only 'ng' is loaded by default.
   beforeEach(module('a-string'));
 
   beforeEach(inject(function ($controller, $rootScope) {
