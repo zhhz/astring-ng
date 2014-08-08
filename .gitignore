@@ -5,4 +5,5 @@ dist/
 todo.txt
 app/public/js/app.min.js
 app/public/js/lib.min.js
+app/public/css/lib.css
 *.vim

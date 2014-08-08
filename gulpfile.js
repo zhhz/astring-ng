@@ -5,9 +5,10 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   ngAnnotate = require('gulp-ng-annotate'),
   livereload = require('gulp-livereload'),
+  filter = require('gulp-filter'),
   bowerFiles = require('main-bower-files');
 
-var distPath = 'dist'
+var vendorFiles = bowerFiles();
 
 gulp.task('js', function() {
   gulp.src(['app/public/js/app.js', 'app/public/js/**/*.js', '!app/public/js/**/*.min.js'])
@@ -21,9 +22,36 @@ gulp.task('js', function() {
 });
 
 gulp.task('lib', function(){
-  gulp.src(bowerFiles())
-    .pipe(concat('lib.min.js'))
-    .pipe(gulp.dest('app/public/js/'));
+  var jsFilter = filter('*.js');
+
+  gulp.src(vendorFiles)
+    .pipe(jsFilter)
+      .pipe(concat('lib.min.js'))
+      .pipe(gulp.dest('app/public/js/'))
+    .pipe(jsFilter.restore());
+});
+
+
+gulp.task('css', function(){
+  var cssFilter = filter('*.css');
+
+  // bower components - css
+  gulp.src(vendorFiles)
+    .pipe(cssFilter)
+      .pipe(concat('lib.css'))
+      .pipe(gulp.dest('app/public/css'))
+    .pipe(cssFilter.restore());
+
+  // app css
+  // TODO: Not working now, because loading sequence matters
+  /*
+  gulp.src(['public/css/**', '!public/css/lib.css'])
+    .pipe(cssFilter)
+      .pipe(concat('app.css'))
+    .pipe(cssFilter.restore())
+    .pipe(gulp.dest('app/public/css'));
+  */
+
 });
 
 /*
@@ -36,7 +64,7 @@ gulp.task('uncss', function() {
 });
 */
 
-gulp.task('watch', ['js', 'lib'], function() {
+gulp.task('watch', ['js', 'lib','css'], function() {
   livereload.listen();
 
   gulp.watch(['app/public/js/**/*.js', '!app/public/js/**/*.min.js'], ['js']);
@@ -47,4 +75,4 @@ gulp.task('watch', ['js', 'lib'], function() {
 
 });
 
-gulp.task('default', ['js', 'lib']);
+gulp.task('default', ['js', 'lib', 'css']);
