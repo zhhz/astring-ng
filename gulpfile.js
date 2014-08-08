@@ -26,6 +26,16 @@ gulp.task('lib', function(){
     .pipe(gulp.dest('app/public/js/'));
 });
 
+/*
+gulp.task('uncss', function() {
+    return gulp.src('site.css')
+        .pipe(uncss({
+            html: ['index.html', 'about.html']
+        }))
+        .pipe(gulp.dest('./out'));
+});
+*/
+
 gulp.task('watch', ['js', 'lib'], function() {
   livereload.listen();
 
