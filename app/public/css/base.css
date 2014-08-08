@@ -255,6 +255,15 @@ label[for='toggle-all'] {
   text-decoration: line-through;
 }
 
+#todo-list li.current {
+  background-color: #33a933;
+}
+
+#todo-list li.current label {
+  color: #a9a9a9;
+  font-weight: bold;
+}
+
 #todo-list li .destroy {
   display: none;
   position: absolute;

@@ -29,6 +29,10 @@ describe('Todo Controller', function () {
     expect(scope.todos.length).toBe(0);
   });
 
+  it('should not have any Todos as current ', function () {
+    expect(scope.currentTodo).toBeNull;
+  });
+
   it('should have all Todos completed', function () {
     scope.$digest();
     expect(scope.allChecked).toBeTruthy();
@@ -84,14 +88,14 @@ describe('Todo Controller', function () {
     }));
 
     it('should not add empty Todos', function () {
-      scope.newTodo = '';
+      scope.newTodo.title = '';
       scope.addTodo();
       scope.$digest();
       expect(scope.todos.length).toBe(0);
     });
 
     it('should not add items consisting only of whitespaces', function () {
-      scope.newTodo = '   ';
+      scope.newTodo.title = '   ';
       scope.addTodo();
       scope.$digest();
       expect(scope.todos.length).toBe(0);
@@ -99,11 +103,20 @@ describe('Todo Controller', function () {
 
 
     it('should trim whitespace from new Todos', function () {
-      scope.newTodo = '  buy some unicorns  ';
+      scope.newTodo.title = '  buy some unicorns  ';
       scope.addTodo();
       scope.$digest();
       expect(scope.todos.length).toBe(1);
       expect(scope.todos[0].title).toBe('buy some unicorns');
+    });
+
+    it('should has the id and createdAt set when create a new todo', function (){
+      scope.newTodo.title = 'a new todo';
+      scope.addTodo();
+      scope.$digest();
+      expect(scope.todos.length).toBe(1);
+      expect(scope.todos[0].id).not.toBeNull();
+      expect(scope.todos[0].createdAt).not.toBeNull();
     });
   });
 
@@ -182,5 +195,60 @@ describe('Todo Controller', function () {
       scope.$digest();
       expect(scope.todos[0].title).toBe('Uncompleted Item 0');
     });
+  });
+
+  describe('select a todo item', function(){
+    var ctrl;
+
+    beforeEach(inject(function($controller){
+      todoList = [{
+          'id': 1,
+          'title': 'Uncompleted Item 0',
+          'completed': false
+        }, {
+          'id': 2,
+          'title': 'Uncompleted Item 1',
+          'completed': false
+        }, {
+          'id': 3,
+          'title': 'Uncompleted Item 2',
+          'completed': false
+        }];
+
+      todoStorage.storage = todoList;
+      ctrl = $controller('TodoCtrl', {
+        $scope: scope,
+        todoStorage: todoStorage
+      });
+      scope.$digest();
+    }));
+
+    beforeEach(function() {
+      this.addMatchers({
+        toEqualData: function(expected) {
+          return angular.equals(this.actual, expected);
+        }
+      });
+    });
+
+    it('setCurrent() should set todo as current', function(){
+      var todo = todoList[0];
+      scope.setCurrent(todo);
+
+      expect(scope.currentTodo).toBe(todo);
+      expect(scope.currentTodo.isCurrent).toBeTruthy();
+    });
+
+    it('setCurrent() should toggle if current is clicked', function(){
+      var todo = todoList[0];
+      scope.setCurrent(todo);
+      expect(scope.currentTodo).toBe(todo);
+      expect(scope.currentTodo.isCurrent).toBeTruthy();
+
+      scope.setCurrent(todo);
+      expect(scope.currentTodo).toBeNull;
+      expect(todo.isCurrent).toBeFalsy();
+    });
+
   });
 });

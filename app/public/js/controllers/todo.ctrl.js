@@ -1,11 +1,25 @@
 angular.module('a-string')
-  .controller('TodoCtrl', function TodoCtrl($scope, $routeParams, $filter, todoStorage) {
+.controller('TodoCtrl', ['$scope', '$routeParams', '$filter', 'todoStorage', 'md5',
+  function TodoCtrl($scope, $routeParams, $filter, todoStorage, md5) {
     'use strict';
 
-    var todos = $scope.todos = todoStorage.get();
+    function blankTodo(){
+      return {
+               id: null,
+               title: '',
+               isCurrent: false,
+               createdAt: null,
+               startedAt: null,
+               completedAt: null,
+               completed: false
+             };
+    }
 
-    $scope.newTodo = '';
+    var todos = $scope.todos = todoStorage.get();
+    $scope.newTodo = blankTodo();
     $scope.editedTodo = null;
+    $scope.currentTodo = null;
+
 
     $scope.$watch('todos', function (newValue, oldValue) {
       $scope.remainingCount = $filter('filter')(todos, { completed: false }).length;
@@ -26,17 +40,17 @@ angular.module('a-string')
     });
 
     $scope.addTodo = function () {
-      var newTodo = $scope.newTodo.trim();
-      if (!newTodo.length) {
+      var newTodo = $scope.newTodo;
+      newTodo.title = newTodo.title.trim();
+      if (!newTodo.title.length) {
         return;
       }
+      // TODO
+      newTodo.id = md5.createHash((new Date()).getTime() + 'a-string');
+      newTodo.createdAt = new Date();
+      todos.push(newTodo);
 
-      todos.push({
-        title: newTodo,
-        completed: false
-      });
-
-      $scope.newTodo = '';
+      $scope.newTodo = blankTodo();
     };
 
     $scope.editTodo = function (todo) {
@@ -74,4 +88,19 @@ angular.module('a-string')
         todo.completed = !completed;
       });
     };
-  });
+
+    $scope.setCurrent = function(todo) {
+      if(!$scope.currentTodo){
+        todo.isCurrent = true;
+        $scope.currentTodo = todo;
+      }else if($scope.currentTodo.id === todo.id){
+        $scope.currentTodo = null;
+        todo.isCurrent = false;
+      }else{
+        $scope.currentTodo.isCurrent = false;
+        todo.isCurrent = true;
+        $scope.currentTodo = todo;
+      }
+    };
+  }
+]);
