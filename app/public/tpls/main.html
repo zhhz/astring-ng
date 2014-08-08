@@ -12,7 +12,7 @@
           ng-class="{completed: todo.completed, editing: todo == editedTodo, current: todo.isCurrent}">
         <div class="view">
           <input class="toggle" type="checkbox" ng-model="todo.completed">
-          <label ng-dblclick="editTodo(todo)" ng-click="setCurrent(todo)">{{todo.title}}</label>
+          <label ng-dblclick="editTodo(todo)" ng-click="toggleCurrent(todo)">{{todo.title}}</label>
           <button class="destroy" ng-click="removeTodo(todo)"></button>
         </div>
         <form ng-submit="doneEditing(todo)">

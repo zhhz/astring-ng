@@ -89,7 +89,7 @@ angular.module('a-string')
       });
     };
 
-    $scope.setCurrent = function(todo) {
+    $scope.toggleCurrent = function(todo) {
       if(!$scope.currentTodo){
         todo.isCurrent = true;
         $scope.currentTodo = todo;

@@ -231,24 +231,24 @@ describe('Todo Controller', function () {
       });
     });
 
-    it('setCurrent() should set todo as current', function(){
+    it('toggleCurrent() should set todo as current', function(){
       var todo = todoList[0];
-      scope.setCurrent(todo);
+      scope.toggleCurrent(todo);
 
       expect(scope.currentTodo).toBe(todo);
       expect(scope.currentTodo.isCurrent).toBeTruthy();
     });
 
-    it('setCurrent() should toggle if current is clicked', function(){
+    it('toggleCurrent() should toggle if current is clicked', function(){
       var todo = todoList[0];
-      scope.setCurrent(todo);
+      scope.toggleCurrent(todo);
       expect(scope.currentTodo).toBe(todo);
       expect(scope.currentTodo.isCurrent).toBeTruthy();
 
-      scope.setCurrent(todo);
+      scope.toggleCurrent(todo);
       expect(scope.currentTodo).toBeNull;
       expect(todo.isCurrent).toBeFalsy();
     });
-
   });
+
 });
