@@ -7,7 +7,6 @@ angular.module('a-string')
       return {
                id: null,
                title: '',
-               isCurrent: false,
                createdAt: null,
                startedAt: null,
                completedAt: null,
@@ -18,7 +17,7 @@ angular.module('a-string')
     var todos = $scope.todos = todoStorage.get();
     $scope.newTodo = blankTodo();
     $scope.editedTodo = null;
-    $scope.currentTodo = null;
+    $scope.currentId = null;
 
 
     $scope.$watch('todos', function (newValue, oldValue) {
@@ -89,17 +88,13 @@ angular.module('a-string')
       });
     };
 
-    $scope.toggleCurrent = function(todo) {
-      if(!$scope.currentTodo){
-        todo.isCurrent = true;
-        $scope.currentTodo = todo;
-      }else if($scope.currentTodo.id === todo.id){
-        $scope.currentTodo = null;
-        todo.isCurrent = false;
+    $scope.toggleCurrent = function(id) {
+      if(!$scope.currentId){
+        $scope.currentId = id;
+      }else if($scope.currentId === id){
+        $scope.currentId = null;
       }else{
-        $scope.currentTodo.isCurrent = false;
-        todo.isCurrent = true;
-        $scope.currentTodo = todo;
+        $scope.currentId = id;
       }
     };
   }

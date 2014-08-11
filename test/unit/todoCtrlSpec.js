@@ -199,7 +199,6 @@ describe('Todo Controller', function () {
 
   describe('select a todo item', function(){
     var ctrl;
-
     beforeEach(inject(function($controller){
       todoList = [{
           'id': 1,
@@ -233,21 +232,18 @@ describe('Todo Controller', function () {
 
     it('toggleCurrent() should set todo as current', function(){
       var todo = todoList[0];
-      scope.toggleCurrent(todo);
+      scope.toggleCurrent(todo.id);
 
-      expect(scope.currentTodo).toBe(todo);
-      expect(scope.currentTodo.isCurrent).toBeTruthy();
+      expect(scope.currentId).toBe(todo.id);
     });
 
     it('toggleCurrent() should toggle if current is clicked', function(){
       var todo = todoList[0];
-      scope.toggleCurrent(todo);
-      expect(scope.currentTodo).toBe(todo);
-      expect(scope.currentTodo.isCurrent).toBeTruthy();
+      scope.toggleCurrent(todo.id);
+      expect(scope.currentId).toBe(todo.id);
 
-      scope.toggleCurrent(todo);
-      expect(scope.currentTodo).toBeNull;
-      expect(todo.isCurrent).toBeFalsy();
+      scope.toggleCurrent(todo.id);
+      expect(scope.currentId).toBeNull;
     });
   });
 
