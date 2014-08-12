@@ -1,8 +1,12 @@
 var express = require("express"),
     app     = express(),
-    port    = parseInt(process.env.PORT, 10) || 3000;
+    env     = process.env.NODE_ENV || 'development',
+    config  = require('./server/config/settings')[env];
 
-app.use(express.static(__dirname + '/public'));
+// express
+require(config.serverPath + '/config/express')(app, express, config);
+// routes
+require(config.serverPath + '/config/routes')(app, config);
 
-app.listen(port);
-console.log('Now serving the app at http://localhost:' + port + '/');
+app.listen(config.port);
+console.log('Now serving the app at http://localhost:' + config.port + '/');
