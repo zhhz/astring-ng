@@ -1,4 +1,16 @@
-﻿<section id="todoapp">
+﻿<section id="timer">
+  <table width="100%">
+    <tr>
+      <td width="25%">
+        <span id="dial"></span>
+      </td>
+      <td width="50%">content</td>
+      <td>control</td>
+    </tr>
+  </table>
+</section>
+
+<section id="todoapp">
   <header id="header">
     <form id="todo-form" ng-submit="addTodo()">
       <input id="new-todo" placeholder="What needs to be done?" ng-model="newTodo.title" autofocus>

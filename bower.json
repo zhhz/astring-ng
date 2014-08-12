@@ -5,7 +5,8 @@
     "angular": "~1.2.21",
     "angular-route": "~1.2.21",
     "jquery": "~2.1.1",
-    "jquery.ui": "~1.11.0"
+    "jquery.ui": "~1.11.0",
+    "dial": "git://github.com/zhhz/jQuery-Knob.git"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.21",
@@ -16,6 +17,7 @@
       "main": [
         "ui/core.js",
         "themes/base/core.css",
+        "ui/widget.js",
         "ui/autocomplete.js",
         "themes/base/autocomplete.css"
       ]

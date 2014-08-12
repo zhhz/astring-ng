@@ -19,6 +19,11 @@ angular.module('a-string')
     $scope.editedTodo = null;
     $scope.currentId = null;
 
+    var dial = $('#dial').attr('data-value', '80').dial({
+      change: function(value){
+        console.log(value);
+      }
+    });
 
     $scope.$watch('todos', function (newValue, oldValue) {
       $scope.remainingCount = $filter('filter')(todos, { completed: false }).length;
