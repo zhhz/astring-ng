@@ -1,6 +1,6 @@
 {
-  "suzuki": {
-    "book1": [
+  "Suzuki": {
+    "Book1": [
       "Twinkle Variations",
       "Lightly Row",
       "Song of the Wind",
@@ -19,7 +19,7 @@
       "The Happy Farmer",
       "Gavotte"
     ],
-    "book2": [
+    "Book2": [
       "Chorus From Judas Maccabaeus",
       "Musette",
       "Hunters Chorus",
@@ -30,11 +30,11 @@
       "Gavotte From Mignon",
       "Minuet In G"
     ],
-    "book3": [
+    "Book3": [
       "Humoresque",
       "Gavotte In D Major"
     ],
-    "book4": [
+    "Book4": [
       "Concerto No. 2, 3rd Movement",
       "Concerto No. 5, 1st Movement",
       "Concerto No. 5, 3rd Movement",
@@ -45,7 +45,7 @@
       "Trill Study",
       "Position Game"
     ],
-    "book5": [
+    "Book5": [
       "Concerto In A Minor, 2nd Movement",
       "Concerto In G Minor",
       "Country Dance",
@@ -53,18 +53,18 @@
       "Gigue From Sonata In D Minor",
       "Concerto For Two Violins - 1st Movement - Violin I"
     ],
-    "book6": [
+    "Book6": [
       "La Folia",
       "Sonata No. 3",
       "Sonata No. 4"
     ],
-    "book7": [
+    "Book7": [
       "Courante",
       "Sonata No. 1",
       "Concerto No. 1",
       "Gigue"
     ],
-    "book8": [
+    "Book8": [
       "Suzuki Violin Parts Vol 8",
       "Allegro in E Minor for Violin and Continuo, BWV 1023",
       "Largo arranged from Sonata III in C Major for Solo Violin, BWV 1005",
@@ -73,7 +73,7 @@
       "Tambourin",
       "Sonata in G Minor"
     ],
-    "book9": [
+    "Book9": [
       "Suzuki Violin Parts Vol 9",
       "Concerto in A Major, K. 219"
     ]
