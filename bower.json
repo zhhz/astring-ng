@@ -5,22 +5,11 @@
     "angular": "~1.2.21",
     "angular-route": "~1.2.21",
     "jquery": "~2.1.1",
-    "jquery.ui": "~1.11.0",
-    "dial": "git://github.com/zhhz/jQuery-Knob.git"
+    "dial": "git://github.com/zhhz/jQuery-Knob.git",
+    "bootstrap": "~3.2.0",
+    "angular-ui-bootstrap-bower": "~0.11.0"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.21",
-    "bootstrap": "~3.2.0"
-  },
-  "overrides": {
-    "jquery.ui": {
-      "main": [
-        "ui/core.js",
-        "themes/base/core.css",
-        "ui/widget.js",
-        "ui/autocomplete.js",
-        "themes/base/autocomplete.css"
-      ]
-    }
+    "angular-mocks": "~1.2.21"
   }
 }
