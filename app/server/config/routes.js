@@ -1,9 +1,18 @@
 var path      = require('path'),
     dataPath  = path.normalize(__dirname + '/../../server/data'),
-    songsJSON = require(dataPath + '/books.json');
+    books     = require(dataPath + '/books.json');
 
 module.exports = function (app, config) {
   // books json
-  app.get('/api/books.json', function(req,res){res.send(songsJSON);});
+  // /api/books.json?cat=Suzuki
+  app.get('/api/books.json', function(req,res){
+    var cat = req.query.cat, ret = {};
+    if(!cat){
+      ret = books;
+    }else{
+      ret[cat] = books[cat];
+    }
+    res.send(ret);
+  });
 };
 

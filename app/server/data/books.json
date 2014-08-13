@@ -77,5 +77,15 @@
       "Suzuki Violin Parts Vol 9",
       "Concerto in A Major, K. 219"
     ]
+  },
+  "Panni": {
+    "Book1": [
+      "song1",
+      "song2"
+    ],
+    "Book2": [
+      "song3",
+      "song4"
+    ]
   }
 }
