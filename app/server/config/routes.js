@@ -1,4 +1,6 @@
-var songsJSON = require('../data/books.json');
+var path      = require('path'),
+    dataPath  = path.normalize(__dirname + '/../../server/data'),
+    songsJSON = require(dataPath + '/books.json');
 
 module.exports = function (app, config) {
   // books json
