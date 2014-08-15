@@ -1,7 +1,29 @@
 /*global describe, it, beforeEach, inject, expect*/
 
 describe('Todo Controller', function () {
-  var ctrl, scope;
+  var songs = [
+    {
+      book: "Book1",
+      category: "Suzuki",
+      title: "Twinkle Variations"
+    },
+    {
+      book: "Book1",
+      category: "Suzuki",
+      title: "Go Tell Aunt Rhody"
+    },
+    {
+      book: "Book2",
+      category: "Suzuki",
+      title: "Gavotte From Mignon"
+    },
+    {
+      book: "Book8",
+      category: "Suzuki",
+      title: "Allegro in E Minor for Violin and Continuo, BWV 1023"
+    }
+  ];
+  var ctrl, scope, mockBackend;
   var todoList;
   var todoStorage = {
     storage: {},
@@ -16,10 +38,18 @@ describe('Todo Controller', function () {
   // Load the module containing the app, only 'ng' is loaded by default.
   beforeEach(module('a-string'));
 
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _$httpBackend_, Songs) {
+    mockBackend = _$httpBackend_;
     scope = $rootScope.$new();
-    ctrl = $controller('TodoCtrl', { $scope: scope });
+    ctrl = $controller('TodoCtrl', {
+      $scope: scope,
+      songs: songs
+    });
   }));
+
+  it('should have a list of songs', function(){
+    expect(scope.songs).toEqual(songs);
+  });
 
   it('should not have an edited Todo on start', function () {
     expect(scope.editedTodo).toBeNull();
@@ -52,7 +82,8 @@ describe('Todo Controller', function () {
           $scope: scope,
           $routeParams: {
             status: 'active'
-          }
+          },
+          songs: songs
         });
 
         scope.$emit('$routeChangeSuccess');
@@ -66,7 +97,8 @@ describe('Todo Controller', function () {
           $scope: scope,
           $routeParams: {
             status: 'completed'
-          }
+          },
+          songs: songs
         });
 
         scope.$emit('$routeChangeSuccess');
@@ -82,20 +114,22 @@ describe('Todo Controller', function () {
       todoStorage.storage = [];
       ctrl = $controller('TodoCtrl', {
         $scope: scope,
-        todoStorage: todoStorage
+        todoStorage: todoStorage,
+        songs: songs
       });
       scope.$digest();
     }));
 
     it('should not add empty Todos', function () {
-      scope.newTodo.title = '';
+      scope.song = '';
       scope.addTodo();
       scope.$digest();
       expect(scope.todos.length).toBe(0);
     });
 
     it('should not add items consisting only of whitespaces', function () {
-      scope.newTodo.title = '   ';
+      scope.song = {};
+      scope.song.title = '   ';
       scope.addTodo();
       scope.$digest();
       expect(scope.todos.length).toBe(0);
@@ -103,7 +137,8 @@ describe('Todo Controller', function () {
 
 
     it('should trim whitespace from new Todos', function () {
-      scope.newTodo.title = '  buy some unicorns  ';
+      scope.song = {};
+      scope.song.title = '  buy some unicorns  ';
       scope.addTodo();
       scope.$digest();
       expect(scope.todos.length).toBe(1);
@@ -111,7 +146,8 @@ describe('Todo Controller', function () {
     });
 
     it('should has the id and createdAt set when create a new todo', function (){
-      scope.newTodo.title = 'a new todo';
+      scope.song = {};
+      scope.song.title = 'a new todo';
       scope.addTodo();
       scope.$digest();
       expect(scope.todos.length).toBe(1);
@@ -144,7 +180,8 @@ describe('Todo Controller', function () {
       todoStorage.storage = todoList;
       ctrl = $controller('TodoCtrl', {
         $scope: scope,
-        todoStorage: todoStorage
+        todoStorage: todoStorage,
+        songs: songs
       });
       scope.$digest();
     }));
@@ -196,7 +233,6 @@ describe('Todo Controller', function () {
       expect(scope.todos[0].title).toBe('Uncompleted Item 0');
     });
   });
-
   describe('select a todo item', function(){
     var ctrl;
     beforeEach(inject(function($controller){
@@ -217,7 +253,8 @@ describe('Todo Controller', function () {
       todoStorage.storage = todoList;
       ctrl = $controller('TodoCtrl', {
         $scope: scope,
-        todoStorage: todoStorage
+        todoStorage: todoStorage,
+        songs: songs
       });
       scope.$digest();
     }));

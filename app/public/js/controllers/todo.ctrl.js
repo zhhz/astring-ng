@@ -1,29 +1,12 @@
 angular.module('a-string')
-.controller('TodoCtrl', ['$scope', '$routeParams', '$filter', 'todoStorage', 'md5',
-  function TodoCtrl($scope, $routeParams, $filter, todoStorage, md5) {
+.controller('TodoCtrl', ['$scope', '$routeParams', '$filter', 'todoStorage', 'Todos', 'songs',
+  function TodoCtrl($scope, $routeParams, $filter, todoStorage, Todos, songs) {
     'use strict';
 
-    function blankTodo(){
-      return {
-               id: null,
-               title: '',
-               createdAt: null,
-               startedAt: null,
-               completedAt: null,
-               completed: false
-             };
-    }
-
     var todos = $scope.todos = todoStorage.get();
-    $scope.newTodo = blankTodo();
     $scope.editedTodo = null;
     $scope.currentId = null;
-
-    var dial = $('#dial').attr('data-value', '80').dial({
-      change: function(value){
-        console.log(value);
-      }
-    });
+    $scope.songs = songs;
 
     $scope.$watch('todos', function (newValue, oldValue) {
       $scope.remainingCount = $filter('filter')(todos, { completed: false }).length;
@@ -44,17 +27,19 @@ angular.module('a-string')
     });
 
     $scope.addTodo = function () {
-      var newTodo = $scope.newTodo;
-      newTodo.title = newTodo.title.trim();
+      var newTodo = Todos.newTodo();
+      if(!$scope.song.title){
+        newTodo.title = $scope.song.trim();
+      }else{
+        newTodo.title = $scope.song.title.trim();
+        newTodo.song = $scope.song;
+      }
       if (!newTodo.title.length) {
         return;
       }
-      // TODO
-      newTodo.id = md5.createHash((new Date()).getTime() + 'a-string');
-      newTodo.createdAt = new Date();
       todos.push(newTodo);
 
-      $scope.newTodo = blankTodo();
+      $scope.song = '';
     };
 
     $scope.editTodo = function (todo) {
