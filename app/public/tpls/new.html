@@ -1,0 +1,28 @@
+<script type="text/ng-template" id="songSelectorTpl.html">
+  <a>
+    <span bind-html-unsafe="match.model.title | typeaheadHighlight:query"></span>
+    [<span bind-html-unsafe="match.model.category"></span> - <span bind-html-unsafe="match.model.book"></span>]
+  </a>
+</script>
+
+<div class="row" ng-controller="NewTodoCtrl">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8">
+    <form ng-submit="addTodo()" class="form-horizontal">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">@</div>
+          <input id="new-todo" type="text"
+            autofocus
+            ng-model="song"
+            placeholder="What needs to be done?"
+            typeahead="song as song.title for song in songs | filter:{title:$viewValue}"
+            typeahead-template-url="songSelectorTpl.html"
+            class="form-control">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-xs-2"></div>
+</div>
+

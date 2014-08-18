@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">
+          <span class="dial"></span>
+        </span>
+        <div class="form-control text-center" style="height: 153px;">
+            <span class="badge" style="font-size: 25px;">
+              <div class="strong" id="elapse">3:36</div>
+            </span>
+          <hr style="margin-top: 5px; margin-bottom: 5px;" />
+          <table class="led" width="100%">
+            <tr>
+              <td>
+                <button id="btn-beats-down" type="button" class="btn btn-default btn-md" title="dec">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+              </td>
+              <td style="padding-bottom:0px;">
+                <table class="beats" style="width: 100%;">
+                  <tr>
+                    <td id="beat0">1</td>
+                    <td id="beat1">2</td>
+                    <td id="beat2">3</td>
+                    <td id="beat3">4</td>
+                  </tr>
+                </table>
+              </td>
+              <td>
+                <button id="btn-beats-up" type="button" class="btn btn-default btn-md" title="inc">
+                  <span class="glyphicon glyphicon-chevron-up"></span>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <span class="input-group-addon">
+          <div class="btn-group" style="width: 155px;">
+            <button id="btn-metronome" type="button" class="btn btn-primary btn-default btn-lg" title="metronome">
+              <span class="glyphicon glyphicon-dashboard"></span>
+            </button>
+            <button id="btn-melody" type="button" class="btn btn-default btn-lg" title="melody" disabled="disabled">
+              <span class="glyphicon glyphicon-headphones"></span>
+            </button>
+            <button id="btn-accompany" type="button" class="btn btn-default btn-lg" title="piano" disabled="disabled">
+              <span class="glyphicon glyphicon-music"></span>
+            </button>
+          </div>
+          <hr style="margin-top: 5px; margin-bottom: 5px;" />
+          <button id="btn-start" type="button" class="btn btn-success btn-lg" title="Start Metronome" style="height: 75px;">
+            <span class="glyphicon glyphicon-time"></span> Start
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="col-xs-1"></div>
+  </div>
+</div>

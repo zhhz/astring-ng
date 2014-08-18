@@ -68,45 +68,6 @@ describe('Todo Controller', function () {
     expect(scope.allChecked).toBeTruthy();
   });
 
-  describe('the filter', function () {
-    it('should default to ""', function () {
-      scope.$emit('$routeChangeSuccess');
-
-      expect(scope.status).toBe('');
-      expect(scope.statusFilter).toBeNull();
-    });
-
-    describe('being at /active', function () {
-      it('should filter non-completed', inject(function ($controller) {
-        ctrl = $controller('TodoCtrl', {
-          $scope: scope,
-          $routeParams: {
-            status: 'active'
-          },
-          songs: songs
-        });
-
-        scope.$emit('$routeChangeSuccess');
-        expect(scope.statusFilter.completed).toBeFalsy();
-      }));
-    });
-
-    describe('being at /completed', function () {
-      it('should filter completed', inject(function ($controller) {
-        ctrl = $controller('TodoCtrl', {
-          $scope: scope,
-          $routeParams: {
-            status: 'completed'
-          },
-          songs: songs
-        });
-
-        scope.$emit('$routeChangeSuccess');
-        expect(scope.statusFilter.completed).toBeTruthy();
-      }));
-    });
-  });
-
   describe('having no Todos', function () {
     var ctrl;
 
