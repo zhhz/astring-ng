@@ -81,6 +81,8 @@ gulp.task('watch', ['js', 'lib','css', 'fonts'], function() {
   gulp.watch('app/public/tpls/**/*.html').on('change', livereload.changed);
   gulp.watch('app/public/index.html').on('change', livereload.changed);
 
+  gulp.watch('test/**/*.js').on('change', livereload.changed);
+
 });
 
 gulp.task('default', ['js', 'lib', 'css', 'fonts']);
