@@ -1,5 +1,5 @@
 <div class="row" ng-controller="CompletedTodosCtrl">
-  <div class="row" ng-repeat="todo in todos | filter:{completed: true}" style="margin-bottom: 3px;">
+  <div class="row" ng-repeat="todo in todos | filter:{completed: true} | orderBy:'completedAt':reverse" style="margin-bottom: 3px;">
     <div class="col-xs-1"></div>
     <div class="col-xs-10">
       <div class="input-group input-group-lg">

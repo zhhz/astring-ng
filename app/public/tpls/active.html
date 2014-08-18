@@ -1,5 +1,5 @@
 <div class="row" ng-controller="ActiveTodosCtrl">
-  <div class="row" ng-repeat="todo in todos | filter:{completed: false}" style="margin-bottom: 3px;">
+  <div class="row" ng-repeat="todo in todos | filter:{completed: false} | orderBy:'createdAt'" style="margin-bottom: 3px;">
     <div class="col-xs-1"></div>
     <div class="col-xs-10" ng-click="toggleCurrent(todo.id)">
       <div class="input-group input-group-lg">

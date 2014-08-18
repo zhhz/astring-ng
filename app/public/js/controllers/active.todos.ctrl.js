@@ -8,6 +8,7 @@ angular.module('a-string')
 
     $scope.doneTodo = function(todo){
       todo.completed = true;
+      todo.completedAt = new Date();
     };
 
     $scope.toggleCurrent = function(id) {

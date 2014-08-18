@@ -4,6 +4,7 @@ angular.module('a-string')
 
     $scope.activeTodo = function(todo){
       todo.completed = false;
+      todo.completedAt = null;
     };
   }
 ]);
