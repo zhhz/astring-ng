@@ -18,7 +18,7 @@ describe('ActiveTodos controller', function(){
 
     scope = $rootScope.$new();
     ctrl = $controller('ActiveTodosCtrl', {
-      $scope: scope,
+      $scope: scope
     });
     scope.todos = todoList;
   }));
