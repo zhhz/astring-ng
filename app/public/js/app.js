@@ -13,9 +13,6 @@ angular.module('a-string', ['ngRoute', 'ui.bootstrap'])
         return Songs.getSongs();
       }]
     }
-  }).when('/:status', {
-    controller: 'TodoCtrl',
-    templateUrl: 'tpls/main.html'
   }).otherwise({
     redirectTo: '/'
   });

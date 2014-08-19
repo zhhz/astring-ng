@@ -77,6 +77,14 @@ function Metro() {
     updateTimerCb = updateTimer || null;
   }
 
+  function setUpdateTimerCb(cb){
+    updateTimerCb = cb;
+  }
+
+  function setDrawPlayheadCb(cb){
+    drawPlayheadCb = cb;
+  }
+
   function startLoadingAssets() {
     for (var i = 0; i < soundInfoList.length; i++) {
       soundList[i] = new SoundLoader(context, soundInfoList[i].url, i);
@@ -192,6 +200,9 @@ function Metro() {
 
   return {
     init: init,
+
+    setUpdateTimerCb: setUpdateTimerCb, 
+    setDrawPlayheadCb: setDrawPlayheadCb,
 
     startTimer: handleStart,
     stopTimer:  handleStop,
