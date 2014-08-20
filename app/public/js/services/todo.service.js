@@ -8,7 +8,7 @@ angular.module('a-string')
                  id: md5.createHash((new Date()).getTime() + 'a-string'),
                  title: '',
                  createdAt: new Date(),
-                 startedAt: null,
+                 duration: 0,
                  completedAt: null,
                  completed: false
         };

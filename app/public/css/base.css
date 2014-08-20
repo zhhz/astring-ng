@@ -13,3 +13,25 @@
   color: #39aa39;
   font-weight: bold;
 }
+
+.total-clock {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 6px;
+  color: #777777;
+  font-size: 1.2em;
+  font-family: "Helvetica Neue";
+}
+.total-clock time {
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.total-clock .total-time {
+  margin-left: 3px;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.6em;
+  font-family: "Helvetica Neue";
+  letter-spacing: 8px;
+  color: #bbbbbb;
+}

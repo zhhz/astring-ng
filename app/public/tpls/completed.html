@@ -2,23 +2,17 @@
   <div class="row" ng-repeat="todo in todos | filter:{completed: true} | orderBy:'completedAt':reverse" style="margin-bottom: 3px;">
     <div class="col-xs-1"></div>
     <div class="col-xs-10">
-      <div class="input-group input-group-lg">
+      <div class="input-group">
         <span class="input-group-btn">
           <button class="btn btn-default" type="button" disabled="disabled">
-            12:52
+            {{todo.duration | secondsToTime}}
           </button>
           <button class="btn btn-danger" ng-click="activateTodo(todo)" type="button" ng-disabled="!$last">
             <span class="glyphicon glyphicon-remove"></span>
           </button>
         </span>
         <div class="form-control">
-          <div class="todo-list">{{todo.title}}</div>
-          <div class="todo-list-label"> 
-            <span class="label label-warning">126</span>
-            <span class="label label-info">12:34:56</span>
-            <span class="label label-primary">{{todo.song.category}}</span>
-            <span class="label label-success">{{todo.song.book}}</span>
-          </div>
+          <div class="form-label">{{todo.title}}</div>
         </div>
       </div>
     </div>

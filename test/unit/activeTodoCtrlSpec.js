@@ -21,6 +21,7 @@ describe('ActiveTodos controller', function(){
       $scope: scope
     });
     scope.todos = todoList;
+    scope.timer = {elapse: 0, duration: 0};
   }));
 
   it('removeTodo() should remove a todo', function(){

@@ -13,6 +13,7 @@ describe('Completed controller', function(){
       $scope: scope,
     });
     scope.todos = todoList;
+    scope.timer = {elapse: 0, duration: 0};
   }));
 
   it('activeTodo() should mark a todo completed false and set completedAt null', function(){
