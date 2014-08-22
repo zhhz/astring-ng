@@ -8,7 +8,7 @@ angular.module('a-string')
 
     $scope.doneTodo = function(todo){
       todo.completed = true;
-      todo.completedAt = new Date();
+      todo.completedAt = (new Date()).getTime();
       todo.duration = $scope.states.elapse;
       $scope.states.elapse = 0;
     };

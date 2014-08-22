@@ -7,7 +7,7 @@ angular.module('a-string')
         return {
                  id: md5.createHash((new Date()).getTime() + 'a-string'),
                  title: '',
-                 createdAt: new Date(),
+                 createdAt: (new Date()).getTime(),
                  duration: 0,
                  completedAt: null,
                  completed: false
