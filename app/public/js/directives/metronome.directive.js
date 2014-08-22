@@ -15,6 +15,7 @@ angular.module('a-string')
     $('#beat' + prev).removeClass('beat');
   }
 
+
   var metronome = new Metro();
   metronome.init(AudioService.getContext());
   metronome.setDrawPlayheadCb(drawPlayhead);
@@ -58,6 +59,12 @@ angular.module('a-string')
         }
         scope.states.timerOn = !scope.states.timerOn;
       };
+
+      $('.dial').attr('data-value', '80').dial({
+        change: function(value){
+          metronome.setTempo(value);
+        }
+      });
     }
   };
 }]);
