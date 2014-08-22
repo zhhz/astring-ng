@@ -1,4 +1,68 @@
-﻿//==== Sound Loader ========================================
+angular.module('a-string')
+.directive('asMetronome', ['AudioService', 'States', function(AudioService, States){
+  var notesPerBeat = 4;
+
+  function renderBeats(){
+    $('.beats').empty().append('<tr></tr>');
+    var tr = $('.beats').find('tr');
+    for(var i = 0; i < notesPerBeat; i++){
+      tr.append('<td id="beat' + i + '">' + (i + 1) +'</td>');
+    }
+  }
+
+  function drawPlayhead(curr, prev){
+    $('#beat' + curr).addClass('beat');
+    $('#beat' + prev).removeClass('beat');
+  }
+
+  var metronome = new Metro();
+  metronome.init(AudioService.getContext());
+  metronome.setDrawPlayheadCb(drawPlayhead);
+
+  return {
+    restrict: 'E',
+    templateUrl: 'tpls/metronome.html',
+    link: function(scope, element, attrs, ngModel){
+      scope.states = States;
+      function updateTimer(){
+        if(States){
+          scope.$apply(function(){
+            States.elapse += 1;
+            States.duration += 1;
+          });
+        }
+      }
+      metronome.setUpdateTimerCb(updateTimer);
+
+      scope.beatsUp = function(){
+        notesPerBeat += 1;
+        if(notesPerBeat > 8){notesPerBeat = 8;}
+        metronome.setBPP(notesPerBeat);
+        renderBeats();
+      };
+
+      scope.beatsDown = function(){
+        notesPerBeat -= 1;
+        if(notesPerBeat < 2){notesPerBeat = 2;}
+        metronome.setBPP(notesPerBeat);
+        renderBeats();
+      };
+
+      scope.toggleStart = function(){
+        if(scope.states.timerOn){
+          metronome.stopTimer();
+          metronome.stopMetro();
+        }else{
+          metronome.startTimer();
+          metronome.startMetro();
+        }
+        scope.states.timerOn = !scope.states.timerOn;
+      };
+    }
+  };
+}]);
+
+//==== Sound Loader ========================================
 function SoundLoader(context, url, index) {
   this.context = context;
   this.url = url;
@@ -20,7 +84,6 @@ SoundLoader.prototype.loadedSound = function (buffer) {
 
   this.isLoaded_ = true;
 };
-
 
 SoundLoader.prototype.load = function() {
   if (this.startedLoading) {
@@ -201,7 +264,7 @@ function Metro() {
   return {
     init: init,
 
-    setUpdateTimerCb: setUpdateTimerCb, 
+    setUpdateTimerCb: setUpdateTimerCb,
     setDrawPlayheadCb: setDrawPlayheadCb,
 
     startTimer: handleStart,
@@ -215,22 +278,3 @@ function Metro() {
     setBPP: setBeatsPerBar
   };
 }
-
-// =================================================
-// ==== Metronome Service ==========================
-// =================================================
-angular.module('a-string')
-.factory('Metronome', ['AudioService',
-  function(AudioService){
-    var _metro = null;
-    return {
-      getInstance: function(){
-        if(!_metro){
-          _metro = new Metro();
-          console.log(' => init metronome ...');
-          _metro.init(AudioService.getContext());
-        }
-        return _metro;
-      }
-    };
-}]);

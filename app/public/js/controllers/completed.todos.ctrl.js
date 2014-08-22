@@ -5,7 +5,7 @@ angular.module('a-string')
     $scope.activateTodo = function(todo){
       todo.completed = false;
       todo.completedAt = null;
-      $scope.timer.elapse += todo.duration;
+      $scope.states.elapse += todo.duration;
       todo.duration = 0;
     };
   }

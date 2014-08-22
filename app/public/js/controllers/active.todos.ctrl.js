@@ -9,17 +9,17 @@ angular.module('a-string')
     $scope.doneTodo = function(todo){
       todo.completed = true;
       todo.completedAt = new Date();
-      todo.duration = $scope.timer.elapse;
-      $scope.timer.elapse = 0;
+      todo.duration = $scope.states.elapse;
+      $scope.states.elapse = 0;
     };
 
-    $scope.toggleCurrent = function(id) {
-      if(!$scope.currentId){
-        $scope.currentId = id;
-      }else if($scope.currentId === id){
-        $scope.currentId = null;
+    $scope.toggleCurrent = function(todo) {
+      if(!$scope.states.currentTodo){
+        $scope.states.currentTodo = todo;
+      }else if($scope.states.currentTodo === todo){
+        $scope.states.currentTodo = null;
       }else{
-        $scope.currentId = id;
+        $scope.states.currentTodo = todo;
       }
     };
   }

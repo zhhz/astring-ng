@@ -11,7 +11,7 @@
   "node": true,
   "eqeqeq": true,
   "undef": true,
-  "latedef": true,
+  "latedef": false,
   "globals": {
     "angular": true,
     "$": true,

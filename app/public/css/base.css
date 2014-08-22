@@ -35,3 +35,19 @@
   letter-spacing: 8px;
   color: #bbbbbb;
 }
+
+.led{
+  margin: 0px;
+  background-color: rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+table .beats tr td {
+  padding: 6px;
+  vertical-align: top;
+  border: 1px solid #005600;
+}
+
+.beat{
+  background-color: #009c00;
+}

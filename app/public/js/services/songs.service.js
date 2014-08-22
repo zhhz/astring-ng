@@ -5,7 +5,7 @@ angular.module('a-string')
     var service = {
       getSongs: function (){
         var deferred = $q.defer();
-        $http.get('http://localhost:3000/api/books')
+        $http.get('/api/books')
           .success(function(data, status, headers, config){
             var songs = [];
             angular.forEach(data, function(books, category){
