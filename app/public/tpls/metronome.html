@@ -1,12 +1,12 @@
 <div class="input-group input-group-lg">
   <span class="input-group-addon">
-    <span class="dial" data-width="120" data-height="120" data-value="60"></span>
+    <span class="dial" data-width="130" data-height="130" data-value="60"></span>
   </span>
-  <div class="form-control text-center" style="height: 172px;">
+  <div class="form-control text-center" style="height: 182px;">
     <span class="badge" style="font-size: 25px;">
       <div class="strong" id="elapse">{{states.elapse | secondsToTime}}</div>
     </span>
-    <hr style="margin-top: 5px; margin-bottom: 5px;" />
+    <hr style="margin-top: 20px; margin-bottom: 5px;" />
     <table width="100%">
       <tr>
         <td>
@@ -31,21 +31,35 @@
         </td>
       </tr>
     </table>
-  </div>
-  <span class="input-group-addon">
+    <hr style="margin-top: 5px; margin-bottom: 15px;" />
     <div class="btn-group" style="width: 155px;">
-      <button id="btn-metronome" type="button" class="btn btn-primary btn-default btn-lg" title="metronome">
+      <button type="button"
+        class="btn btn-default btn-lg"
+        ng-class="{'btn-primary': 'metronome' == mode}"
+        ng-click="setMode('metronome')"
+        title="metronome">
         <span class="glyphicon glyphicon-dashboard"></span>
       </button>
-      <button id="btn-melody" type="button" class="btn btn-default btn-lg" title="melody" disabled="disabled">
+      <button type="button"
+        class="btn btn-default btn-lg"
+        title="melody"
+        ng-class="{'btn-primary': 'melody' == mode}"
+        ng-click="setMode('melody')"
+        ng-disabled="states.currentSongs.length == 0">
         <span class="glyphicon glyphicon-headphones"></span>
       </button>
-      <button id="btn-accompany" type="button" class="btn btn-default btn-lg" title="piano" disabled="disabled">
+      <button type="button"
+        title="piano"
+        class="btn btn-default btn-lg"
+        ng-class="{'btn-primary': 'accompany' == mode}"
+        ng-click="setMode('accompany')"
+        ng-disabled="states.currentSongs.length == 0">
         <span class="glyphicon glyphicon-music"></span>
       </button>
     </div>
-    <hr style="margin-top: 5px; margin-bottom: 5px;" />
-    <button ng-click="toggleStart()" id="btn-start" type="button" class="btn btn-lg btn-success" ng-class="{'btn-danger': states.timerOn}" title="Start Metronome" style="height: 60px;">
+  </div>
+  <span class="input-group-addon">
+    <button ng-click="toggleStart()" type="button" class="btn btn-lg btn-success" ng-class="{'btn-danger': states.timerOn}" title="Start Metronome" style="width: 100px; height: 85px;">
       <span class="glyphicon glyphicon-time"></span><span ng-hide="states.timerOn"> Start</span><span ng-show="states.timerOn"> Stop</span>
     </button>
   </span>

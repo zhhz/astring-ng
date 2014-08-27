@@ -1,6 +1,7 @@
 angular.module('a-string')
 .directive('asMetronome', ['AudioService', 'States', function(AudioService, States){
   var notesPerBeat = 4;
+  var player, dial;
 
   function renderBeats(){
     $('.beats').empty().append('<tr></tr>');
@@ -20,20 +21,21 @@ angular.module('a-string')
   metronome.init(AudioService.getContext());
   metronome.setDrawPlayheadCb(drawPlayhead);
 
+  var self = this;
+  var cb = function(){
+    player = AS.player();
+  };
+
+  if(!AS.MIDILoaded){
+    new AS.loader(cb);
+  }
+
   return {
     restrict: 'E',
     templateUrl: 'tpls/metronome.html',
     link: function(scope, element, attrs, ngModel){
       scope.states = States;
-      function updateTimer(){
-        if(States){
-          scope.$apply(function(){
-            States.elapse += 1;
-            States.duration += 1;
-          });
-        }
-      }
-      metronome.setUpdateTimerCb(updateTimer);
+      scope.mode = 'metronome';
 
       scope.beatsUp = function(){
         notesPerBeat += 1;
@@ -49,20 +51,66 @@ angular.module('a-string')
         renderBeats();
       };
 
+      scope.setMode = function(mode){
+        scope.mode = mode;
+        scope.currentSong = scope.states.currentSongs[0];
+        if('melody' === mode){
+          scope.nodes = scope.currentSong.melody;
+        }else if('accompany' === mode){
+          scope.nodes = scope.currentSong.accompany;
+        }else{
+          scope.nodes = null;
+        }
+      };
+
       scope.toggleStart = function(){
         if(scope.states.timerOn){
           metronome.stopTimer();
-          metronome.stopMetro();
+          if(scope.nodes){
+            player.stop();
+          }else{
+            metronome.stopMetro();
+          }
         }else{
           metronome.startTimer();
-          metronome.startMetro();
+
+          if(scope.nodes){
+            player.setBpm(scope.bpm);
+            player.setSong(scope.nodes);
+            player.start();
+          }else{
+            metronome.startMetro();
+          }
         }
         scope.states.timerOn = !scope.states.timerOn;
       };
 
-      $('.dial').attr('data-value', '80').dial({
+      scope.$watch('states.currentSongs', function(newValue, oldValue){
+        scope.mode = 'metronome';
+        scope.nodes = null;
+        scope.bpm = newValue.length > 0 ? newValue[0].bpm : scope.bpm;
+        dial.val(scope.bpm);
+
+
+        notesPerBeat = newValue.length > 0 ? newValue[0].bpb : 4;
+        metronome.setBPP(notesPerBeat);
+        renderBeats();
+      });
+
+      function updateTimer(){
+        if(States){
+          scope.$apply(function(){
+            States.elapse += 1;
+            States.duration += 1;
+          });
+        }
+      }
+      metronome.setUpdateTimerCb(updateTimer);
+
+      dial = $('.dial').attr('data-value', '80').dial({
         change: function(value){
           metronome.setTempo(value);
+          scope.bpm = value;
         }
       });
     }

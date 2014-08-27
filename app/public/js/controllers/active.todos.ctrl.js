@@ -1,6 +1,6 @@
 angular.module('a-string')
-.controller('ActiveTodosCtrl', ['$scope',
-  function ActiveTodoCtrl($scope){
+.controller('ActiveTodosCtrl', ['$scope', 'Songs',
+  function ActiveTodoCtrl($scope, Songs){
 
     $scope.removeTodo = function (todo) {
       $scope.todos.splice($scope.todos.indexOf(todo), 1);
@@ -14,11 +14,13 @@ angular.module('a-string')
     };
 
     $scope.toggleCurrent = function(todo) {
-      if(!$scope.states.currentTodo){
-        $scope.states.currentTodo = todo;
-      }else if($scope.states.currentTodo === todo){
+      if($scope.states.currentTodo === todo){
         $scope.states.currentTodo = null;
+        $scope.states.currentSongs = [];
       }else{
+        Songs.getSongs(todo).then(function(songs){
+          $scope.states.currentSongs = songs;
+        });
         $scope.states.currentTodo = todo;
       }
     };

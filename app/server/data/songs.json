@@ -4,6 +4,7 @@
     "categoroy": "Suzuki",
     "book": "Book1",
     "bpm": 120,
+    "bpb": 3,
     "composer": "J.S. Bach",
     "key": "G",
     "private": false,
@@ -390,12 +391,13 @@
     ]
   },
   {
+    "title": "Allegretto",
     "bpm": 100,
+    "bpb": 4,
     "category": "Suzuki",
     "composer": "Shinichi Suzuki",
     "key": "G",
     "private": false,
-    "title": "Allegretto",
     "accompany": [
       { "duration": 0.5, "notes": [ "Gb4" ] },
       { "duration": 0.5, "notes": [ "A4" ] },

@@ -3,9 +3,10 @@ angular.module('a-string')
     return {
       currentTodo: null,
       timerOn    : false,
-      bpm        : 60,
       elapse     : 0,
-      duration   : 0     
+      duration   : 0,
+      currentSongs: []
     };
   }
 ]);
+

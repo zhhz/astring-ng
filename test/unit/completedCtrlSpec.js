@@ -5,7 +5,8 @@ describe('Completed controller', function(){
     todoList = [{
       'id': 1,
       'title': 'Uncompleted Item 0',
-      'completed': true
+      'completed': true,
+      'duraton': 5
     }];
 
     scope = $rootScope.$new();
@@ -13,7 +14,7 @@ describe('Completed controller', function(){
       $scope: scope,
     });
     scope.todos = todoList;
-    scope.timer = {elapse: 0, duration: 0};
+    scope.states = {elapse: 0, duration: 20, currentTodo: null};
   }));
 
   it('activeTodo() should mark a todo completed false and set completedAt null', function(){
@@ -21,6 +22,8 @@ describe('Completed controller', function(){
     scope.activateTodo(todo);
     expect(scope.todos[0].completed).toBeFalsy();
     expect(scope.todos[0].completedAt).toBeNull;
+    expect(scope.states.elapse).toBe(5);
+    expect(scope.todos[0].duration).toBe(0);
   });
 
 });

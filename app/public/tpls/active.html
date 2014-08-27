@@ -12,8 +12,12 @@
           ng-class="{current: todo.id == states.currentTodo.id}">
           <div class="todo-list">{{todo.title}}</div>
           <div class="todo-list-label"> 
-            <span class="label label-warning">126</span>
-            <span class="label label-info">12:34:56</span>
+            <span class="label label-warning"
+              ng-show="todo.id == states.currentTodo.id && states.currentSongs.length > 0">
+              BPM: {{states.currentSongs[0].bpm}}</span>
+            <span class="label label-info"
+              ng-show="todo.id == states.currentTodo.id && states.currentSongs.length > 0">
+              Major: {{states.currentSongs[0].key}}</span>
             <span class="label label-primary">{{todo.song.category}}</span>
             <span class="label label-success">{{todo.song.book}}</span>
           </div>

@@ -10,7 +10,7 @@ angular.module('a-string', ['ngRoute', 'ui.bootstrap'])
     templateUrl: 'tpls/main.html',
     resolve: {
       songs: ['Songs', function(Songs){
-        return Songs.getSongs();
+        return Songs.getBooks();
       }]
     }
   }).otherwise({

@@ -21,7 +21,7 @@ describe('ActiveTodos controller', function(){
       $scope: scope
     });
     scope.todos = todoList;
-    scope.timer = {elapse: 0, duration: 0};
+    scope.states = {elapse: 35, duration: 100, currentTodo: null};
   }));
 
   it('removeTodo() should remove a todo', function(){
@@ -40,18 +40,18 @@ describe('ActiveTodos controller', function(){
 
   it('toggleCurrent() should set todo as current', function(){
     var todo = todoList[0];
-    scope.toggleCurrent(todo.id);
+    scope.toggleCurrent(todo);
 
-    expect(scope.currentId).toBe(todo.id);
+    expect(scope.states.currentTodo).toBe(todo);
   });
 
   it('toggleCurrent() should toggle if current is clicked', function(){
     var todo = todoList[0];
-    scope.toggleCurrent(todo.id);
-    expect(scope.currentId).toBe(todo.id);
+    scope.toggleCurrent(todo);
+    expect(scope.states.currentTodo).toBe(todo);
 
-    scope.toggleCurrent(todo.id);
-    expect(scope.currentId).toBeNull;
+    scope.toggleCurrent(todo);
+    expect(scope.states.currentTodo).toBeNull;
   });
 });
 

@@ -12,13 +12,13 @@
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon">@</div>
-          <input id="new-todo" type="text"
+          <input type="text"
             autofocus
             ng-model="song"
             placeholder="What needs to be done?"
             typeahead="song as song.title for song in songs | filter:{title:$viewValue}"
             typeahead-template-url="songSelectorTpl.html"
-            class="form-control">
+            class="form-control input-lg">
         </div>
       </div>
     </form>
