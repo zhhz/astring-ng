@@ -3,10 +3,17 @@ angular.module('a-string')
   function ActiveTodoCtrl($scope, Songs){
 
     $scope.removeTodo = function (todo) {
+      if($scope.states.currentTodo === todo){
+        $scope.toggleCurrent(todo);
+      }
       $scope.todos.splice($scope.todos.indexOf(todo), 1);
     };
 
     $scope.doneTodo = function(todo){
+      if($scope.states.currentTodo === todo){
+        $scope.toggleCurrent(todo);
+      }
+
       todo.completed = true;
       todo.completedAt = (new Date()).getTime();
       todo.duration = $scope.states.elapse;

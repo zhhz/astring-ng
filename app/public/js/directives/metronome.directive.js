@@ -96,7 +96,7 @@ angular.module('a-string')
       };
 
       scope.$watch('states.currentSongs', function(newValue, oldValue){
-        // always switch to metronome mode when current songs changed
+        // always switch to metronome mode when current todo/songs changed
         scope.switchMode('metronome');
         scope.nodes = null;
         scope.bpm = newValue.length > 0 ? newValue[0].bpm : scope.bpm;
