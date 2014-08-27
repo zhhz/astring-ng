@@ -120,8 +120,12 @@ angular.module('a-string')
 
       dial = $('.dial').attr('data-value', '80').dial({
         change: function(value){
+          if(scope.states.timerOn){stop();}
+
           metronome.setTempo(value);
           scope.bpm = value;
+
+          if(scope.states.timerOn){start();}
         }
       });
     }
