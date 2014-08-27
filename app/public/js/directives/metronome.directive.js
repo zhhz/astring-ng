@@ -53,7 +53,9 @@ angular.module('a-string')
         renderBeats();
       };
 
-      scope.setMode = function(mode){
+      scope.switchMode = function(mode){
+        if(scope.states.timerOn){ stop(); }
+
         scope.mode = mode;
         scope.currentSong = scope.states.currentSongs[0];
         if('melody' === mode){
@@ -63,32 +65,39 @@ angular.module('a-string')
         }else{
           scope.nodes = null;
         }
+
+        if(scope.states.timerOn){ start(); }
       };
 
-      scope.toggleStart = function(){
-        if(scope.states.timerOn){
-          metronome.stopTimer();
-          if(scope.nodes){
-            player.stop();
-          }else{
-            metronome.stopMetro();
-          }
-        }else{
-          metronome.startTimer();
+      function start(){
+        metronome.startTimer();
 
-          if(scope.nodes){
-            player.setBpm(scope.bpm);
-            player.setSong(scope.nodes);
-            player.start();
-          }else{
-            metronome.startMetro();
-          }
+        if(scope.nodes){
+          player.setBpm(scope.bpm);
+          player.setSong(scope.nodes);
+          player.start();
+        }else{
+          metronome.startMetro();
         }
+      }
+
+      function stop(){
+        metronome.stopTimer();
+        if(scope.nodes){
+          player.stop();
+        }else{
+          metronome.stopMetro();
+        }
+      }
+
+      scope.toggleStart = function(){
+        scope.states.timerOn ? stop() : start();
         scope.states.timerOn = !scope.states.timerOn;
       };
 
       scope.$watch('states.currentSongs', function(newValue, oldValue){
-        scope.mode = 'metronome';
+        // always switch to metronome mode when current songs changed
+        scope.switchMode('metronome');
         scope.nodes = null;
         scope.bpm = newValue.length > 0 ? newValue[0].bpm : scope.bpm;
         dial.val(scope.bpm);

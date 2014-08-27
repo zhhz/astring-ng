@@ -36,7 +36,7 @@
       <button type="button"
         class="btn btn-default btn-lg"
         ng-class="{'btn-primary': 'metronome' == mode}"
-        ng-click="setMode('metronome')"
+        ng-click="switchMode('metronome')"
         title="metronome">
         <span class="glyphicon glyphicon-dashboard"></span>
       </button>
@@ -44,7 +44,7 @@
         class="btn btn-default btn-lg"
         title="melody"
         ng-class="{'btn-primary': 'melody' == mode}"
-        ng-click="setMode('melody')"
+        ng-click="switchMode('melody')"
         ng-disabled="states.currentSongs.length == 0">
         <span class="glyphicon glyphicon-headphones"></span>
       </button>
@@ -52,7 +52,7 @@
         title="piano"
         class="btn btn-default btn-lg"
         ng-class="{'btn-primary': 'accompany' == mode}"
-        ng-click="setMode('accompany')"
+        ng-click="switchMode('accompany')"
         ng-disabled="states.currentSongs.length == 0">
         <span class="glyphicon glyphicon-music"></span>
       </button>
