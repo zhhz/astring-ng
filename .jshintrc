@@ -17,6 +17,8 @@
     "$": true,
     "localStorage": true,
     "XMLHttpRequest": true,
-    "window": true
+    "window": true,
+    "document": true,
+    "Audio": true
   }
 }

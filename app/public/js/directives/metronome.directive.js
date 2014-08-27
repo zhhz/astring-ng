@@ -1,3 +1,5 @@
+if (typeof (AS) === 'undefined') { var AS = {}; }
+
 angular.module('a-string')
 .directive('asMetronome', ['AudioService', 'States', function(AudioService, States){
   var notesPerBeat = 4;

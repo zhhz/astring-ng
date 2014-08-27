@@ -7,9 +7,9 @@
   https://github.com/mudcube/MIDI.js
   -------------------------------------
 */
-if (typeof (AS) === "undefined") var AS = {};
-if (typeof (MIDI) === "undefined") var MIDI = {};
-if (typeof (MIDI.Soundfont) === "undefined") MIDI.Soundfont = {};
+if (typeof (AS) === 'undefined') { var AS = {}; }
+if (typeof (MIDI) === 'undefined') { var MIDI = {}; }
+if (typeof (MIDI.Soundfont) === 'undefined') { MIDI.Soundfont = {}; }
 
 AS.loader = function(callback){
   AS.MIDILoaded = false;
@@ -19,14 +19,14 @@ AS.loader = function(callback){
     AS.context = new AudioContext();
     AS.audioBuffers = {};
   }else{
-    var msg = "Your browser dosn't support WebAudio API!";
+    var msg = 'Your browser dosn\'t support WebAudio API!';
     console.log(msg);
     throw new Error(msg);
   }
 
   MIDI.loader = new widgets.Loader();
   MIDI.loadPlugin({
-    soundfontUrl: "/soundfont/",
+    soundfontUrl: '/soundfont/',
     instrument: 'acoustic_grand_piano',
     callback: function () {
         AS.MIDILoaded = true;
@@ -37,14 +37,14 @@ AS.loader = function(callback){
 };
 
 
-if (typeof (widgets) === "undefined") var widgets = {};
+if (typeof (widgets) === 'undefined') { var widgets = {}; }
 widgets.Loader = function (configure) {
-  var noCanvas = !document.createElement("canvas").getContext;
-  if (noCanvas) return;
+  var noCanvas = !document.createElement('canvas').getContext;
+  if (noCanvas) { return; }
 
   var fadeOutSpeed = 400;
   var defaultConfig = {
-    id: "loader",
+    id: 'loader',
     bars: 12,
     radius: 0,
     lineWidth: 20,
@@ -62,7 +62,7 @@ widgets.Loader = function (configure) {
     if (window.innerWidth && window.innerHeight) {
       width = window.innerWidth;
       height = window.innerHeight;
-    } else if (document.compatMode === "CSS1Compat" && document.documentElement && document.documentElement.offsetWidth) {
+    } else if (document.compatMode === 'CSS1Compat' && document.documentElement && document.documentElement.offsetWidth) {
       width = document.documentElement.offsetWidth;
       height = document.documentElement.offsetHeight;
     } else if (document.body && document.body.offsetWidth) {
@@ -78,15 +78,15 @@ widgets.Loader = function (configure) {
     };
   };
   var that = this;
-  if (typeof (configure) === "string") configure = { message: configure };
-  if (typeof (configure) === "boolean") configure = { display: false };
-  if (typeof (configure) === "undefined") configure = {};
+  if (typeof (configure) === 'string') { configure = { message: configure }; }
+  if (typeof (configure) === 'boolean') { configure = { display: false }; }
+  if (typeof (configure) === 'undefined') { configure = {}; }
   configure.container = configure.container || document.body;
-  if (!configure.container) return;
+  if (!configure.container) { return; }
 
   /// Mixin the default configurations.
   for (var key in defaultConfig) {
-    if (typeof (configure[key]) === "undefined") {
+    if (typeof (configure[key]) === 'undefined') {
       configure[key] = defaultConfig[key];
     }
   }
@@ -94,22 +94,22 @@ widgets.Loader = function (configure) {
   /// Setup element
   var canvas = document.getElementById(configure.id);
   if (!canvas) {
-    var div = document.createElement("div");
-    var span = document.createElement("span");
-    span.className = "message";
+    var div = document.createElement('div');
+    var span = document.createElement('span');
+    span.className = 'message';
     div.appendChild(span);
     div.className = defaultConfig.id;
-    div.style.cssText = transitionCSS("opacity", fadeOutSpeed);
+    div.style.cssText = transitionCSS('opacity', fadeOutSpeed);
     this.span = span;
     this.div = div;
-    canvas = document.createElement("canvas");
+    canvas = document.createElement('canvas');
     document.body.appendChild(canvas);
     canvas.id = configure.id;
-    canvas.style.cssText = "opacity: 1; position: absolute; z-index: 10000;";
+    canvas.style.cssText = 'opacity: 1; position: absolute; z-index: 10000;';
     div.appendChild(canvas);
     configure.container.appendChild(div);
   } else {
-    this.span = canvas.parentNode.getElementsByTagName("span")[0];
+    this.span = canvas.parentNode.getElementsByTagName('span')[0];
   }
 
   /// Configure
@@ -127,17 +127,17 @@ widgets.Loader = function (configure) {
   canvas.height = size  * deviceRatio;
   ///
   var iteration = 0;
-  var ctx = canvas.getContext("2d");
-  ctx.globalCompositeOperation = "lighter";
+  var ctx = canvas.getContext('2d');
+  ctx.globalCompositeOperation = 'lighter';
   ctx.shadowOffsetX = 1;
   ctx.shadowOffsetY = 1;
   ctx.shadowBlur = 1;
-  ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
 
   /// Public functions.
   this.messages = {};
   this.message = function (message, onstart) {
-    if (!this.interval) return this.start(onstart, message);
+    if (!this.interval) { return this.start(onstart, message); }
     return this.add({
       message: message, 
       onstart: onstart
@@ -145,48 +145,50 @@ widgets.Loader = function (configure) {
   };
 
   this.update = function(id, message, percent) {
-    /* jshint -W004 */
-    if (!id) for (var id in this.messages);
-    if (!id) return this.message(message);
+    if (!id) {
+      for(id in this.messages){}
+    }
+
+    if (!id) { return this.message(message); }
+
     var item = this.messages[id];
     item.message = message;
-    if (typeof(percent) === "number") item.span.innerHTML = percent + "%";
-    if (message.substr(-3) === "...") { // animated dots
+    if (typeof(percent) === 'number') { item.span.innerHTML = percent + '%'; }
+    if (message.substr(-3) === '...') { // animated dots
       item._message = message.substr(0, message.length - 3);
-      item.messageAnimate = [".&nbsp;&nbsp;", "..&nbsp;", "..."].reverse();
+      item.messageAnimate = ['.&nbsp;&nbsp;', '..&nbsp;', '...'].reverse();
     } else { // normal
       item._message = message;
       item.messageAnimate = false;
     }
     ///
     item.element.innerHTML = message;
-    /* jshint +W004 */
   };
 
   this.add = function (conf) {
-    if (typeof(conf) === "string") conf = { message: conf };
-    var background = configure.background ? configure.background : "rgba(0,0,0,0.65)";
-    this.span.style.cssText = "background: " + background + ";";
-    this.div.style.cssText = transitionCSS("opacity", fadeOutSpeed);
+    if (typeof(conf) === 'string') { conf = { message: conf }; }
+    var background = configure.background ? configure.background : 'rgba(0,0,0,0.65)';
+    this.span.style.cssText = 'background: ' + background + ';';
+    this.div.style.cssText = transitionCSS('opacity', fadeOutSpeed);
     if (this.stopPropagation) {
-      this.div.style.cssText += "background: rgba(0,0,0,0.25);";
+      this.div.style.cssText += 'background: rgba(0,0,0,0.25);';
     } else {
-      this.div.style.cssText += "pointer-events: none;";
+      this.div.style.cssText += 'pointer-events: none;';
     }
     ///
     canvas.parentNode.style.opacity = 1;
-    canvas.parentNode.style.display = "block";
-    if (configure.background) this.div.style.background = configure.backgrond;
+    canvas.parentNode.style.display = 'block';
+    if (configure.background) { this.div.style.background = configure.backgrond; }
     ///
     var timestamp = (new Date()).getTime();
     var seed = Math.abs(timestamp * Math.random() >> 0);
     var message = conf.message;
     ///
-    var container = document.createElement("div");
-    container.style.cssText = transitionCSS("opacity", 500);
-    var span = document.createElement("span");
-    span.style.cssText = "float: right; width: 50px;";
-    var node = document.createElement("span");
+    var container = document.createElement('div');
+    container.style.cssText = transitionCSS('opacity', 500);
+    var span = document.createElement('span');
+    span.style.cssText = 'float: right; width: 50px;';
+    var node = document.createElement('span');
     node.innerHTML = message;
     ///
     container.appendChild(node);
@@ -203,7 +205,7 @@ widgets.Loader = function (configure) {
       getProgress: conf.getProgress
     };
     this.span.appendChild(container);
-    this.span.style.display = "block";
+    this.span.style.display = 'block';
     this.update(item.seed, message);
     /// Escape event loop.
     if (conf.onstart) {
@@ -213,7 +215,7 @@ widgets.Loader = function (configure) {
     this.center();
     ///
     if (!this.interval) {
-      if (!conf.delay) renderAnimation();
+      if (!conf.delay) { renderAnimation(); }
       window.clearInterval(this.interval);
       this.interval = window.setInterval(renderAnimation, 30);
     }
@@ -224,22 +226,22 @@ widgets.Loader = function (configure) {
   this.remove = function (seed) {
     iteration += 0.07;
     var timestamp = (new Date()).getTime();
-    if (typeof(seed) === "object") seed = seed.join(":");
-    if (seed) seed = ":" + seed + ":";
+    if (typeof(seed) === 'object') { seed = seed.join(':'); }
+    if (seed) { seed = ':' + seed + ':'; }
     /// Remove element.
     for (var key in this.messages) {
       var item = this.messages[key];
-      if (!seed || seed.indexOf(":" + item.seed + ":") !== -1) {
+      if (!seed || seed.indexOf(':' + item.seed + ':') !== -1) {
         delete this.messages[item.seed];
-        item.container.style.color = "#99ff88";
+        item.container.style.color = '#99ff88';
         removeChild(item);
-        if (item.getProgress) item.span.innerHTML = "100%";
+        if (item.getProgress) { item.span.innerHTML = '100%'; }
       }
     }
   };
 
   this.start = function (onstart, message) {
-    if (!(message || configure.message)) return;
+    if (!(message || configure.message)) { return; }
     return this.add({
       message: message || configure.message, 
       onstart: onstart
@@ -250,16 +252,16 @@ widgets.Loader = function (configure) {
     this.remove();
     window.clearInterval(this.interval);
     delete this.interval;
-    if (configure.oncomplete) configure.oncomplete();
+    if (configure.oncomplete) { configure.oncomplete(); }
     if (canvas && canvas.style) {
-      div.style.cssText += "pointer-events: none;";
+      div.style.cssText += 'pointer-events: none;';
       window.setTimeout(function() {
         that.div.style.opacity = 0;
       }, 1);
       window.setTimeout(function () {
-        if (that.interval) return;
+        if (that.interval) { return; }
         that.stopPropagation = false;
-        canvas.parentNode.style.display = "none";
+        canvas.parentNode.style.display = 'none';
         ctx.clearRect(0, 0, size, size);
       }, fadeOutSpeed * 1000);
     }
@@ -270,14 +272,14 @@ widgets.Loader = function (configure) {
     var width = windowSize.width - size;
     var height = windowSize.height - size;
     /// Center the animation within the content.
-    canvas.style.left = (width / 2) + "px";
-    canvas.style.top = (height / 2) + "px";
-    canvas.style.width = (size) + "px";
-    canvas.style.height = (size) + "px";
-    that.span.style.top = (height / 2 + size - 10) + "px";
+    canvas.style.left = (width / 2) + 'px';
+    canvas.style.top = (height / 2) + 'px';
+    canvas.style.width = (size) + 'px';
+    canvas.style.height = (size) + 'px';
+    that.span.style.top = (height / 2 + size - 10) + 'px';
   };
 
-  var style = document.createElement("style");
+  var style = document.createElement('style');
   /* jshint -W043 */
   style.innerHTML = '\
                     .loader { color: #fff; position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 100000; opacity: 0; display: none; }\
@@ -311,7 +313,7 @@ widgets.Loader = function (configure) {
           that.remove(item.seed);
           continue;
         }
-        item.span.innerHTML = (progress >> 0) + "%";
+        item.span.innerHTML = (progress >> 0) + '%';
       }
       if (nid % 10 === 0) {
         if (item.messageAnimate) {
@@ -355,7 +357,7 @@ widgets.Loader = function (configure) {
       ctx.quadraticCurveTo(x, y, x + curve, y);
       // round-rect fill
       var hue = ((i / (bars - 1)) * hues);
-      ctx.fillStyle = "hsla(" + hue + ", 100%, 50%, 0.85)";
+      ctx.fillStyle = 'hsla(' + hue + ', 100%, 50%, 0.85)';
       ctx.fill();
       ctx.restore();
     }
@@ -363,7 +365,7 @@ widgets.Loader = function (configure) {
     iteration += 0.07;
   };
   //
-  if (configure.display === false) return this;
+  if (configure.display === false) { return this; }
   //
   this.start();
   //
@@ -376,37 +378,37 @@ MIDI.audioDetect = function(callback) {
   var canPlayThrough = function (src) {
     pending ++;
     var audio = new Audio();
-    var mime = src.split(";")[0];
-    audio.id = "audio";
-    audio.setAttribute("preload", "auto");
-    audio.setAttribute("audiobuffer", true);
-    audio.addEventListener("error", function() {
+    var mime = src.split(';')[0];
+    audio.id = 'audio';
+    audio.setAttribute('preload', 'auto');
+    audio.setAttribute('audiobuffer', true);
+    audio.addEventListener('error', function() {
       supports[mime] = false;
       pending --;
     }, false);
-    audio.addEventListener("canplaythrough", function() {
+    audio.addEventListener('canplaythrough', function() {
       supports[mime] = true;
       pending --;
     }, false);
-    audio.src = "data:" + src;
+    audio.src = 'data:' + src;
     document.body.appendChild(audio);
   };
 
   var audio = new Audio();
-  if (typeof(audio.canPlayType) === "undefined") return callback(supports);
+  if (typeof(audio.canPlayType) === 'undefined') { return callback(supports); }
   // see what we can learn from the browser
-  var vorbis = audio.canPlayType('audio/ogg; codecs="vorbis"');
-  vorbis = (vorbis === "probably" || vorbis === "maybe");
+  var vorbis = audio.canPlayType('audio/ogg; codecs=\'vorbis\'');
+  vorbis = (vorbis === 'probably' || vorbis === 'maybe');
   var mpeg = audio.canPlayType('audio/mpeg');
-  mpeg = (mpeg === "probably" || mpeg === "maybe");
+  mpeg = (mpeg === 'probably' || mpeg === 'maybe');
   // maybe nothing is supported
   if (!vorbis && !mpeg) {
     callback(supports);
     return;
   }
   // or maybe something is supported
-  if (vorbis) canPlayThrough("audio/ogg;base64,T2dnUwACAAAAAAAAAADqnjMlAAAAAOyyzPIBHgF2b3JiaXMAAAAAAUAfAABAHwAAQB8AAEAfAACZAU9nZ1MAAAAAAAAAAAAA6p4zJQEAAAANJGeqCj3//////////5ADdm9yYmlzLQAAAFhpcGguT3JnIGxpYlZvcmJpcyBJIDIwMTAxMTAxIChTY2hhdWZlbnVnZ2V0KQAAAAABBXZvcmJpcw9CQ1YBAAABAAxSFCElGVNKYwiVUlIpBR1jUFtHHWPUOUYhZBBTiEkZpXtPKpVYSsgRUlgpRR1TTFNJlVKWKUUdYxRTSCFT1jFloXMUS4ZJCSVsTa50FkvomWOWMUYdY85aSp1j1jFFHWNSUkmhcxg6ZiVkFDpGxehifDA6laJCKL7H3lLpLYWKW4q91xpT6y2EGEtpwQhhc+211dxKasUYY4wxxsXiUyiC0JBVAAABAABABAFCQ1YBAAoAAMJQDEVRgNCQVQBABgCAABRFcRTHcRxHkiTLAkJDVgEAQAAAAgAAKI7hKJIjSZJkWZZlWZameZaouaov+64u667t6roOhIasBACAAAAYRqF1TCqDEEPKQ4QUY9AzoxBDDEzGHGNONKQMMogzxZAyiFssLqgQBKEhKwKAKAAAwBjEGGIMOeekZFIi55iUTkoDnaPUUcoolRRLjBmlEluJMYLOUeooZZRCjKXFjFKJscRUAABAgAMAQICFUGjIigAgCgCAMAYphZRCjCnmFHOIMeUcgwwxxiBkzinoGJNOSuWck85JiRhjzjEHlXNOSuekctBJyaQTAAAQ4AAAEGAhFBqyIgCIEwAwSJKmWZomipamiaJniqrqiaKqWp5nmp5pqqpnmqpqqqrrmqrqypbnmaZnmqrqmaaqiqbquqaquq6nqrZsuqoum65q267s+rZru77uqapsm6or66bqyrrqyrbuurbtS56nqqKquq5nqq6ruq5uq65r25pqyq6purJtuq4tu7Js664s67pmqq5suqotm64s667s2rYqy7ovuq5uq7Ks+6os+75s67ru2rrwi65r66os674qy74x27bwy7ouHJMnqqqnqq7rmarrqq5r26rr2rqmmq5suq4tm6or26os67Yry7aumaosm64r26bryrIqy77vyrJui67r66Ys67oqy8Lu6roxzLat+6Lr6roqy7qvyrKuu7ru+7JuC7umqrpuyrKvm7Ks+7auC8us27oxuq7vq7It/KosC7+u+8Iy6z5jdF1fV21ZGFbZ9n3d95Vj1nVhWW1b+V1bZ7y+bgy7bvzKrQvLstq2scy6rSyvrxvDLux8W/iVmqratum6um7Ksq/Lui60dd1XRtf1fdW2fV+VZd+3hV9pG8OwjK6r+6os68Jry8ov67qw7MIvLKttK7+r68ow27qw3L6wLL/uC8uq277v6rrStXVluX2fsSu38QsAABhwAAAIMKEMFBqyIgCIEwBAEHIOKQahYgpCCKGkEEIqFWNSMuakZM5JKaWUFEpJrWJMSuaclMwxKaGUlkopqYRSWiqlxBRKaS2l1mJKqcVQSmulpNZKSa2llGJMrcUYMSYlc05K5pyUklJrJZXWMucoZQ5K6iCklEoqraTUYuacpA46Kx2E1EoqMZWUYgupxFZKaq2kFGMrMdXUWo4hpRhLSrGVlFptMdXWWqs1YkxK5pyUzDkqJaXWSiqtZc5J6iC01DkoqaTUYiopxco5SR2ElDLIqJSUWiupxBJSia20FGMpqcXUYq4pxRZDSS2WlFosqcTWYoy1tVRTJ6XFklKMJZUYW6y5ttZqDKXEVkqLsaSUW2sx1xZjjqGkFksrsZWUWmy15dhayzW1VGNKrdYWY40x5ZRrrT2n1mJNMdXaWqy51ZZbzLXnTkprpZQWS0oxttZijTHmHEppraQUWykpxtZara3FXEMpsZXSWiypxNhirLXFVmNqrcYWW62ltVprrb3GVlsurdXcYqw9tZRrrLXmWFNtBQAADDgAAASYUAYKDVkJAEQBAADGMMYYhEYpx5yT0ijlnHNSKucghJBS5hyEEFLKnINQSkuZcxBKSSmUklJqrYVSUmqttQIAAAocAAACbNCUWByg0JCVAEAqAIDBcTRNFFXVdX1fsSxRVFXXlW3jVyxNFFVVdm1b+DVRVFXXtW3bFn5NFFVVdmXZtoWiqrqybduybgvDqKqua9uybeuorqvbuq3bui9UXVmWbVu3dR3XtnXd9nVd+Bmzbeu2buu+8CMMR9/4IeTj+3RCCAAAT3AAACqwYXWEk6KxwEJDVgIAGQAAgDFKGYUYM0gxphhjTDHGmAAAgAEHAIAAE8pAoSErAoAoAADAOeecc84555xzzjnnnHPOOeecc44xxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY0wAwE6EA8BOhIVQaMhKACAcAABACCEpKaWUUkoRU85BSSmllFKqFIOMSkoppZRSpBR1lFJKKaWUIqWgpJJSSimllElJKaWUUkoppYw6SimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaVUSimllFJKKaWUUkoppRQAYPLgAACVYOMMK0lnhaPBhYasBAByAwAAhRiDEEJpraRUUkolVc5BKCWUlEpKKZWUUqqYgxBKKqmlklJKKbXSQSihlFBKKSWUUkooJYQQSgmhlFRCK6mEUkoHoYQSQimhhFRKKSWUzkEoIYUOQkmllNRCSB10VFIpIZVSSiklpZQ6CKGUklJLLZVSWkqpdBJSKamV1FJqqbWSUgmhpFZKSSWl0lpJJbUSSkklpZRSSymFVFJJJYSSUioltZZaSqm11lJIqZWUUkqppdRSSiWlkEpKqZSSUmollZRSaiGVlEpJKaTUSimlpFRCSamlUlpKLbWUSkmptFRSSaWUlEpJKaVSSksppRJKSqmllFpJKYWSUkoplZJSSyW1VEoKJaWUUkmptJRSSymVklIBAEAHDgAAAUZUWoidZlx5BI4oZJiAAgAAQABAgAkgMEBQMApBgDACAQAAAADAAAAfAABHARAR0ZzBAUKCwgJDg8MDAAAAAAAAAAAAAACAT2dnUwAEAAAAAAAAAADqnjMlAgAAADzQPmcBAQA=");
-  if (mpeg) canPlayThrough("audio/mpeg;base64,/+MYxAAAAANIAUAAAASEEB/jwOFM/0MM/90b/+RhST//w4NFwOjf///PZu////9lns5GFDv//l9GlUIEEIAAAgIg8Ir/JGq3/+MYxDsLIj5QMYcoAP0dv9HIjUcH//yYSg+CIbkGP//8w0bLVjUP///3Z0x5QCAv/yLjwtGKTEFNRTMuOTeqqqqqqqqqqqqq/+MYxEkNmdJkUYc4AKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+  if (vorbis) {canPlayThrough('audio/ogg;base64,T2dnUwACAAAAAAAAAADqnjMlAAAAAOyyzPIBHgF2b3JiaXMAAAAAAUAfAABAHwAAQB8AAEAfAACZAU9nZ1MAAAAAAAAAAAAA6p4zJQEAAAANJGeqCj3//////////5ADdm9yYmlzLQAAAFhpcGguT3JnIGxpYlZvcmJpcyBJIDIwMTAxMTAxIChTY2hhdWZlbnVnZ2V0KQAAAAABBXZvcmJpcw9CQ1YBAAABAAxSFCElGVNKYwiVUlIpBR1jUFtHHWPUOUYhZBBTiEkZpXtPKpVYSsgRUlgpRR1TTFNJlVKWKUUdYxRTSCFT1jFloXMUS4ZJCSVsTa50FkvomWOWMUYdY85aSp1j1jFFHWNSUkmhcxg6ZiVkFDpGxehifDA6laJCKL7H3lLpLYWKW4q91xpT6y2EGEtpwQhhc+211dxKasUYY4wxxsXiUyiC0JBVAAABAABABAFCQ1YBAAoAAMJQDEVRgNCQVQBABgCAABRFcRTHcRxHkiTLAkJDVgEAQAAAAgAAKI7hKJIjSZJkWZZlWZameZaouaov+64u667t6roOhIasBACAAAAYRqF1TCqDEEPKQ4QUY9AzoxBDDEzGHGNONKQMMogzxZAyiFssLqgQBKEhKwKAKAAAwBjEGGIMOeekZFIi55iUTkoDnaPUUcoolRRLjBmlEluJMYLOUeooZZRCjKXFjFKJscRUAABAgAMAQICFUGjIigAgCgCAMAYphZRCjCnmFHOIMeUcgwwxxiBkzinoGJNOSuWck85JiRhjzjEHlXNOSuekctBJyaQTAAAQ4AAAEGAhFBqyIgCIEwAwSJKmWZomipamiaJniqrqiaKqWp5nmp5pqqpnmqpqqqrrmqrqypbnmaZnmqrqmaaqiqbquqaquq6nqrZsuqoum65q267s+rZru77uqapsm6or66bqyrrqyrbuurbtS56nqqKquq5nqq6ruq5uq65r25pqyq6purJtuq4tu7Js664s67pmqq5suqotm64s667s2rYqy7ovuq5uq7Ks+6os+75s67ru2rrwi65r66os674qy74x27bwy7ouHJMnqqqnqq7rmarrqq5r26rr2rqmmq5suq4tm6or26os67Yry7aumaosm64r26bryrIqy77vyrJui67r66Ys67oqy8Lu6roxzLat+6Lr6roqy7qvyrKuu7ru+7JuC7umqrpuyrKvm7Ks+7auC8us27oxuq7vq7It/KosC7+u+8Iy6z5jdF1fV21ZGFbZ9n3d95Vj1nVhWW1b+V1bZ7y+bgy7bvzKrQvLstq2scy6rSyvrxvDLux8W/iVmqratum6um7Ksq/Lui60dd1XRtf1fdW2fV+VZd+3hV9pG8OwjK6r+6os68Jry8ov67qw7MIvLKttK7+r68ow27qw3L6wLL/uC8uq277v6rrStXVluX2fsSu38QsAABhwAAAIMKEMFBqyIgCIEwBAEHIOKQahYgpCCKGkEEIqFWNSMuakZM5JKaWUFEpJrWJMSuaclMwxKaGUlkopqYRSWiqlxBRKaS2l1mJKqcVQSmulpNZKSa2llGJMrcUYMSYlc05K5pyUklJrJZXWMucoZQ5K6iCklEoqraTUYuacpA46Kx2E1EoqMZWUYgupxFZKaq2kFGMrMdXUWo4hpRhLSrGVlFptMdXWWqs1YkxK5pyUzDkqJaXWSiqtZc5J6iC01DkoqaTUYiopxco5SR2ElDLIqJSUWiupxBJSia20FGMpqcXUYq4pxRZDSS2WlFosqcTWYoy1tVRTJ6XFklKMJZUYW6y5ttZqDKXEVkqLsaSUW2sx1xZjjqGkFksrsZWUWmy15dhayzW1VGNKrdYWY40x5ZRrrT2n1mJNMdXaWqy51ZZbzLXnTkprpZQWS0oxttZijTHmHEppraQUWykpxtZara3FXEMpsZXSWiypxNhirLXFVmNqrcYWW62ltVprrb3GVlsurdXcYqw9tZRrrLXmWFNtBQAADDgAAASYUAYKDVkJAEQBAADGMMYYhEYpx5yT0ijlnHNSKucghJBS5hyEEFLKnINQSkuZcxBKSSmUklJqrYVSUmqttQIAAAocAAACbNCUWByg0JCVAEAqAIDBcTRNFFXVdX1fsSxRVFXXlW3jVyxNFFVVdm1b+DVRVFXXtW3bFn5NFFVVdmXZtoWiqrqybduybgvDqKqua9uybeuorqvbuq3bui9UXVmWbVu3dR3XtnXd9nVd+Bmzbeu2buu+8CMMR9/4IeTj+3RCCAAAT3AAACqwYXWEk6KxwEJDVgIAGQAAgDFKGYUYM0gxphhjTDHGmAAAgAEHAIAAE8pAoSErAoAoAADAOeecc84555xzzjnnnHPOOeecc44xxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY0wAwE6EA8BOhIVQaMhKACAcAABACCEpKaWUUkoRU85BSSmllFKqFIOMSkoppZRSpBR1lFJKKaWUIqWgpJJSSimllElJKaWUUkoppYw6SimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaVUSimllFJKKaWUUkoppRQAYPLgAACVYOMMK0lnhaPBhYasBAByAwAAhRiDEEJpraRUUkolVc5BKCWUlEpKKZWUUqqYgxBKKqmlklJKKbXSQSihlFBKKSWUUkooJYQQSgmhlFRCK6mEUkoHoYQSQimhhFRKKSWUzkEoIYUOQkmllNRCSB10VFIpIZVSSiklpZQ6CKGUklJLLZVSWkqpdBJSKamV1FJqqbWSUgmhpFZKSSWl0lpJJbUSSkklpZRSSymFVFJJJYSSUioltZZaSqm11lJIqZWUUkqppdRSSiWlkEpKqZSSUmollZRSaiGVlEpJKaTUSimlpFRCSamlUlpKLbWUSkmptFRSSaWUlEpJKaVSSksppRJKSqmllFpJKYWSUkoplZJSSyW1VEoKJaWUUkmptJRSSymVklIBAEAHDgAAAUZUWoidZlx5BI4oZJiAAgAAQABAgAkgMEBQMApBgDACAQAAAADAAAAfAABHARAR0ZzBAUKCwgJDg8MDAAAAAAAAAAAAAACAT2dnUwAEAAAAAAAAAADqnjMlAgAAADzQPmcBAQA=');}
+  if (mpeg) {canPlayThrough('audio/mpeg;base64,/+MYxAAAAANIAUAAAASEEB/jwOFM/0MM/90b/+RhST//w4NFwOjf///PZu////9lns5GFDv//l9GlUIEEIAAAgIg8Ir/JGq3/+MYxDsLIj5QMYcoAP0dv9HIjUcH//yYSg+CIbkGP//8w0bLVjUP///3Z0x5QCAv/yLjwtGKTEFNRTMuOTeqqqqqqqqqqqqq/+MYxEkNmdJkUYc4AKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq');}
   // lets find out!
   var time = (new Date()).getTime(); 
   var interval = window.setInterval(function() {
@@ -422,22 +424,20 @@ MIDI.audioDetect = function(callback) {
 
 MIDI.loadPlugin = function(conf) {
 
-  if (typeof(conf) === "function") conf = {
-    callback: conf
-  };
+  if (typeof(conf) === 'function') { conf = { callback: conf }; }
 
   /// Get the instrument name.
-  var instruments = conf.instruments || conf.instrument || "acoustic_grand_piano";
-  if (typeof(instruments) !== "object") instruments = [ instruments ];
+  var instruments = conf.instruments || conf.instrument || 'acoustic_grand_piano';
+  if (typeof(instruments) !== 'object') { instruments = [ instruments ]; }
   ///
   for (var n = 0; n < instruments.length; n ++) {
     var instrument = instruments[n];
-    if (typeof(instrument) === "number") {
+    if (typeof(instrument) === 'number') {
       instruments[n] = MIDI.GeneralMIDI.byId[instrument];
     }
   }
   // soundfont url
-  MIDI.soundfontUrl = conf.soundfontUrl || MIDI.soundfontUrl || "./soundfont/";
+  MIDI.soundfontUrl = conf.soundfontUrl || MIDI.soundfontUrl || './soundfont/';
   // Detect the best type of audio to use.
   MIDI.audioDetect(function(types) {
     var filetype;
@@ -445,23 +445,23 @@ MIDI.loadPlugin = function(conf) {
     if (conf.targetFormat) {
       filetype = conf.targetFormat;
     } else { // use best quality
-      filetype = types["audio/ogg"] ? "ogg" : "mp3";
+      filetype = types['audio/ogg'] ? 'ogg' : 'mp3';
     }
     // load the specified sondfont
     load(filetype, instruments, conf);
   });
 
   var load = function(filetype, instruments, conf) {
-    if (MIDI.loader) MIDI.loader.message("Web Audio API...");
+    if (MIDI.loader) { MIDI.loader.message('Web Audio API...'); }
     var queue = createQueue({
       items: instruments,
       getNext: function(instrumentId) {
         sendRequest({
-          url: MIDI.soundfontUrl + instrumentId + "-" + filetype + ".js",
+          url: MIDI.soundfontUrl + instrumentId + '-' + filetype + '.js',
         onprogress: getPercent,
         onload: function(response) {
           addSoundfont(response.responseText);
-          if (MIDI.loader) MIDI.loader.update(null, "Downloading...", 100);
+          if (MIDI.loader) { MIDI.loader.update(null, 'Downloading...', 100); }
           queue.getNext();
         }
         });
@@ -474,16 +474,16 @@ MIDI.loadPlugin = function(conf) {
 
   var sendRequest = function(conf) {
     var req = new XMLHttpRequest();
-    req.open(conf.data ? "POST" : "GET", conf.url, true);
-    if (req.overrideMimeType) req.overrideMimeType("text/plain; charset=x-user-defined");
-    if (conf.data) req.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    if (conf.responseType) req.responseType = conf.responseType;
-    if (conf.onerror) req.onerror = conf.onerror;
-    if (conf.onprogress) req.onprogress = conf.onprogress;
+    req.open(conf.data ? 'POST' : 'GET', conf.url, true);
+    if (req.overrideMimeType) { req.overrideMimeType('text/plain; charset=x-user-defined'); }
+    if (conf.data) {req.setRequestHeader('Content-type','application/x-www-form-urlencoded');}
+    if (conf.responseType) {req.responseType = conf.responseType;}
+    if (conf.onerror){req.onerror = conf.onerror;}
+    if (conf.onprogress) {req.onprogress = conf.onprogress;}
     req.onreadystatechange = function (event) {
       if (req.readyState === 4) {
-        if (req.status !== 200 && req.status != 304) {
-          if (conf.onerror) conf.onerror(event, false);
+        if (req.status !== 200 && req.status !== 304) {
+          if (conf.onerror){conf.onerror(event, false);}
           return;
         }
         if (conf.onload) {
@@ -499,13 +499,13 @@ MIDI.loadPlugin = function(conf) {
   var connect = function (conf) {
     var urlList = [];
     var keyToNote = MIDI.keyToNote;
-    for (var key in keyToNote) urlList.push(key);
+    for (var key in keyToNote) { urlList.push(key); }
     var bufferList = [];
     var pending = {};
     var oncomplete = function(instrument) {
       delete pending[instrument];
-      for (var key in pending) break;
-      if (!key) conf.callback();
+      for (var key in pending) {break;}
+      if (!key) { conf.callback(); }
     };
     for (var instrument in MIDI.Soundfont) {
       pending[instrument] = true;
@@ -522,13 +522,13 @@ MIDI.loadPlugin = function(conf) {
     if (!MIDI.Soundfont[instrument][url]) { // missing soundfont
       return callback(instrument);
     }
-    var base64 = MIDI.Soundfont[instrument][url].split(",")[1];
+    var base64 = MIDI.Soundfont[instrument][url].split(',')[1];
     var buffer = Base64Binary.decodeArrayBuffer(base64);
     AS.context.decodeAudioData(buffer, function (buffer) {
       var msg = url;
-      while (msg.length < 3) msg += "&nbsp;";
-      if (typeof (MIDI.loader) !== "undefined") {
-        MIDI.loader.update(null, synth.instrument + "<br>Processing: " + (index / 87 * 100 >> 0) + "%<br>" + msg);
+      while (msg.length < 3){msg += '&nbsp;';}
+      if (typeof (MIDI.loader) !== 'undefined') {
+        MIDI.loader.update(null, synth.instrument + '<br>Processing: ' + (index / 87 * 100 >> 0) + '%<br>' + msg);
       }
       buffer.id = url;
       bufferList[index] = buffer;
@@ -536,8 +536,8 @@ MIDI.loadPlugin = function(conf) {
       if (bufferList.length === urlList.length) {
         while (bufferList.length) {
           buffer = bufferList.pop();
-          if (!buffer) continue;
-          AS.audioBuffers[instrumentId + "" + buffer.id] = buffer;
+          if (!buffer){continue;}
+          AS.audioBuffers[instrumentId + '' + buffer.id] = buffer;
         }
         callback(instrument);
       }
@@ -545,24 +545,24 @@ MIDI.loadPlugin = function(conf) {
   };
 
   var addSoundfont = function(text) {
-    var script = document.createElement("script");
-    script.language = "javascript";
-    script.type = "text/javascript";
+    var script = document.createElement('script');
+    script.language = 'javascript';
+    script.type = 'text/javascript';
     script.text = text;
     document.body.appendChild(script);
   };
 
   var getPercent = function(event) {
     if (!this.totalSize) {
-      if (this.getResponseHeader("Content-Length-Raw")) {
-        this.totalSize = parseInt(this.getResponseHeader("Content-Length-Raw"));
+      if (this.getResponseHeader('Content-Length-Raw')) {
+        this.totalSize = parseInt(this.getResponseHeader('Content-Length-Raw'));
       } else {
         this.totalSize = event.total;
       }
     }
     ///
-    var percent = this.totalSize ? Math.round(event.loaded / this.totalSize * 100) : "";
-    if (MIDI.loader) MIDI.loader.update(null, "Downloading...", percent);
+    var percent = this.totalSize ? Math.round(event.loaded / this.totalSize * 100) : '';
+    if (MIDI.loader){MIDI.loader.update(null, 'Downloading...', percent);}
   };
 
   var createQueue = function(conf) {
@@ -574,7 +574,7 @@ MIDI.loadPlugin = function(conf) {
       }
     }
     self.getNext = function() {
-      if (!self.queue.length) return conf.onComplete();
+      if (!self.queue.length){return conf.onComplete();}
       conf.getNext(self.queue.shift());
     };
     setTimeout(self.getNext, 1);
@@ -591,7 +591,7 @@ MIDI.loadPlugin = function(conf) {
 // instrument-tracker
 MIDI.GeneralMIDI = (function (arr) {
   var clean = function(v) {
-    return v.replace(/[^a-z0-9 ]/gi, "").replace(/[ ]/g, "_").toLowerCase();
+    return v.replace(/[^a-z0-9 ]/gi, '').replace(/[ ]/g, '_').toLowerCase();
   };
   var ret = {
     byName: {},
@@ -602,9 +602,9 @@ MIDI.GeneralMIDI = (function (arr) {
     var list = arr[key];
     for (var n = 0, length = list.length; n < length; n++) {
       var instrument = list[n];
-      if (!instrument) continue;
-      var num = parseInt(instrument.substr(0, instrument.indexOf(" ")), 10);
-      instrument = instrument.replace(num + " ", "");
+      if (!instrument) {continue;}
+      var num = parseInt(instrument.substr(0, instrument.indexOf(' ')), 10);
+      instrument = instrument.replace(num + ' ', '');
       ret.byId[--num] = ret.byName[clean(instrument)] = ret.byCategory[clean(key)] = {
         id: clean(instrument),
         instrument: instrument,
@@ -658,7 +658,7 @@ MIDI.noteToKey = {}; // 108 ==  C8
 (function () {
   var A0 = 0x15; // first note
   var C8 = 0x6C; // last note
-  var number2key = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+  var number2key = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
   for (var n = A0; n <= C8; n++) {
     var octave = (n - 12) / 12 >> 0;
     var name = number2key[n % 12] + octave;
@@ -695,7 +695,7 @@ MIDI.noteToKey = {}; // 108 ==  C8
  */
 
 var Base64Binary = {
-  _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+  _keyStr : 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=',
 
   /* will return a  Uint8Array type */
   decodeArrayBuffer: function(input) {
@@ -712,8 +712,8 @@ var Base64Binary = {
     var lkey2 = this._keyStr.indexOf(input.charAt(input.length-1));		 
 
     var bytes = Math.ceil( (3*input.length) / 4.0);
-    if (lkey1 == 64) bytes--; //padding chars, so skip
-    if (lkey2 == 64) bytes--; //padding chars, so skip
+    if (lkey1 === 64) { bytes--; } //padding chars, so skip
+    if (lkey2 === 64) { bytes--; } //padding chars, so skip
 
     var uarray;
     var chr1, chr2, chr3;
@@ -721,12 +721,13 @@ var Base64Binary = {
     var i = 0;
     var j = 0;
 
-    if (arrayBuffer)
+    if (arrayBuffer){
       uarray = new Uint8Array(arrayBuffer);
-    else
+    }else{
       uarray = new Uint8Array(bytes);
+    }
 
-    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, '');
 
     for (i=0; i<bytes; i+=3) {	
       //get the 3 octects in 4 ascii chars
@@ -740,8 +741,8 @@ var Base64Binary = {
       chr3 = ((enc3 & 3) << 6) | enc4;
 
       uarray[i] = chr1;			
-      if (enc3 != 64) uarray[i+1] = chr2;
-      if (enc4 != 64) uarray[i+2] = chr3;
+      if (enc3 !== 64) { uarray[i+1] = chr2; }
+      if (enc4 !== 64) { uarray[i+2] = chr3; }
     }
 
     return uarray;	

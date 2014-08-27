@@ -1,11 +1,12 @@
-if (typeof (AS) === "undefined") var AS = {};
+if (typeof (AS) === 'undefined') { var AS = {}; }
+if (typeof (MIDI) === 'undefined') { var MIDI = {}; }
 
 // make the player a singleton
 AS.player = function(){
-  if(typeof(AS._player) === "undefined" && AS.MIDILoaded){
+  if(typeof(AS._player) === 'undefined' && AS.MIDILoaded){
     AS._player = new Player(AS.context, AS.audioBuffers);
   }else if(!AS.MIDILoaded){
-    console.log("Soundfonts are not loaded yet!");
+    console.log('Soundfonts are not loaded yet!');
   }
   return AS._player;
 
@@ -33,7 +34,7 @@ AS.player = function(){
 
     var start, resume;
     start = resume = function () {
-      if (playerTime < -1) playerTime = -1;
+      if (playerTime < -1) { playerTime = -1; }
       startAudio(playerTime);
     };
 
@@ -68,17 +69,17 @@ AS.player = function(){
 
     var noteOn = function (channel, note, velocity, delay) {
       /// check whether the note exists
-      if (!MIDI.channels[channel]) return;
+      if (!MIDI.channels[channel]) { return; }
       var instrument = MIDI.channels[channel].instrument;
 
-      if (!audioBuffers[instrument + "" + note]) return;
+      if (!audioBuffers[instrument + '' + note]) { return; }
 
       /// convert relative delay to absolute delay
-      if (delay < context.currentTime) delay += context.currentTime;
+      if (delay < context.currentTime) { delay += context.currentTime; }
       /// crate audio buffer
       var source = context.createBufferSource();
-      sources[channel + "" + note] = source;
-      source.buffer = audioBuffers[instrument + "" + note];
+      sources[channel + '' + note] = source;
+      source.buffer = audioBuffers[instrument + '' + note];
       source.connect(context.destination);
       ///
       if (context.createGain) { // firefox
@@ -100,9 +101,9 @@ AS.player = function(){
 
     var noteOff = function (channel, note, delay) {
       delay = delay || 0;
-      if (delay < context.currentTime) delay += context.currentTime;
-      var source = sources[channel + "" + note];
-      if (!source) return;
+      if (delay < context.currentTime) { delay += context.currentTime; }
+      var source = sources[channel + '' + note];
+      if (!source) { return; }
       if (source.gainNode) {
         // @Miranet: "the values of 0.2 and 0.3 could ofcourse be used as 
         // a 'release' parameter for ADSR like time settings."
@@ -117,7 +118,7 @@ AS.player = function(){
         source.stop(delay + 0.3);
       }
       ///
-      delete sources[channel + "" + note];
+      delete sources[channel + '' + note];
     };
 
     var eventQueue = []; // hold events to be triggered
@@ -155,8 +156,8 @@ AS.player = function(){
     };
     var startAudio = function (currentTime, fromCache) {
       if (!fromCache) {
-        if (typeof (currentTime) === "undefined") currentTime = restart;
-        if (playing) stopAudio();
+        if (typeof (currentTime) === 'undefined') { currentTime = restart; }
+        if (playing) { stopAudio(); }
         playing = true;
         endTime = getLength();
       }
@@ -176,11 +177,11 @@ AS.player = function(){
         }
         currentTime = queuedTime - offset;
         var event = songData[n][0].event;
-        if (event.type !== "channel") continue;
+        if (event.type !== 'channel') { continue; }
         var channel = event.channel;
         switch (event.subtype) {
           case 'noteOn':
-            if (MIDI.channels[channel].mute) break;
+            if (MIDI.channels[channel].mute) { break; }
             note = event.noteNumber;
             eventQueue.push({
               event: event,
@@ -190,7 +191,7 @@ AS.player = function(){
             messages++;
             break;
           case 'noteOff':
-            if (MIDI.channels[channel].mute) break;
+            if (MIDI.channels[channel].mute) { break; }
             note = event.noteNumber;
             eventQueue.push({
               event: event,
@@ -212,8 +213,8 @@ AS.player = function(){
       while (eventQueue.length) {
         o = eventQueue.pop();
         window.clearInterval(o.interval);
-        if (!o.source) continue; // is not webaudio
-        if (typeof(o.source) === "number") {
+        if (!o.source) { continue; } // is not webaudio
+        if (typeof(o.source) === 'number') {
           window.clearTimeout(o.source);
         } else { // webaudio
           o.source.disconnect(0);
