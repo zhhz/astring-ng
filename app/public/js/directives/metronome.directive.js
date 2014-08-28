@@ -2,13 +2,13 @@ if (typeof (AS) === 'undefined') { var AS = {}; }
 
 angular.module('a-string')
 .directive('asMetronome', ['AudioService', 'States', function(AudioService, States){
-  var notesPerBeat = 4;
+  var beatsPerBar = 4;
   var player, dial;
 
   function renderBeats(){
     $('.beats').empty().append('<tr></tr>');
     var tr = $('.beats').find('tr');
-    for(var i = 0; i < notesPerBeat; i++){
+    for(var i = 0; i < beatsPerBar; i++){
       tr.append('<td id="beat' + i + '">' + (i + 1) +'</td>');
     }
   }
@@ -40,16 +40,16 @@ angular.module('a-string')
       scope.mode = 'metronome';
 
       scope.beatsUp = function(){
-        notesPerBeat += 1;
-        if(notesPerBeat > 8){notesPerBeat = 8;}
-        metronome.setBPP(notesPerBeat);
+        beatsPerBar += 1;
+        if(beatsPerBar > 8){beatsPerBar = 8;}
+        metronome.setBPB(beatsPerBar);
         renderBeats();
       };
 
       scope.beatsDown = function(){
-        notesPerBeat -= 1;
-        if(notesPerBeat < 2){notesPerBeat = 2;}
-        metronome.setBPP(notesPerBeat);
+        beatsPerBar -= 1;
+        if(beatsPerBar < 2){beatsPerBar = 2;}
+        metronome.setBPB(beatsPerBar);
         renderBeats();
       };
 
@@ -103,8 +103,8 @@ angular.module('a-string')
         dial.val(scope.bpm);
 
 
-        notesPerBeat = newValue.length > 0 ? newValue[0].bpb : 4;
-        metronome.setBPP(notesPerBeat);
+        beatsPerBar = newValue.length > 0 ? newValue[0].bpb : 4;
+        metronome.setBPB(beatsPerBar);
         renderBeats();
       });
 
@@ -194,8 +194,8 @@ function Metro() {
       count        = 0,
       spb          = 60.0 / 80,
       noteTime     = 0.0,
-      ticking      = true,
-      flashing     = true,
+      ticking      = false,
+      flashing     = false,
       timeoutId    = null,
       startTime    = null,
       lastDrawTime = -1,
@@ -345,6 +345,6 @@ function Metro() {
     toggleMetro: toggleMetro,
 
     setTempo: setTempo,
-    setBPP: setBeatsPerBar
+    setBPB: setBeatsPerBar
   };
 }
