@@ -41,17 +41,6 @@ gulp.task('css', function(){
       .pipe(concat('lib.css'))
       .pipe(gulp.dest('app/public/css'))
     .pipe(cssFilter.restore());
-
-  // app css
-  // TODO: Not working now, because loading sequence matters
-  /*
-  gulp.src(['public/css/**', '!public/css/lib.css'])
-    .pipe(cssFilter)
-      .pipe(concat('app.css'))
-    .pipe(cssFilter.restore())
-    .pipe(gulp.dest('app/public/css'));
-  */
-
 });
 
 gulp.task('fonts', function(){
@@ -62,17 +51,15 @@ gulp.task('fonts', function(){
     .pipe(fontsFilter.restore());
 });
 
-/*
-gulp.task('uncss', function() {
-    return gulp.src('site.css')
-        .pipe(uncss({
-            html: ['index.html', 'about.html']
-        }))
-        .pipe(gulp.dest('./out'));
+gulp.task('songs', function(){
+  gulp.src(['app/server/data/songs/bracket.open.txt',
+            'app/server/data/songs/*.json',
+            'app/server/data/songs/bracket.close.txt'])
+    .pipe(concat('songs.json', {newLine: ','}))
+    .pipe(gulp.dest('app/server/data/'));
 });
-*/
 
-gulp.task('watch', ['js', 'lib','css', 'fonts'], function() {
+gulp.task('watch', ['js', 'lib','css', 'fonts', 'songs'], function() {
   livereload.listen();
 
   gulp.watch(['app/public/js/**/*.js', '!app/public/js/**/*.min.js'], ['js']);
@@ -82,7 +69,6 @@ gulp.task('watch', ['js', 'lib','css', 'fonts'], function() {
   gulp.watch('app/public/index.html').on('change', livereload.changed);
 
   gulp.watch('test/**/*.js').on('change', livereload.changed);
-
 });
 
-gulp.task('default', ['js', 'lib', 'css', 'fonts']);
+gulp.task('default', ['js', 'lib', 'css', 'fonts', 'songs']);

@@ -1,0 +1,280 @@
+{
+  "title": "Twinkle Variations",
+  "category": "Suzuki",
+  "book": "Book1",
+  "bpm": 70,
+  "bpb": 4,
+  "composer": "Folk Song",
+  "key": "A",
+  "private": false,
+  "melody": [
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.25, "notes": [ "Gb5" ] },
+    { "duration": 0.25, "notes": [ "Gb5" ] },
+    { "duration": 0.25, "notes": [ "Gb5" ] },
+    { "duration": 0.25, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.25, "notes": [ "Gb5" ] },
+    { "duration": 0.25, "notes": [ "Gb5" ] },
+    { "duration": 0.25, "notes": [ "Gb5" ] },
+    { "duration": 0.25, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.25, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.25, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.25, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.25, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.25, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+
+
+
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 1.0, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 1.0, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 1.0, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 1.0, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 1.0, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 1.0, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 1.0, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 1.0, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 1.0, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 1.0, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 1.0, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 1.0, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 1.0, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 1.0, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 1.0, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 1.0, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 1.0, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 1.0, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 1.0, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 1.0, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 1.0, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 1.0, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 1.0, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 1.0, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] }
+  ],
+  "accompany": [
+  ]
+}

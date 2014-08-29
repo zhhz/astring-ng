@@ -91,7 +91,9 @@ angular.module('a-string')
       }
 
       scope.toggleStart = function(){
+        /* jshint -W030 */
         scope.states.timerOn ? stop() : start();
+        /* jshint +W030 */
         scope.states.timerOn = !scope.states.timerOn;
       };
 

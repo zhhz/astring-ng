@@ -96,7 +96,7 @@ console.log(" =>  => processing songs");
   var itemHash = {}, adjacencyList = {};
 
   _.each(songs, function(song) {
-    var title = song.title;
+    var title = song.title || '';
     var item = _transformDatum(title, song),
     id = _.uniqueId(item.value);
 
