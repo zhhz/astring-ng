@@ -7,5 +7,6 @@ app/public/js/app.min.js
 app/public/js/lib.min.js
 app/public/css/lib.css
 app/public/fonts
+app/server/data/songs.json
 npm-debug.log
 *.vim
