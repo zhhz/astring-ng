@@ -71,4 +71,35 @@ gulp.task('watch', ['js', 'lib','css', 'fonts', 'songs'], function() {
   gulp.watch('test/**/*.js').on('change', livereload.changed);
 });
 
+gulp.task('release', ['css', 'fonts', 'songs'], function(){
+  // compile app js
+  gulp.src(['app/public/js/app.js', 'app/public/js/**/*.js', '!app/public/js/**/*.min.js'])
+    .pipe(concat('app.min.js'))
+    .pipe(ngAnnotate())
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/public/js'));
+
+  // compile bower components - js
+  var jsFilter = filter('*.js');
+  gulp.src(vendorFiles)
+    .pipe(jsFilter)
+      .pipe(concat('lib.min.js'))
+      .pipe(uglify())
+      .pipe(gulp.dest('dist/public/js'))
+    .pipe(jsFilter.restore());
+
+  // all the other public files/folders
+  gulp.src(['app/public/**', '!app/public/js/**'])
+    .pipe(gulp.dest('dist/public/'));
+
+  // server files
+  gulp.src(['app/server/**', '!app/server/data/songs/**'])
+    .pipe(gulp.dest('dist/server'))
+
+  // misc
+  gulp.src(['LICENSE-MIT', 'Procfile'])
+    .pipe(gulp.dest('dist/'))
+
+});
+
 gulp.task('default', ['js', 'lib', 'css', 'fonts', 'songs']);

@@ -1,7 +1,7 @@
 var express = require("express"),
     app     = express(),
     env     = process.env.NODE_ENV || 'development',
-    config  = require('./server/config/settings')[env];
+    config  = require('./config/settings')[env];
 
 // express
 require(config.serverPath + '/config/express')(app, express, config);
