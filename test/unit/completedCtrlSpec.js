@@ -6,7 +6,7 @@ describe('Completed controller', function(){
       'id': 1,
       'title': 'Uncompleted Item 0',
       'completed': true,
-      'duraton': 5
+      'duration': 5
     }];
 
     scope = $rootScope.$new();
