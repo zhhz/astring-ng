@@ -913,6 +913,8 @@
 
 
 
+
+
     { "duration": 0.5, "notes": [ "A4" ] },
     { "duration": 1.0, "notes": [ "A4" ] },
     { "duration": 0.5, "notes": [ "A4" ] },
@@ -924,6 +926,11 @@
     { "duration": 0.5, "notes": [ "Gb5" ] },
     { "duration": 1.0, "notes": [ "Gb5" ] },
     { "duration": 0.5, "notes": [ "Gb5" ] },
+
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 1.0, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
 
     { "duration": 0.5, "notes": [ "A4", "E4", "Db4", "A3" ] },
     { "duration": 0.5, "notes": [ "A4" ] },
@@ -1285,32 +1292,6 @@
     { "duration": 0.25, "notes": [ "E5" ] },
     { "duration": 0.25, "notes": [ "E5" ] },
 
-
-    { "duration": 0.25, "notes": [ "A4", "A3" ] },
-    { "duration": 0.25, "notes": [ "A4" ] },
-    { "duration": 0.25, "notes": [ "A4" ] },
-    { "duration": 0.25, "notes": [ "A4" ] },
-    { "duration": 0.25, "notes": [ "A4", "E4", "Db4" ] },
-    { "duration": 0.25, "notes": [ "A4" ] },
-    { "duration": 0.25, "notes": [ "A4" ] },
-    { "duration": 0.25, "notes": [ "A4" ] },
-    { "duration": 0.25, "notes": [ "E5", "A3" ] },
-    { "duration": 0.25, "notes": [ "E5" ] },
-    { "duration": 0.25, "notes": [ "E5" ] },
-    { "duration": 0.25, "notes": [ "E5" ] },
-    { "duration": 0.25, "notes": [ "E5", "E4", "Db4" ] },
-    { "duration": 0.25, "notes": [ "E5" ] },
-    { "duration": 0.25, "notes": [ "E5" ] },
-    { "duration": 0.25, "notes": [ "E5" ] },
-
-    { "duration": 0.25, "notes": [ "Gb5", "A3" ] },
-    { "duration": 0.25, "notes": [ "Gb5" ] },
-    { "duration": 0.25, "notes": [ "Gb5" ] },
-    { "duration": 0.25, "notes": [ "Gb5" ] },
-    { "duration": 0.25, "notes": [ "Gb5", "Gb4", "D4" ] },
-    { "duration": 0.25, "notes": [ "Gb5" ] },
-    { "duration": 0.25, "notes": [ "Gb5" ] },
-    { "duration": 0.25, "notes": [ "Gb5" ] },
     { "duration": 0.25, "notes": [ "A4", "A3" ] },
     { "duration": 0.25, "notes": [ "A4" ] },
     { "duration": 0.25, "notes": [ "A4" ] },
@@ -1572,7 +1553,7 @@
     { "duration": 0.5, "notes": [ "E4" ] },
     { "duration": 0.5, "notes": [ "A4", "A3" ] },
     { "duration": 0.5, "notes": [ "E4" ] },
-    { "duration": 0.5, "notes": [ "Db4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
     { "duration": 0.5, "notes": [ "E4" ] },
 
     { "duration": 0.5, "notes": [ "E5", "Db5", "A3" ] },
