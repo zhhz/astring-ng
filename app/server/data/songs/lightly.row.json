@@ -84,15 +84,6 @@
     { "duration": 2, "notes": [ "Db5" ] }
   ],
   "accompany": [
-    { "duration": 1, "notes": [ "E5"] },
-    { "duration": 1, "notes": [ "Db5"] },
-    { "duration": 1, "notes": [ "Db5"] },
-    { "duration": 1, "notes": [ "Db5"] },
-
-    { "duration": 1, "notes": [ "D5"] },
-    { "duration": 1, "notes": [ "B4"] },
-    { "duration": 1, "notes": [ "B4"] },
-    { "duration": 1, "notes": [ "B4"] },
 
     { "duration": 1, "notes": [ "A4"] },
     { "duration": 1, "notes": [ "Db5"] },

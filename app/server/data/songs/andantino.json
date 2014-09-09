@@ -7,6 +7,18 @@
   "key": "D",
   "private": false,
   "accompany": [
+    { "duration": 0.5, "notes": [ "Gb4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+    { "duration": 1, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+    { "duration": 0.5, "notes": [ "Gb4" ] },
+    { "duration": 1, "notes": [ "E4" ] },
+    { "duration": 2, "notes": [ "D4" ] },
+
+
     { "duration": 1, "notes": [ "D3" ] },
     { "duration": 1, "notes": [ "A3", "D3", "Gb3" ] },
     { "duration": 1, "notes": [ "A2" ] },
