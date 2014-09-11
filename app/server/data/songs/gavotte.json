@@ -1,8 +1,9 @@
 {
   "title": "Gavotte",
+  "category": "Suzuki",
+  "book": "Book1",
   "bpm": 100,
   "bpb": 4,
-  "category": "Suzuki",
   "composer": "F. J. Gossec",
   "key": "G",
   "private": false,
