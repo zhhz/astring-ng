@@ -17,8 +17,14 @@ exports.index = function(){
       if(!processed){
         processed = _processData(songs);
       }
-      // TODO filter category, book if have it in the params
       var results = getSuggestions(title, processed);
+
+      if(req.query.cat !== undefined && req.query.book !== undefined){
+        var song = _.find(results, function(s){
+          return s.category === req.query.cat && s.book === req.query.book;
+        });
+        results = song === undefined ? [] : [song];
+      }
       res.send(results);
     }
   };
@@ -92,7 +98,6 @@ function _getLocalSuggestions(terms, data) {
 }
 
 function _processData(songs) {
-console.log(" =>  => processing songs");
   var itemHash = {}, adjacencyList = {};
 
   _.each(songs, function(song) {
