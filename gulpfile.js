@@ -6,6 +6,9 @@ var gulp = require('gulp'),
   ngAnnotate = require('gulp-ng-annotate'),
   livereload = require('gulp-livereload'),
   filter = require('gulp-filter'),
+  git = require('gulp-git'),
+  bump = require('gulp-bump'),
+  tagVersion = requrie('gulp-tag-version'),
   bowerFiles = require('main-bower-files');
 
 var vendorFiles = bowerFiles();
@@ -71,7 +74,7 @@ gulp.task('watch', ['js', 'lib','css', 'fonts', 'songs'], function() {
   gulp.watch('test/**/*.js').on('change', livereload.changed);
 });
 
-gulp.task('release', ['css', 'fonts', 'songs'], function(){
+gulp.task('dist', ['css', 'fonts', 'songs'], function(){
   // compile app js
   gulp.src(['app/public/js/app.js', 'app/public/js/**/*.js', '!app/public/js/**/*.min.js'])
     .pipe(concat('app.min.js'))
@@ -101,5 +104,32 @@ gulp.task('release', ['css', 'fonts', 'songs'], function(){
     .pipe(gulp.dest('dist/'))
 
 });
+
+/**
+ * Bumping version number and tagging the repository with it.
+ * Please read http://semver.org/
+ *
+ * You can use the commands
+ *
+ *     gulp patch     # makes v0.1.0 → v0.1.1
+ *     gulp feature   # makes v0.1.1 → v0.2.0
+ *     gulp release   # makes v0.2.1 → v1.0.0
+ *
+ * To bump the version numbers accordingly after you did a patch,
+ * introduced a feature or made a backwards-incompatible release.
+ */
+function inc(importance) {
+  // get all the files to bump version in
+  return gulp.src(['./package.json'])
+      .pipe(bump({type: importance})) // bump the version number in those files
+      .pipe(gulp.dest('./')) // save it back to filesystem
+      .pipe(git.commit('bumps package version')) // commit the changed version number
+      .pipe(filter('package.json')) // read only one file to get the version number
+      .pipe(tag_version()) // **tag it in the repository**
+}
+
+gulp.task('patch', function() { return inc('patch'); });
+gulp.task('feature', function() { return inc('minor'); });
+gulp.task('release', function() { return inc('major'); });
 
 gulp.task('default', ['js', 'lib', 'css', 'fonts', 'songs']);
