@@ -34,11 +34,6 @@ angular.module('a-string')
           url += '&cat=' + todo.song.category;
           url += '&book=' + todo.song.book;
         }
-        // $http.get(url).then(function(res){
-          // return res.data;
-        // }, function(errRes){
-          // console.error('Error when fetching the songs.');
-        // });
         var deferred = $q.defer();
         $http.get(url)
           .success(function(data, status, headers, config){
