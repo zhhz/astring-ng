@@ -8,7 +8,7 @@ var gulp = require('gulp'),
   filter = require('gulp-filter'),
   git = require('gulp-git'),
   bump = require('gulp-bump'),
-  tagVersion = requrie('gulp-tag-version'),
+  tagVersion = require('gulp-tag-version'),
   bowerFiles = require('main-bower-files');
 
 var vendorFiles = bowerFiles();
