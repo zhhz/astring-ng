@@ -123,13 +123,13 @@ function inc(importance) {
   return gulp.src(['./package.json'])
       .pipe(bump({type: importance})) // bump the version number in those files
       .pipe(gulp.dest('./')) // save it back to filesystem
-      .pipe(git.commit('bumps package version')) // commit the changed version number
+      .pipe(git.commit('release: bump version')) // commit the changed version number
       .pipe(filter('package.json')) // read only one file to get the version number
-      .pipe(tag_version()) // **tag it in the repository**
+      .pipe(tagVersion()); // **tag it in the repository**
 }
 
 gulp.task('patch', function() { return inc('patch'); });
-gulp.task('feature', function() { return inc('minor'); });
-gulp.task('release', function() { return inc('major'); });
+gulp.task('minor', function() { return inc('minor'); });
+gulp.task('major', function() { return inc('major'); });
 
 gulp.task('default', ['js', 'lib', 'css', 'fonts', 'songs']);
