@@ -1,16 +1,9 @@
 angular.module('a-string')
 .controller('NewTodoCtrl', ['$scope', 'Todos',
   function NewTodoCtrl($scope, Todos){
-    var newTodo = {
-      id: null,
-      title: '',
-      createdAt: (new Date()).getTime(),
-      duration: 0,
-      completedAt: null,
-      completed: false
-    };
 
     $scope.addTodo = function () {
+      var newTodo = Todos.newTodo();
       newTodo.startDate = $scope.data.currentDate;
       if(!$scope.song.title){
         newTodo.title = $scope.song.trim();
@@ -21,7 +14,12 @@ angular.module('a-string')
       if (!newTodo.title.length) {
         return;
       }
-      Todos.createTodo(newTodo);
+      Todos.createTodo(newTodo)
+        .then(function(resolved){
+          // console.log($scope.data.todos);
+        }, function(reason){
+          console.log(reason);
+        });
 
       $scope.song = '';
     };

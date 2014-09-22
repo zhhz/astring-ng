@@ -3,6 +3,17 @@ angular.module('a-string')
   function($q, TodoStorage){
     var _todos = {}, service = {};
 
+    service.newTodo = function(){
+      return {
+        id: null,
+        title: '',
+        createdAt: (new Date()).getTime(),
+        duration: 0,
+        completedAt: null,
+        completed: false
+      };
+    };
+
     service.getTodos = function(date){
       var deferred = $q.defer();
       date = date || moment().format('L');

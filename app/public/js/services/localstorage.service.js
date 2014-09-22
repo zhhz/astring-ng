@@ -24,7 +24,7 @@ angular.module('a-string')
       },
 
       createTodo: function(todo){
-        todo.id = md5.createHash((new Date()).getTime() + Math.random().toString());
+        todo.id = md5.createHash((new Date()).getTime() + '');
         var deferred = $q.defer();
         var todos = get();
         todos.push(todo);
