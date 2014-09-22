@@ -1,2 +1,7 @@
 ﻿Release
 ===========================
+
+$ gulp [patch | minor | major]
+$ gulp release
+
+push to heroku

@@ -9,6 +9,9 @@ angular.module('a-string', ['ngRoute', 'ui.bootstrap'])
     controller: 'TodoCtrl',
     templateUrl: 'tpls/main.html',
     resolve: {
+      todos: ['Todos', function(Todos){
+        return Todos.getTodos(moment().format('L'));
+      }],
       songs: ['Songs', function(Songs){
         return Songs.getBooks();
       }]

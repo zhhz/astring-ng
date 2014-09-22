@@ -1,23 +1,22 @@
 angular.module('a-string')
-.controller('TodoCtrl', ['$scope', 'States', 'todoStorage', 'songs',
-  function TodoCtrl($scope, States, todoStorage, songs) {
-    'use strict';
+.controller('TodoCtrl', ['$scope', 'States', 'Todos', 'songs', 'todos',
+  function TodoCtrl($scope, States, Todos, songs, todos) {
+    $scope.data = {};
 
-    var todos = $scope.todos = todoStorage.get();
+    $scope.data.todos = todos;
+    $scope.data.currentDate = moment().format('L');
+
     $scope.songs = songs;
     $scope.states = States;
 
-
-    angular.forEach(todos, function(value, key){
-      if(value.completed){
-        States.duration += value.duration;
-      }
+    $scope.$watch('data.currentDate', function(newDate, oldDate){
+      console.log(' =>  => new date: %s', newDate);
+      Todos.getTodos(newDate)
+        .then(function(resolved){
+          $scope.data.todos = resolved;
+        }, function(reason){
+          console.log(reason);
+        });
     });
-
-    $scope.$watch('todos', function (newValue, oldValue) {
-      if (newValue !== oldValue) { // This prevents unneeded calls to the local storage
-        todoStorage.put(todos);
-      }
-    }, true);
   }
 ]);

@@ -19,6 +19,8 @@
     "XMLHttpRequest": true,
     "window": true,
     "document": true,
-    "Audio": true
+    "Audio": true,
+    "_": true,
+    "moment": true
   }
 }
