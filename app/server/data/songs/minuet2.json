@@ -1,9 +1,10 @@
 {
   "title": "Minuet No. 2",
+  "category": "Suzuki",
+  "book": "Book1",
   "private": false,
   "bpm": 100,
   "bpb": 3,
-  "category": "Suzuki",
   "composer": "J.S. Bach",
   "key": "G",
   "accompany": [
