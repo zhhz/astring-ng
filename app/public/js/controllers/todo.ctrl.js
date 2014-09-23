@@ -14,10 +14,11 @@ angular.module('a-string')
         .then(function(resolved){
           $scope.data.todos = resolved;
 
-          var today = moment().format('L');
-          $scope.data.isBefore = moment(newDate).isBefore(today, 'date');
-          $scope.data.isAfter = moment(newDate).isAfter(today, 'date');
-          $scope.data.isToday = moment(newDate).isSame(today, 'date');
+          var today = moment(moment().format('L'), 'MM-DD-YYYY');
+          var selectDate = moment(newDate, 'MM-DD-YYYY');
+          $scope.data.isBefore = selectDate.isBefore(today, 'date');
+          $scope.data.isAfter = selectDate.isAfter(today, 'date');
+          $scope.data.isToday = selectDate.isSame(today, 'date');
 
           $scope.states.duration = _.reduce(resolved, function(result, v, k){
             return result + v.duration;

@@ -11,7 +11,7 @@
         <div class="form-control" ng-click="toggleCurrent(todo)"
           ng-class="{current: todo.id == states.currentTodo.id}">
           <div class="todo-list">{{todo.title}}</div>
-          <div class="todo-list-label"> 
+          <div class="todo-list-label">
             <span class="label label-warning"
               ng-show="todo.id == states.currentTodo.id && states.currentSongs.length > 0">
               BPM: {{states.currentSongs[0].bpm}}</span>
