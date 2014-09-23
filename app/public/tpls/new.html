@@ -5,7 +5,7 @@
   </a>
 </script>
 
-<div class="row" ng-controller="NewTodoCtrl">
+<div class="row" ng-controller="NewTodoCtrl" ng-hide="data.isBefore">
   <div class="col-xs-2"></div>
   <div class="col-xs-8">
     <form ng-submit="addTodo()" class="form-horizontal">

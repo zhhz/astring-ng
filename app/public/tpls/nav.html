@@ -1,7 +1,10 @@
 <div class="row" ng-controller="NavCtrl">
   <div class="col-xs-12">
     <div class="pull-left">
-      <span ng-click="gotoCalendar()" class="btn btn-info btn-xs">{{ data.currentDate }}</span>
+      <span ng-click="gotoCalendar()" class="btn btn-info btn-xs"
+        ng-class="{'btn-danger': data.isBefore, 'btn-warning': data.isAfter}">
+        {{ data.currentDate }}
+      </span>
     </div>
     <div class="pull-right">
       <nav>

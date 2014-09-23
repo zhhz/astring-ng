@@ -10,10 +10,18 @@ angular.module('a-string')
     $scope.states = States;
 
     $scope.$watch('data.currentDate', function(newDate, oldDate){
-      console.log(' =>  => new date: %s', newDate);
       Todos.getTodos(newDate)
         .then(function(resolved){
           $scope.data.todos = resolved;
+
+          var today = moment().format('L');
+          $scope.data.isBefore = moment(newDate).isBefore(today, 'date');
+          $scope.data.isAfter = moment(newDate).isAfter(today, 'date');
+          $scope.data.isToday = moment(newDate).isSame(today, 'date');
+
+          $scope.states.duration = _.reduce(resolved, function(result, v, k){
+            return result + v.duration;
+          }, 0);
         }, function(reason){
           console.log(reason);
         });

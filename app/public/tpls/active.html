@@ -1,14 +1,14 @@
 <div class="row" ng-controller="ActiveTodosCtrl">
   <div class="row" ng-repeat="todo in data.todos | filter:{completed: false} | orderBy:'createdAt'" style="margin-bottom: 3px;">
     <div class="col-xs-1"></div>
-    <div class="col-xs-10" ng-click="toggleCurrent(todo)">
+    <div class="col-xs-10">
       <div class="input-group input-group-lg">
         <span class="input-group-btn">
-          <button class="btn btn-success" ng-click="doneTodo(todo)" type="button">
+          <button class="btn btn-success" ng-click="doneTodo(todo)" ng-disabled="data.isBefore" type="button">
             <span class="glyphicon glyphicon-ok"></span>
           </button>
         </span>
-        <div class="form-control"
+        <div class="form-control" ng-click="toggleCurrent(todo)"
           ng-class="{current: todo.id == states.currentTodo.id}">
           <div class="todo-list">{{todo.title}}</div>
           <div class="todo-list-label"> 
@@ -23,7 +23,7 @@
           </div>
         </div>
         <span class="input-group-btn">
-          <button class="btn btn-default" ng-click="removeTodo(todo)" type="button">
+          <button class="btn btn-default" ng-click="removeTodo(todo)" ng-disabled="data.isBefore" type="button">
             <span class="glyphicon glyphicon-trash"></span>
           </button>
         </span>
