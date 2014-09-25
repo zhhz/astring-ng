@@ -132,7 +132,7 @@ gulp.task('release', ['css', 'fonts', 'songs'], function(){
     .pipe(gulp.dest('dist/server'))
 
   // misc
-  gulp.src(['LICENSE-MIT', 'Procfile'])
+  gulp.src(['LICENSE-MIT', 'Procfile', 'package.json'])
     .pipe(gulp.dest('dist/'))
 
   // add google analytics, gsub with the compiled js

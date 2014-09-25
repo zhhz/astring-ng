@@ -7,6 +7,7 @@ var express = require("express"),
 require(config.serverPath + '/config/express')(app, express, config);
 // routes
 require(config.serverPath + '/config/routes')(app, config);
-
-app.listen(config.port);
-console.log('Now serving the app at http://localhost:' + config.port + '/');
+// port
+var port = parseInt(process.env.PORT, 10) || config.port;
+app.listen(port);
+console.log('Now serving the app at http://localhost:' + port + '/');

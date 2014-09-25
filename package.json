@@ -6,9 +6,9 @@
     "type": "git",
     "url": ""
   },
-  "license": "MIT and todoMvc",
+  "license": "MIT and zhhz",
   "scripts": {
-    "start": "node app/web-server",
+    "start": "node app/server/web-server",
     "test": "./node_modules/karma/bin/karma start test/config/karma.conf.js",
     "test-single-run": "karma start test/config/karma.conf.js  --single-run"
   },
