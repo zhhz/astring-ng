@@ -1,4 +1,4 @@
-<div class="row" ng-controller="CompletedTodosCtrl">
+<div ng-controller="CompletedTodosCtrl">
   <div class="row" ng-repeat="todo in data.todos | filter:{completed: true} | orderBy:'completedAt'"
        style="margin-bottom: 3px;">
     <div class="col-xs-1"></div>
