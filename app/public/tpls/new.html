@@ -10,19 +10,19 @@
   <div class="col-xs-8">
     <form ng-submit="addTodo()" class="form-horizontal">
       <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-addon">@</div>
+        <div class="input-group input-group-lg">
+          <div class="input-group-addon"> <span class="glyphicon glyphicon-search"></span> </div>
           <input type="text"
             autofocus
             ng-model="song"
             placeholder="What needs to be done?"
             typeahead="song as song.title for song in songs | filter:{title:$viewValue}"
             typeahead-template-url="songSelectorTpl.html"
-            class="form-control input-lg">
+            class="form-control">
+          <span class="input-group-btn"> <button class="btn btn-default" type="submit">Go</button> </span>
         </div>
       </div>
     </form>
   </div>
   <div class="col-xs-2"></div>
 </div>
-
