@@ -17,6 +17,7 @@
     "lodash": "latest"
   },
   "devDependencies": {
+    "del": "^0.1.3",
     "gulp": "^3.8.6",
     "gulp-bump": "^0.1.11",
     "gulp-concat": "^2.3.3",

@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+  del = require('del'),
   jshint = require('gulp-jshint'),
   concat = require('gulp-concat'),
   sourcemaps = require('gulp-sourcemaps'),
@@ -103,7 +104,16 @@ gulp.task('patch', function() { return inc('patch'); });
 gulp.task('minor', function() { return inc('minor'); });
 gulp.task('major', function() { return inc('major'); });
 
-gulp.task('release', ['css', 'fonts', 'songs'], function(){
+gulp.task('clean', function (cb) {
+  del([
+    'dist/public/**',
+    'dist/server/**',
+    'dist/package.json',
+    'dist/Procfile'
+  ], cb);
+});
+
+gulp.task('release', ['clean', 'css', 'fonts', 'songs'], function(){
   var pkg = require('./package.json');
   var version = pkg.version;
 
