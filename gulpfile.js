@@ -149,6 +149,7 @@ gulp.task('release', ['clean', 'css', 'fonts', 'songs'], function(){
   gulp.src(['app/public/index.html'])
     .pipe(ga({url: 'a-string.us', uid: 'UA-44119310-1'}))
     .pipe(gsub({source: 'min.js', target:  'min.' + version + '.js'}))
+    .pipe(gsub({source: 'version', target: '' + version}))
     .pipe(gulp.dest('dist/public/'));
 });
 

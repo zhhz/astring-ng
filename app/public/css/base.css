@@ -51,3 +51,8 @@ table .beats tr td {
 .beat{
   background-color: #009c00;
 }
+
+#footer {
+  color: #a5a5a5;
+  font-size: 12px;
+}

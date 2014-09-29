@@ -15,8 +15,19 @@
     <style>[ng-cloak] { display: none; }</style>
   </head>
   <body ng-app="a-string">
-    <ng-view />
+    <ng-view></ng-view>
 
+    <div class="container-fluid">
+      <div id="footer" class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-3"> A-String &copy; 2014 vversion </div>
+        <div class="col-xs-4" style="text-align: center;"> Click on todo to highlight </div>
+        <div class="col-xs-3" style="text-align: right;">
+          <a href="mailto:astring.app@gmail.com?subject=A-String - Feedback">Feedback</a>
+        </div>
+        <div class="col-xs-1">&emsp;</div>
+      </div>
+    </div>
     <script src="js/lib.min.js"></script>
     <script src="js/app.min.js"></script>
   </body>
