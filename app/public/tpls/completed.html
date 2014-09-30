@@ -1,5 +1,5 @@
-<div ng-controller="CompletedTodosCtrl">
-  <div class="row" ng-repeat="todo in data.todos | filter:{completed: true} | orderBy:'completedAt'"
+<div data-ng-controller="CompletedTodosCtrl">
+  <div class="row" data-ng-repeat="todo in data.todos | filter:{completed: true} | orderBy:'completedAt'"
        style="margin-bottom: 3px;">
     <div class="col-xs-1"></div>
     <div class="col-xs-10">
@@ -8,7 +8,7 @@
           <button class="btn btn-default" type="button" disabled="disabled">
             {{todo.duration | secondsToTime}}
           </button>
-          <button class="btn btn-danger" ng-click="activateTodo(todo)" type="button" ng-disabled="!$last || data.isBefore">
+          <button class="btn btn-danger" data-ng-click="activateTodo(todo)" type="button" data-ng-disabled="!$last || data.isBefore">
             <span class="glyphicon glyphicon-remove"></span>
           </button>
         </span>

@@ -1,4 +1,4 @@
-<div class="input-group input-group-lg" ng-show="data.isToday">
+<div class="input-group input-group-lg" data-ng-show="data.isToday">
   <span class="input-group-addon">
     <span class="dial" data-width="130" data-height="130" data-value="60"></span>
   </span>
@@ -10,7 +10,7 @@
     <table width="100%">
       <tr>
         <td>
-          <button ng-click="beatsDown()" type="button" class="btn btn-default btn-md" title="dec">
+          <button data-ng-click="beatsDown()" type="button" class="btn btn-default btn-md" title="dec">
             <span class="glyphicon glyphicon-chevron-down"></span>
           </button>
         </td>
@@ -25,7 +25,7 @@
           </table>
         </td>
         <td>
-          <button ng-click="beatsUp()" type="button" class="btn btn-default btn-md" title="inc">
+          <button data-ng-click="beatsUp()" type="button" class="btn btn-default btn-md" title="inc">
             <span class="glyphicon glyphicon-chevron-up"></span>
           </button>
         </td>
@@ -35,32 +35,32 @@
     <div class="btn-group" style="width: 155px;">
       <button type="button"
         class="btn btn-default btn-lg"
-        ng-class="{'btn-primary': 'metronome' == mode}"
-        ng-click="switchMode('metronome')"
+        data-ng-class="{'btn-primary': 'metronome' == mode}"
+        data-ng-click="switchMode('metronome')"
         title="metronome">
         <span class="glyphicon glyphicon-dashboard"></span>
       </button>
       <button type="button"
         class="btn btn-default btn-lg"
         title="melody"
-        ng-class="{'btn-primary': 'melody' == mode}"
-        ng-click="switchMode('melody')"
-        ng-disabled="states.currentSongs.length == 0">
+        data-ng-class="{'btn-primary': 'melody' == mode}"
+        data-ng-click="switchMode('melody')"
+        data-ng-disabled="states.currentSongs.length == 0">
         <span class="glyphicon glyphicon-headphones"></span>
       </button>
       <button type="button"
         title="piano"
         class="btn btn-default btn-lg"
-        ng-class="{'btn-primary': 'accompany' == mode}"
-        ng-click="switchMode('accompany')"
-        ng-disabled="states.currentSongs.length == 0">
+        data-ng-class="{'btn-primary': 'accompany' == mode}"
+        data-ng-click="switchMode('accompany')"
+        data-ng-disabled="states.currentSongs.length == 0">
         <span class="glyphicon glyphicon-music"></span>
       </button>
     </div>
   </div>
   <span class="input-group-addon">
-    <button ng-click="toggleStart()" type="button" class="btn btn-lg btn-success" ng-class="{'btn-danger': states.timerOn}" title="Start Metronome" style="width: 100px; height: 85px;">
-      <span class="glyphicon glyphicon-time"></span><span ng-hide="states.timerOn"> Start</span><span ng-show="states.timerOn"> Stop</span>
+    <button data-ng-click="toggleStart()" type="button" class="btn btn-lg btn-success" data-ng-class="{'btn-danger': states.timerOn}" title="Start Metronome" style="width: 100px; height: 85px;">
+      <span class="glyphicon glyphicon-time"></span><span data-ng-hide="states.timerOn"> Start</span><span data-ng-show="states.timerOn"> Stop</span>
     </button>
   </span>
 </div>

@@ -1,29 +1,29 @@
-<div ng-controller="ActiveTodosCtrl">
-  <div class="row" ng-repeat="todo in data.todos | filter:{completed: false} | orderBy:'createdAt'" style="margin-bottom: 3px;">
+<div data-ng-controller="ActiveTodosCtrl">
+  <div class="row" data-ng-repeat="todo in data.todos | filter:{completed: false} | orderBy:'createdAt'" style="margin-bottom: 3px;">
     <div class="col-xs-1"></div>
     <div class="col-xs-10">
       <div class="input-group input-group-lg">
         <span class="input-group-btn">
-          <button class="btn btn-success" ng-click="doneTodo(todo)" ng-disabled="data.isBefore" type="button">
+          <button class="btn btn-success" data-ng-click="doneTodo(todo)" data-ng-disabled="data.isBefore" type="button">
             <span class="glyphicon glyphicon-ok"></span>
           </button>
         </span>
-        <div class="form-control" ng-click="toggleCurrent(todo)"
-          ng-class="{current: todo.id == states.currentTodo.id}">
+        <div class="form-control" data-ng-click="toggleCurrent(todo)"
+          data-ng-class="{current: todo.id == states.currentTodo.id}">
           <div class="todo-list">{{todo.title}}</div>
           <div class="todo-list-label">
             <span class="label label-warning"
-              ng-show="todo.id == states.currentTodo.id && states.currentSongs.length > 0">
+              data-ng-show="todo.id == states.currentTodo.id && states.currentSongs.length > 0">
               BPM: {{states.currentSongs[0].bpm}}</span>
             <span class="label label-info"
-              ng-show="todo.id == states.currentTodo.id && states.currentSongs.length > 0">
+              data-ng-show="todo.id == states.currentTodo.id && states.currentSongs.length > 0">
               Major: {{states.currentSongs[0].key}}</span>
             <span class="label label-primary">{{todo.song.category}}</span>
             <span class="label label-success">{{todo.song.book}}</span>
           </div>
         </div>
         <span class="input-group-btn">
-          <button class="btn btn-default" ng-click="removeTodo(todo)" ng-disabled="data.isBefore" type="button">
+          <button class="btn btn-default" data-ng-click="removeTodo(todo)" data-ng-disabled="data.isBefore" type="button">
             <span class="glyphicon glyphicon-trash"></span>
           </button>
         </span>
