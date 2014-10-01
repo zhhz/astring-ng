@@ -3,6 +3,7 @@
   "bpm": 100,
   "bpb": 4,
   "category": "Suzuki",
+  "book": "Book1",
   "composer": "Shinichi Suzuki",
   "key": "G",
   "private": false,

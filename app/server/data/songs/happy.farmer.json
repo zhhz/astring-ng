@@ -3,6 +3,8 @@
     "private": false,
     "bpm": 80,
     "bpb": 4,
+    "category": "Suzuki",
+    "book": "Book1",
     "composer": "R. Schumann",
     "key": "G",
     "accompany": [

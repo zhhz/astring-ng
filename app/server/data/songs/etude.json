@@ -1,6 +1,7 @@
 {
   "title": "Etude",
   "category": "Suzuki",
+  "book": "Book1",
   "private": false,
   "bpm": 60,
   "bpb": 4,
