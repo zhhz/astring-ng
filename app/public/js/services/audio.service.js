@@ -5,7 +5,6 @@ angular.module('a-string')
   _service.getContext = function(){
     if(!_ctx){
       if (window.AudioContext || window.webkitAudioContext) {
-        console.log(' => init audio context...');
         var AudioContext = window.AudioContext || window.webkitAudioContext;
         _ctx = new AudioContext();
       }else{
@@ -19,11 +18,7 @@ angular.module('a-string')
   };
 
   _service.getBuffers = function(){
-    if(!this.getContxt()){
-      return null;
-    }else if(!_buffers){
-      _buffers = {};
-    }
+    if(!_buffers){ _buffers = {}; }
     return _buffers;
   };
 

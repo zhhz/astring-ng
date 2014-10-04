@@ -16,6 +16,14 @@ angular.module('a-string')
     }
 
     return {
+
+      get: function(id){
+        var deferred = $q.defer();
+        var todo = _.find(get(), function(todo){return todo.id === id;});
+        deferred.resolve(todo);
+        return deferred.promise;
+      },
+
       fetchTodos: function(date){
         var deferred = $q.defer();
         var todos =  _.filter(get(), function(todo){ return todo.startDate === date; });

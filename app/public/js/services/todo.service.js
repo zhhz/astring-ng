@@ -14,6 +14,10 @@ angular.module('a-string')
       };
     };
 
+    service.get = function(id){
+      return TodoStorage.get(id);
+    };
+
     service.getTodos = function(date){
       var deferred = $q.defer();
       date = date || moment().format('L');
