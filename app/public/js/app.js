@@ -1,7 +1,7 @@
 /**
  * The main app module
  */
-angular.module('a-string', ['ngRoute', 'ui.bootstrap'])
+angular.module('a-string', ['ngRoute', 'ngTouch', 'ui.bootstrap'])
 .config(function ($routeProvider) {
   'use strict';
 

@@ -18,7 +18,9 @@ module.exports = function(config) {
       'bower_components/jquery/dist/jquery.js',
       'bower_components/dial/js/jquery.dial.js',
       'bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
+      'bower_components/angular-touch/angular-touch.js',
       'bower_components/lodash/dist/lodash.js',
+      'bower_components/moment/moment.js',
       'app/public/js/**/*.js',
       'test/unit/**/*.js'
     ],
