@@ -19,7 +19,9 @@
             typeahead="song as song.title for song in songs | filter:{title:$viewValue}"
             typeahead-template-url="songSelectorTpl.html"
             class="form-control">
-          <span class="input-group-btn"> <button class="btn btn-default" type="submit">Go</button> </span>
+            <span class="input-group-btn">
+              <a class="btn btn-default" data-ng-click="addTodo()">Go</a>
+            </span>
         </div>
       </div>
     </form>

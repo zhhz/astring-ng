@@ -3,6 +3,8 @@ angular.module('a-string')
   function NewTodoCtrl($scope, Todos){
 
     $scope.addTodo = function () {
+      if(!$scope.song){ return null; }
+
       var newTodo = Todos.newTodo();
       newTodo.startDate = $scope.data.currentDate;
       if(!$scope.song.title){
