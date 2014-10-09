@@ -14,14 +14,9 @@ angular.module('a-string')
         newTodo.song = $scope.song;
       }
       if (!newTodo.title.length) {
-        return;
+        return null;
       }
-      Todos.createTodo(newTodo)
-        .then(function(resolved){
-          // console.log($scope.data.todos);
-        }, function(reason){
-          console.log(reason);
-        });
+      Todos.createTodo(newTodo);
 
       $scope.song = '';
     };
