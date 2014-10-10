@@ -3,11 +3,11 @@
  * expression it binds to evaluates to true
  */
 angular.module('a-string')
-  .directive('todoFocus', function todoFocus($timeout) {
+  .directive('asFocus', function ($timeout) {
     'use strict';
 
     return function (scope, elem, attrs) {
-      scope.$watch(attrs.todoFocus, function (newVal) {
+      scope.$watch(attrs.asFocus, function (newVal) {
         if (newVal) {
           $timeout(function () {
             elem[0].focus();
