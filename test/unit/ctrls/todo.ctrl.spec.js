@@ -1,5 +1,27 @@
-/*global describe, it, beforeEach, inject, expect*/
+describe('TodoCtrl', function(){
+  beforeEach(module('a-string'));
+  var ctrl, states,
+      songs = [
+        { book: "Book1", category: "Suzuki", title: "Twinkle Variations" },
+        { book: "Book1", category: "Suzuki", title: "Go Tell Aunt Rhody" }],
+      todos = [
+        { title: "Twinkle Variations" },
+        { title: "Go Tell Aunt Rhody" }];
 
+  beforeEach(inject(function($controller, States){
+    ctrl = $controller('TodoCtrl', {songs: songs, todos: todos});
+    states = States;
+  }));
+
+  it('should set the States service with the songs', function(){
+    expect(states.songs).toEqual(songs);
+  });
+
+  it('should set the States service with the todos', function(){
+    expect(states.todos).toEqual(todos);
+  });
+});
+/*
 describe('Todo Controller', function () {
   var songs = [
     {
@@ -23,6 +45,7 @@ describe('Todo Controller', function () {
       title: "Allegro in E Minor for Violin and Continuo, BWV 1023"
     }
   ];
+
   var ctrl, scope, mockBackend;
   var todoList;
   var todoStorage = {
@@ -59,3 +82,4 @@ describe('Todo Controller', function () {
     expect(scope.currentId).toBeNull;
   });
 });
+*/

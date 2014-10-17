@@ -1,5 +1,3 @@
-/*global describe, it, beforeEach, inject, expect, angular*/
-
 describe('todoFocus directive', function () {
   beforeEach(module('a-string'));
 
@@ -12,7 +10,7 @@ describe('todoFocus directive', function () {
   }));
 
   it('should focus on truthy expression', function () {
-    var el = angular.element('<input todo-focus="focus">');
+    var el = angular.element('<input as-focus="focus">');
     scope.focus = false;
 
     compile(el)(scope);

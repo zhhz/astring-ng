@@ -1,21 +1,42 @@
 angular.module('a-string')
-.controller('NavCtrl', ['$scope', 'Todos',
-  function NavCtrl($scope, Todos){
-    $scope.gotoCalendar = function(){console.log('TODO: goto calendar');};
+.controller('NavCtrl', ['States', 'Todos',
+  function NavCtrl(States, Todos){
+    var self = this;
+    self.gotoCalendar = function(){console.log('TODO: goto calendar');};
 
-    $scope.gotoPrevDay = function(){
-      $scope.data.currentDate = moment($scope.data.currentDate, 'MM-DD-YYYY')
+    self.gotoPrevDay = function(){
+      States.currentDate = moment(States.currentDate, 'MM-DD-YYYY')
                             .subtract(1, 'day').format('L');
+      fetchTodos();
     };
 
-    $scope.gotoToday = function(){
-      $scope.data.currentDate = moment().format('L');
+    self.gotoToday = function(){
+      States.currentDate = moment().format('L');
+      fetchTodos();
     };
 
-    $scope.gotoNextDay = function(){
-      $scope.data.currentDate = moment($scope.data.currentDate, 'MM-DD-YYYY')
+    self.gotoNextDay = function(){
+      States.currentDate = moment(States.currentDate, 'MM-DD-YYYY')
                             .add(1, 'day').format('L');
+      fetchTodos();
     };
 
+    function fetchTodos(){
+      Todos.getTodos(States.currentDate)
+        .then(function(resolved){
+          States.todos = resolved;
+
+          var today = moment(moment().format('L'), 'MM-DD-YYYY');
+          var selectDate = moment(States.currentDate, 'MM-DD-YYYY');
+          States.isBefore = selectDate.isBefore(today, 'date');
+          States.isAfter = selectDate.isAfter(today, 'date');
+
+          States.duration = _.reduce(resolved, function(result, v, k){
+            return result + v.duration;
+          }, 0);
+        }, function(reason){
+          console.log(reason);
+        });
+    }
   }
 ]);

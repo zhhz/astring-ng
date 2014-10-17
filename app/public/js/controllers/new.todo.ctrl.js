@@ -1,24 +1,28 @@
 angular.module('a-string')
-.controller('NewTodoCtrl', ['$scope', 'Todos',
-  function NewTodoCtrl($scope, Todos){
-
-    $scope.addTodo = function () {
-      if(!$scope.song){ return null; }
+.controller('NewTodoCtrl', ['Todos', 'States',
+  function NewTodoCtrl(Todos, States){
+    var self = this;
+    self.addTodo = function () {
+      if(!self.song){ return; }
 
       var newTodo = Todos.newTodo();
-      newTodo.startDate = $scope.data.currentDate;
-      if(!$scope.song.title){
-        newTodo.title = $scope.song.trim();
+      newTodo.startDate = States.currentDate;
+      if(!self.song.title){
+        newTodo.title = self.song.trim();
       }else{
-        newTodo.title = $scope.song.title.trim();
-        newTodo.song = $scope.song;
+        newTodo.title = self.song.title.trim();
+        newTodo.song = self.song;
       }
       if (!newTodo.title.length) {
-        return null;
+        return;
       }
-      Todos.createTodo(newTodo);
+      Todos.createTodo(newTodo).then(function(resolved){
+        States.todos.push(resolved);
+      }, function(reason){
+        console.log(reason);
+      });
 
-      $scope.song = '';
+      self.song = '';
     };
   }
 ]);

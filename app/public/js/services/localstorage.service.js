@@ -5,14 +5,33 @@ angular.module('a-string')
 .factory('TodoStorage', ['$http', '$q', 'md5',
   function ($http, $q, md5) {
 
-    var STORAGE_ID = 'a-string-todos';
+    var STORAGE_ID = 'a-string-store';
+    var store = null;
+
+    try {
+      var testKey = '__a-string-store__';
+      localStorage.setItem(testKey, testKey);
+      if(localStorage.get(testKey) !== testKey){store = [];}
+      localStorage.remove(testKey);
+    } catch(e){
+      // console.log('You browser doesn\'t support localStorage');
+      store = [];
+    }
 
     function get() {
-      return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+      if(!store){
+        return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
+      }else{
+        return store;
+      }
     }
 
     function put(todos) {
-      localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+      if(!store){
+        localStorage.setItem(STORAGE_ID, JSON.stringify(todos));
+      }else{
+        store = todos;
+      }
     }
 
     return {

@@ -8,8 +8,8 @@ angular.module('a-string')
         var AudioContext = window.AudioContext || window.webkitAudioContext;
         _ctx = new AudioContext();
       }else{
-        var msg = 'AudioContext not found: Web Audio API is not supported by this browser';
-        console.log(msg);
+        // var msg = 'AudioContext not found: Web Audio API is not supported by this browser';
+        // console.log(msg);
         // throw new Error(msg);
         _ctx = null;
       }

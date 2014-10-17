@@ -10,3 +10,4 @@ app/public/fonts
 app/server/data/songs.json
 npm-debug.log
 *.vim
+doc/snippet.txt

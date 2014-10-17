@@ -1,7 +1,7 @@
 angular.module('a-string')
 .factory('Todos', ['$q', 'TodoStorage',
   function($q, TodoStorage){
-    var _todos = {}, service = {};
+    var service = {};
 
     service.newTodo = function(){
       return {
@@ -19,67 +19,19 @@ angular.module('a-string')
     };
 
     service.getTodos = function(date){
-      var deferred = $q.defer();
-      date = date || moment().format('L');
-      var todos = _todos[date];
-      if(!todos){
-       TodoStorage.fetchTodos(date)
-         .then(function(resolved){
-           // put in local cache
-           _todos[date] = resolved;
-           deferred.resolve(resolved);
-         }, function(reason){
-           deferred.reject(reason);
-         });
-      }else{
-        deferred.resolve(todos);
-      }
-      return deferred.promise;
+      return TodoStorage.fetchTodos(date);
     };
 
     service.createTodo = function(todo){
-      var deferred = $q.defer();
-      TodoStorage.createTodo(todo)
-        .then(function(resolved){
-          var date = resolved.startDate;
-          var todos = _todos[date] || [];
-          todos.push(resolved);
-          _todos[date] = todos;
-          deferred.resolve(resolved);
-        }, function(reason){
-          deferred.reject(reason);
-        });
-      return deferred.promise;
+      return TodoStorage.createTodo(todo);
     };
 
     service.removeTodo = function(todo){
-      var deferred = $q.defer();
-      var date = todo.startDate;
-      TodoStorage.deleteTodo(todo)
-        .then(function(resolved){
-          var todos = _todos[date] || [];
-          _.remove(todos, function(t){return t.id === todo.id;});
-          deferred.resolve(resolved);
-        }, function(reason){
-          deferred.reject(reason);
-        });
-      return deferred.promise;
+      return TodoStorage.deleteTodo(todo);
     };
 
     service.updateTodo = function(todo){
-      var deferred = $q.defer();
-      var date = todo.startDate;
-      TodoStorage.updateTodo(todo)
-        .then(function(resolved){
-          var todos = _todos[date] || [];
-          _.remove(todos, function(t){return t.id === todo.id;});
-          todos.push(resolved);
-          _todos[date] = todos;
-          deferred.resolve(resolved);
-        }, function(reason){
-          deferred.reject(reason);
-        });
-      return deferred.promise;
+      return TodoStorage.updateTodo(todo);
     };
 
     return service;
