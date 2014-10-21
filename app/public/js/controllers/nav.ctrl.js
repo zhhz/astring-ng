@@ -1,6 +1,8 @@
 angular.module('a-string')
 .controller('NavCtrl', ['States', 'Todos',
   function NavCtrl(States, Todos){
+    this.states = States;
+
     var self = this;
     self.gotoCalendar = function(){console.log('TODO: goto calendar');};
 

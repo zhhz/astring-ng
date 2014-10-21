@@ -1,20 +1,26 @@
-<div class="row" data-ng-controller="NavCtrl">
+<div class="row" data-ng-controller="NavCtrl as navCtrl">
   <div class="col-xs-1"></div>
   <div class="col-xs-10">
     <div class="pull-left">
-      <span data-ng-click="gotoCalendar()" class="btn btn-info btn-xs"
-        data-ng-class="{'btn-danger': data.isBefore, 'btn-warning': data.isAfter}">
-        {{ data.currentDate }}
+      <span id="calendar-btn" data-ng-click="navCtrl.gotoCalendar()" class="btn btn-info btn-xs"
+        data-ng-class="{'btn-danger': navCtrl.states.isBefore, 'btn-warning': navCtrl.states.isAfter}">
+        {{ navCtrl.states.currentDate }}
       </span>
     </div>
     <div class="pull-right">
       <nav>
         <div class="btn-group btn-group-xs">
-          <button type="button" class="btn btn-info previous" data-ng-click="gotoPrevDay()">
+          <button id="prev-btn"
+            type="button" class="btn btn-info previous"
+            data-ng-click="navCtrl.gotoPrevDay()">
             <span class="glyphicon glyphicon-chevron-left"></span> PREV
           </button>
-          <button type="button" class="btn btn-info today" data-ng-click="gotoToday()"> TODAY</button>
-          <button type="button" class="btn btn-info next" data-ng-click="gotoNextDay()"> NEXT
+          <button id="today-btn"
+            type="button" class="btn btn-info today"
+            data-ng-click="navCtrl.gotoToday()"> TODAY</button>
+          <button id="next-btn"
+            type="button" class="btn btn-info next"
+            data-ng-click="navCtrl.gotoNextDay()"> NEXT
             <span class="glyphicon glyphicon-chevron-right"></span>
           </button>
         </div>
