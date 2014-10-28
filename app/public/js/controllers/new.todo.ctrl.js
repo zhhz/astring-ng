@@ -2,6 +2,7 @@ angular.module('a-string')
 .controller('NewTodoCtrl', ['Todos', 'States',
   function NewTodoCtrl(Todos, States){
     var self = this;
+    self.states = States;
     self.addTodo = function () {
       if(!self.song){ return; }
 

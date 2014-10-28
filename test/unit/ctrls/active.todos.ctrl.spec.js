@@ -17,6 +17,10 @@ describe('ActiveTodos controller', function(){
     rootScope = _$rootScope_;
   }));
 
+  it('should have property states', function(){
+    expect(ctrl.states).toEqual(states);
+  });
+
   it('#removeTodo() should remove a todo', function(){
     var todo = todolist[1];
     states.todos = todolist;

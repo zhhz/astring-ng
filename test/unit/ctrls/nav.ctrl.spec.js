@@ -24,6 +24,7 @@ describe('NavCtrl', function(){
     expect(states.todos).toEqual(todoList);
     expect(states.isBefore).toBeFalsy();
     expect(states.isAfter).toBeFalsy();
+    expect(states.isToday).toBeTruthy();
     expect(states.duration).toBe(6);
   });
 

@@ -32,6 +32,7 @@ angular.module('a-string')
           var selectDate = moment(States.currentDate, 'MM-DD-YYYY');
           States.isBefore = selectDate.isBefore(today, 'date');
           States.isAfter = selectDate.isAfter(today, 'date');
+          States.isToday  = moment(today).isSame(States.currentDate);
 
           States.duration = _.reduce(resolved, function(result, v, k){
             return result + v.duration;

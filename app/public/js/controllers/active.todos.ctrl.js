@@ -2,7 +2,7 @@ angular.module('a-string')
 .controller('ActiveTodosCtrl', ['States', 'Songs', 'Todos',
   function ActiveTodoCtrl(States, Songs, Todos){
     var self = this;
-
+    self.states = States;
     self.removeTodo = function (todo) {
       if(States.currentTodo === todo){
         self.toggleCurrent(todo);

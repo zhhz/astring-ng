@@ -1,10 +1,8 @@
 var moment = require('moment')
-    po     = require('./pageobjects')();
+    po     = require('../pageobjects')();
 
 describe('Nav section on the main page', function() {
-  beforeEach(function(){
-    po.open();
-  });
+  beforeEach(function(){ po.open(); });
 
   it('should show current date on left top of the page', function() {
     expect(po.calendarBtn().getText()).toEqual(moment().format('L'));

@@ -1,17 +1,19 @@
-<div class="row">
-  <div class="col-xs-1"></div>
-  <div class="col-xs-10">
-    <div class="total-clock">
-      <div class="time total-duration">{{states.duration | secondsToTime}}</div>
-      <div class="total-time">Total</div>
+<div data-ng-controller="PanelCtrl as panelCtrl">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+      <div class="total-clock">
+        <div class="time total-duration">{{panelCtrl.states.duration | secondsToTime}}</div>
+        <div class="total-time">Total</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-1"></div>
-  <div class="col-xs-10">
-    <as-metronome></as-metronome>
+  <div class="row" data-ng-show="panelCtrl.states.isToday">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+      <as-metronome></as-metronome>
+    </div>
+    <div class="col-xs-1"></div>
   </div>
-  <div class="col-xs-1"></div>
 </div>

@@ -5,22 +5,23 @@
   </a>
 </script>
 
-<div class="row" data-ng-controller="NewTodoCtrl" data-ng-hide="data.isBefore">
+<div class="row" data-ng-controller="NewTodoCtrl as newCtrl" data-ng-hide="newCtrl.states.isBefore">
   <div class="col-xs-2"></div>
   <div class="col-xs-8">
-    <form data-ng-submit="addTodo()" class="form-horizontal">
+    <form data-ng-submit="newCtrl.addTodo()" class="form-horizontal">
       <div class="form-group">
         <div class="input-group input-group-lg">
           <div class="input-group-addon"> <span class="glyphicon glyphicon-search"></span> </div>
-          <input type="text"
+          <input id="new-input" type="text"
             autofocus
-            data-ng-model="song"
+            data-ng-model="newCtrl.song"
             placeholder="What needs to be done?"
-            typeahead="song as song.title for song in songs | filter:{title:$viewValue}"
+            typeahead="song as song.title for song in newCtrl.states.songs | filter:{title:$viewValue}"
             typeahead-template-url="songSelectorTpl.html"
             class="form-control">
             <span class="input-group-btn">
-              <a class="btn btn-default" data-ng-click="addTodo()">Go</a>
+              <a id="go-btn" class="btn btn-default"
+                data-ng-click="newCtrl.addTodo()">Go</a>
             </span>
         </div>
       </div>

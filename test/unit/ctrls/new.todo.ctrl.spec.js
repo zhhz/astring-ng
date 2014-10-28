@@ -13,6 +13,10 @@ describe('NewTodoCtrl', function(){
 
   }));
 
+  it("should has property states", function(){
+    expect(ctrl.states).toEqual(states);
+  });
+
   it("#addTodo should not add empty todo", function(){
     var len = states.todos.length;
     ctrl.addTodo();
