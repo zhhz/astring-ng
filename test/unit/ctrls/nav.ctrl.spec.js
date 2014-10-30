@@ -11,7 +11,7 @@ describe('NavCtrl', function(){
     todoList =[{duration: 1}, {duration: 2}, {duration: 3}];
   }));
 
-  it('#gotoToday() should set currentDate to today', function(){
+  it('#gotoToday() should set date to today', function(){
     var today = moment().format('L');
     deferred.resolve(todoList);
     spyOn(todos, 'getTodos').andReturn(deferred.promise);
@@ -20,7 +20,7 @@ describe('NavCtrl', function(){
 
     rootScope.$apply();
     expect(todos.getTodos).toHaveBeenCalledWith(today);
-    expect(states.currentDate).toEqual(moment().format('L'));
+    expect(states.date).toEqual(moment().format('L'));
     expect(states.todos).toEqual(todoList);
     expect(states.isBefore).toBeFalsy();
     expect(states.isAfter).toBeFalsy();
@@ -28,8 +28,8 @@ describe('NavCtrl', function(){
     expect(states.duration).toBe(6);
   });
 
-  it('#gotoPrevDay() should set currentDate to previous day', function(){
-    var selectedDate = moment(states.currentDate, 'MM-DD-YYYY').subtract(1, 'day').format('L')
+  it('#gotoPrevDay() should set date to previous day', function(){
+    var selectedDate = moment(states.date, 'MM-DD-YYYY').subtract(1, 'day').format('L')
     deferred.resolve(todoList);
     spyOn(todos, 'getTodos').andReturn(deferred.promise);
 
@@ -38,15 +38,15 @@ describe('NavCtrl', function(){
     rootScope.$apply();
 
     expect(todos.getTodos).toHaveBeenCalledWith(selectedDate);
-    expect(states.currentDate).toEqual(selectedDate);
+    expect(states.date).toEqual(selectedDate);
     expect(states.todos).toEqual(todoList);
     expect(states.isBefore).toBeTruthy();
     expect(states.isAfter).toBeFalsy();
     expect(states.duration).toBe(6);
   });
 
-  it('#gotoNextDay() should set currentDate to next day', function(){
-    var selectedDate = moment(states.currentDate, 'MM-DD-YYYY').add(1, 'day').format('L')
+  it('#gotoNextDay() should set date to next day', function(){
+    var selectedDate = moment(states.date, 'MM-DD-YYYY').add(1, 'day').format('L')
     deferred.resolve(todoList);
     spyOn(todos, 'getTodos').andReturn(deferred.promise);
 
@@ -55,7 +55,7 @@ describe('NavCtrl', function(){
     rootScope.$apply();
 
     expect(todos.getTodos).toHaveBeenCalledWith(selectedDate);
-    expect(states.currentDate).toEqual(selectedDate);
+    expect(states.date).toEqual(selectedDate);
     expect(states.todos).toEqual(todoList);
     expect(states.isBefore).toBeFalsy();
     expect(states.isAfter).toBeTruthy();

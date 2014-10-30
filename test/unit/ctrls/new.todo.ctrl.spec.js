@@ -1,16 +1,15 @@
 describe('NewTodoCtrl', function(){
   beforeEach(module('a-string'));
 
-  var ctrl, states, todos, deferred, provide, rootScope;
+  var ctrl, states, todos, deferred, modal;
   var date = moment().format('L');
 
-  beforeEach(inject(function($controller, $q, _$rootScope_, Todos, States){
+  beforeEach(inject(function($controller, $q,  Todos, States, $modal){
     deferred = $q.defer();
     states = States;
     todos = Todos;
-    rootScope = _$rootScope_;
     ctrl = $controller('NewTodoCtrl');
-
+    modal = $modal;
   }));
 
   it("should has property states", function(){
@@ -32,16 +31,26 @@ describe('NewTodoCtrl', function(){
 
   it("should trim whitespaces for new todos", function(){
     var newTodo = {id: null, title: 'my new todo', startDate: states.currentDate};
-    deferred.resolve(newTodo);
-    spyOn(todos, 'createTodo').andReturn(deferred.promise);
+    spyOn(states, 'createTodo');
     spyOn(todos, 'newTodo').andReturn({id: null});
 
-    var len = states.todos.length;
     ctrl.song = '   my new todo   ';
     ctrl.addTodo();
+
     rootScope.$apply();
-    expect(todos.createTodo).toHaveBeenCalledWith(newTodo);
-    expect(len + 1).toEqual(states.todos.length);
-    expect('my new todo').toEqual(states.todos[0].title);
+
+    expect(states.createTodo).toHaveBeenCalledWith(newTodo);
+  });
+
+  it("should not allow to add new todos on earlier days", function(){
+    ctrl.song = 'new Todo';
+    var modalInstance = {};
+    deferred.reject();
+    modalInstance.result = deferred.promise;
+    states.date = moment().subtract(1, 'day').format('L');
+    spyOn(modal, 'open').andReturn(modalInstance);
+
+    ctrl.addTodo();
+    expect(modal.open).toHaveBeenCalled();
   });
 });
