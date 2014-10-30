@@ -37,8 +37,6 @@ describe('NewTodoCtrl', function(){
     ctrl.song = '   my new todo   ';
     ctrl.addTodo();
 
-    rootScope.$apply();
-
     expect(states.createTodo).toHaveBeenCalledWith(newTodo);
   });
 
