@@ -19,7 +19,7 @@ angular.module('a-string')
       var selectedDate = moment(service.date, 'MM-DD-YYYY');
       service.isBefore = selectedDate.isBefore(today, 'date');
       service.isAfter = selectedDate.isAfter(today, 'date');
-      service.isToday  = moment(today).isSame(service.date);
+      service.isToday = selectedDate.isSame(today);
 
       service.fetchTodos();
     };

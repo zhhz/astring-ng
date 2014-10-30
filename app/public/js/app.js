@@ -5,6 +5,8 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ui.bootstrap'])
 .config(function ($routeProvider) {
   'use strict';
 
+  // console.warn = console.trace.bind(console);
+
   $routeProvider.when('/', {
     controller: 'TodoCtrl',
     templateUrl: 'tpls/main.html',
