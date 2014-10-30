@@ -12,6 +12,7 @@ var gulp = require('gulp'),
   tagVersion = require('gulp-tag-version'),
   ga = require('gulp-ga'),
   gsub = require('gulp-gsub'),
+  filesize = require('gulp-filesize'),
   bowerFiles = require('main-bower-files');
 
 var vendorFiles = bowerFiles();
@@ -24,7 +25,8 @@ gulp.task('js', function() {
       .pipe(concat('app.min.js'))
       .pipe(ngAnnotate())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('app/public/js/'));
+    .pipe(gulp.dest('app/public/js/'))
+    .pipe(filesize());
 });
 
 gulp.task('lib', function(){
@@ -121,8 +123,10 @@ gulp.task('release', ['clean', 'css', 'fonts', 'songs'], function(){
   gulp.src(['app/public/js/app.js', 'app/public/js/**/*.js', '!app/public/js/**/*.min.js'])
     .pipe(concat('app.min.' + version + '.js'))
     .pipe(ngAnnotate())
+    .pipe(filesize())
     .pipe(uglify())
-    .pipe(gulp.dest('dist/public/js'));
+    .pipe(gulp.dest('dist/public/js'))
+    .pipe(filesize());
 
   // compile bower components - js
   var jsFilter = filter('*.js');
