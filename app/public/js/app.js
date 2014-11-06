@@ -9,6 +9,7 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ui.bootstrap'])
 
   $routeProvider.when('/', {
     controller: 'TodoCtrl',
+    controllerAs: 'todoCtrl',
     templateUrl: 'tpls/main.html',
     resolve: {
       todos: ['Todos', function(Todos){

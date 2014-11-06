@@ -2,8 +2,8 @@
  * Services that persists and retrieves TODOs from localStorage
  */
 angular.module('a-string')
-.factory('TodoStorage', ['$http', '$q', 'md5',
-  function ($http, $q, md5) {
+.factory('TodoStorage', ['$http', '$q', 'md5', 'AlertService',
+  function ($http, $q, md5, AlertService) {
 
     var STORAGE_ID = 'a-string-store';
     var store = null;
@@ -11,10 +11,10 @@ angular.module('a-string')
     try {
       var testKey = '__a-string-store__';
       localStorage.setItem(testKey, testKey);
-      if(localStorage.get(testKey) !== testKey){store = [];}
-      localStorage.remove(testKey);
+      if(localStorage.getItem(testKey) !== testKey){store = [];}
+      localStorage.removeItem(testKey);
     } catch(e){
-      // console.log('You browser doesn\'t support localStorage');
+      AlertService.set('Your browser doesn\'t support local storage');
       store = [];
     }
 
