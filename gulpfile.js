@@ -1,4 +1,5 @@
-var gulp = require('gulp'),
+var fs = require('fs'),
+  gulp = require('gulp'),
   del = require('del'),
   jshint = require('gulp-jshint'),
   concat = require('gulp-concat'),
@@ -8,12 +9,15 @@ var gulp = require('gulp'),
   livereload = require('gulp-livereload'),
   filter = require('gulp-filter'),
   git = require('gulp-git'),
-  bump = require('gulp-bump'),
-  tagVersion = require('gulp-tag-version'),
   ga = require('gulp-ga'),
   gsub = require('gulp-gsub'),
-  filesize = require('gulp-filesize'),
-  bowerFiles = require('main-bower-files');
+  bowerFiles = require('main-bower-files'),
+  cChangelog = require('conventional-changelog'),
+  marked = require('gulp-marked'),
+  semver = require('semver'),
+
+  bump = require('gulp-bump'),
+  tagVersion = require('gulp-tag-version');
 
 var vendorFiles = bowerFiles();
 
@@ -25,8 +29,7 @@ gulp.task('js', function() {
       .pipe(concat('app.min.js'))
       .pipe(ngAnnotate())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('app/public/js/'))
-    .pipe(filesize());
+    .pipe(gulp.dest('app/public/js/'));
 });
 
 gulp.task('lib', function(){
@@ -79,6 +82,15 @@ gulp.task('watch', ['js', 'lib','css', 'fonts', 'songs'], function() {
   // gulp.watch('test/**/*.js').on('change', livereload.changed);
 });
 
+gulp.task('clean', function (done) {
+  del([
+    'dist/public/**',
+    'dist/server/**',
+    'dist/package.json',
+    'dist/Procfile'
+  ], done);
+});
+
 /**
  * Bumping version number and tagging the repository with it.
  * Please read http://semver.org/
@@ -92,41 +104,43 @@ gulp.task('watch', ['js', 'lib','css', 'fonts', 'songs'], function() {
  * To bump the version numbers accordingly after you did a patch,
  * introduced a feature or made a backwards-incompatible release.
  */
-function inc(importance) {
-  // get all the files to bump version in
-  return gulp.src(['./package.json'])
+function inc(importance){
+  var version = require('./package.json').version;
+  version = semver.inc(version, importance);
+
+  gulp.src(['./package.json'])
       .pipe(bump({type: importance})) // bump the version number in those files
-      .pipe(gulp.dest('./')) // save it back to filesystem
-      .pipe(git.commit('release: bump version')) // commit the changed version number
-      .pipe(filter('package.json')) // read only one file to get the version number
-      .pipe(tagVersion()); // **tag it in the repository**
-}
+      .pipe(gulp.dest('./')); // save it back to filesystem
+
+  cChangelog({
+    version: version
+  }, function(err, log){
+    fs.writeFile('CHANGELOG.md', log, function(err){
+      if(err){ console.log(err); return; }
+      else{
+        var tag = 'v' + version;
+        gulp.src(['./package.json', './CHANGELOG.md'])
+          .pipe(git.commit('release: bump version ' + tag));
+        gulp.src(['./package.json'])
+          .pipe(tagVersion()); // **tag it in the repository**
+      }
+    })
+  });
+};
 
 gulp.task('patch', function() { return inc('patch'); });
 gulp.task('minor', function() { return inc('minor'); });
 gulp.task('major', function() { return inc('major'); });
 
-gulp.task('clean', function (cb) {
-  del([
-    'dist/public/**',
-    'dist/server/**',
-    'dist/package.json',
-    'dist/Procfile'
-  ], cb);
-});
-
 gulp.task('release', ['clean', 'css', 'fonts', 'songs'], function(){
-  var pkg = require('./package.json');
-  var version = pkg.version;
+  var version = require('./package.json').version;
 
   // compile app js
   gulp.src(['app/public/js/app.js', 'app/public/js/**/*.js', '!app/public/js/**/*.min.js'])
     .pipe(concat('app.min.' + version + '.js'))
     .pipe(ngAnnotate())
-    .pipe(filesize())
     .pipe(uglify())
-    .pipe(gulp.dest('dist/public/js'))
-    .pipe(filesize());
+    .pipe(gulp.dest('dist/public/js'));
 
   // compile bower components - js
   var jsFilter = filter('*.js');
@@ -146,7 +160,7 @@ gulp.task('release', ['clean', 'css', 'fonts', 'songs'], function(){
     .pipe(gulp.dest('dist/server'))
 
   // misc
-  gulp.src(['LICENSE-MIT', 'Procfile', 'package.json'])
+  gulp.src(['LICENSE-MIT', 'Procfile', 'package.json', 'CHANGELOG.md'])
     .pipe(gulp.dest('dist/'))
 
   // add google analytics, gsub with the compiled js
@@ -155,6 +169,12 @@ gulp.task('release', ['clean', 'css', 'fonts', 'songs'], function(){
     .pipe(gsub({source: 'min.js', target:  'min.' + version + '.js'}))
     .pipe(gsub({source: 'version', target: '' + version}))
     .pipe(gulp.dest('dist/public/'));
+
+  // md2html
+  gulp.src('./CHANGELOG.md')
+    .pipe(marked())
+    .pipe(gulp.dest('./dist/public'));
+
 });
 
 gulp.task('default', ['js', 'lib', 'css', 'fonts', 'songs']);

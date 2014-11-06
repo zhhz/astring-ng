@@ -4,4 +4,9 @@
 $ gulp [patch | minor | major]
 $ gulp release
 
+
+go to dist
+  $ git add .
+  $ git commit -m "xxx"
+  $ git push heroku master
 push to heroku
