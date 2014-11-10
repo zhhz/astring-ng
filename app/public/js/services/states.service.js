@@ -1,6 +1,6 @@
 angular.module('a-string')
-.factory('States', ['Todos', 'Songs', '$log',
-  function(Todos, Songs, $log){
+.factory('States', ['$auth', 'Todos', 'Songs', '$log',
+  function($auth, Todos, Songs, $log){
     var service = {};
 
     service.date = moment().format('L');
@@ -11,6 +11,10 @@ angular.module('a-string')
     service.timerOn = false;
     service.elapse = 0;
     service.duration = 0;
+
+    service.isAuthenticated = function(){
+      return $auth.isAuthenticated();
+    };
 
     service.setDate = function(date){
       service.date = date;

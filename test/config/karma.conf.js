@@ -21,6 +21,7 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/lodash/dist/lodash.js',
       'bower_components/moment/moment.js',
+      'bower_components/satellizer/satellizer.js',
       'app/public/js/**/*.js',
       'test/unit/**/*.js'
     ],
