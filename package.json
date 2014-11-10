@@ -8,8 +8,8 @@
   },
   "license": "MIT and zhhz",
   "scripts": {
-    "start": "node app/server/web-server",
-    "test": "./node_modules/karma/bin/karma start test/config/karma.conf.js",
+    "start": "NODE_ENV=development node_modules/.bin/node-supervisor --watch app/server app/server/web-server",
+    "test": "NODE_ENV=test node_modules/karma/bin/karma start test/config/karma.conf.js",
     "test-single-run": "karma start test/config/karma.conf.js  --single-run"
   },
   "dependencies": {
@@ -49,6 +49,7 @@
     "karma-junit-reporter": "^0.2.2",
     "main-bower-files": "^1.0.2",
     "protractor": "^1.3.1",
-    "semver": "^2.3.2"
+    "semver": "^2.3.2",
+    "supervisor": "^0.6.0"
   }
 }
