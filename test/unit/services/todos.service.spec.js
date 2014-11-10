@@ -3,9 +3,9 @@ describe("Todos service", function(){
 
   var service, storage, deferred, $rootScope;
   var date;
-  beforeEach(inject(function($q, _$rootScope_, Todos, TodoStorage){
+  beforeEach(inject(function($q, _$rootScope_, Todos, LocalStorage){
     service = Todos;
-    storage = TodoStorage;
+    storage = LocalStorage;
     deferred = $q.defer();
     $rootScope = _$rootScope_;
     date = moment().format('L');

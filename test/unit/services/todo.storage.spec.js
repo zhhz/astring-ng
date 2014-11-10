@@ -1,8 +1,8 @@
-describe("TodoStorage", function(){
+describe("LocalStorage", function(){
   beforeEach(module('a-string'));
   var store;
-  beforeEach(inject(function(TodoStorage){
-    store = TodoStorage;
+  beforeEach(inject(function(LocalStorage){
+    store = LocalStorage;
   }));
 
   it('#fetchTodos() should return empty array for first time user', function(){

@@ -2,7 +2,7 @@
  * Services that persists and retrieves TODOs from localStorage
  */
 angular.module('a-string')
-.factory('TodoStorage', ['$http', '$q', 'md5', 'AlertService',
+.factory('LocalStorage', ['$http', '$q', 'md5', 'AlertService',
   function ($http, $q, md5, AlertService) {
 
     var STORAGE_ID = 'a-string-store';
