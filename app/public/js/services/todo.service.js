@@ -1,6 +1,6 @@
 angular.module('a-string')
-.factory('Todos', ['$q', 'LocalStorage',
-  function($q, LocalStorage){
+.factory('Todos', ['$q', 'StorageManager',
+  function($q, StorageManager){
     var service = {};
 
     service.newTodo = function(){
@@ -14,24 +14,24 @@ angular.module('a-string')
       };
     };
 
-    service.get = function(id){
-      return LocalStorage.get(id);
+    service.getTodo = function(id){
+      return StorageManager.storage().getTodo(id);
     };
 
     service.getTodos = function(date){
-      return LocalStorage.fetchTodos(date);
+      return StorageManager.storage().fetchTodos(date);
     };
 
     service.createTodo = function(todo){
-      return LocalStorage.createTodo(todo);
+      return StorageManager.storage().createTodo(todo);
     };
 
     service.removeTodo = function(todo){
-      return LocalStorage.deleteTodo(todo);
+      return StorageManager.storage().deleteTodo(todo);
     };
 
     service.updateTodo = function(todo){
-      return LocalStorage.updateTodo(todo);
+      return StorageManager.storage().updateTodo(todo);
     };
 
     return service;

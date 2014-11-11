@@ -5,8 +5,7 @@ angular.module('a-string')
       $auth.login({ email: $scope.email, password: $scope.password })
         .then(function() {
           $log.info('You have successfully logged in');
-        })
-        .catch(function(response) {
+        }).catch(function(response) {
           $log.error(response.data.message);
         });
     };
@@ -14,8 +13,7 @@ angular.module('a-string')
       $auth.authenticate(provider)
         .then(function() {
           $log.info('You have successfully logged in');
-        })
-        .catch(function(response) {
+        }).catch(function(response) {
           $log.error(response.data.message);
         });
     };

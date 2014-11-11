@@ -22,7 +22,8 @@
     "mongoose": "^3.8.18",
     "morgan": "^1.5.0",
     "passport": "^0.2.1",
-    "passport-google-oauth": "^0.1.5"
+    "passport-google-oauth": "^0.1.5",
+    "request": "^2.40.0"
   },
   "devDependencies": {
     "conventional-changelog": "0.0.11",

@@ -16,8 +16,9 @@ module.exports = function (app, config) {
   app.get('/api/songs', songsCtrl.index());
 
   // auth related
-  app.post('/auth/login', authCtrl.login(User));
-  app.post('/auth/signup', authCtrl.signup(User));
+  app.post('/auth/login', authCtrl.login(User, config));
+  app.post('/auth/signup', authCtrl.signup(User, config));
+  app.post('/auth/google', authCtrl.google(User, config));
 
   // app.post('/azsdf/asdf', auth.ensureAuthenticated, xxxCtrl.action());
 };

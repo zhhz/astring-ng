@@ -2,8 +2,8 @@
  * Services that persists and retrieves TODOs from localStorage
  */
 angular.module('a-string')
-.factory('LocalStorage', ['$http', '$q', 'md5', 'AlertService',
-  function ($http, $q, md5, AlertService) {
+.factory('LocalStorage', ['$q', 'md5', 'AlertService',
+  function ($q, md5, AlertService) {
 
     var STORAGE_ID = 'a-string-store';
     var store = null;
@@ -36,7 +36,7 @@ angular.module('a-string')
 
     return {
 
-      get: function(id){
+      getTodo: function(id){
         var deferred = $q.defer();
         var todo = _.find(get(), function(todo){return todo.id === id;});
         deferred.resolve(todo);

@@ -49,12 +49,12 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ui.bootstrap', 'satellizer'])
     redirectTo: '/'
   });
 
-  $authProvider.facebook({
-    clientId: '657854390977827'
+  $authProvider.google({
+    clientId: '750530476209-3cu1c6a8o2or8su24khll06odcd3eph3.apps.googleusercontent.com'
   });
 
-  $authProvider.google({
-    clientId: '631036554609-v5hm2amv4pvico3asfi97f54sc51ji4o.apps.googleusercontent.com'
+  $authProvider.facebook({
+    clientId: '657854390977827'
   });
 
   $authProvider.github({
@@ -66,7 +66,7 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ui.bootstrap', 'satellizer'])
   });
 
   $authProvider.yahoo({
-    clientId: 'dj0yJmk9dkNGM0RTOHpOM0ZsJmQ9WVdrOVlVTm9hVk0wTkRRbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0wMA--',
+    clientId: 'dj0yJmk9dkNGM0RTOHpOM0ZsJmQ9WVdrOVlVTm9hVk0wTkRRbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0wMA--'
   });
 
   $authProvider.twitter({

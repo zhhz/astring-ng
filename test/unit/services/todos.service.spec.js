@@ -62,16 +62,16 @@ describe("Todos service", function(){
     expect(ret).toEqual([]);
   });
 
-  it("#get should retrieve the todo from the storage", function(){
+  it("#getTodo should retrieve the todo from the storage", function(){
     deferred.resolve({id: 1, startDate: date});
-    spyOn(storage, 'get').andReturn(deferred.promise);
+    spyOn(storage, 'getTodo').andReturn(deferred.promise);
 
     var todo;
-    service.get(1).then(function(resolved){todo = resolved;});
+    service.getTodo(1).then(function(resolved){todo = resolved;});
     $rootScope.$apply();
     expect(todo).toEqual({id: 1, startDate: date});
-    expect(storage.get).toHaveBeenCalled();
-    expect(storage.get.callCount).toEqual(1);
+    expect(storage.getTodo).toHaveBeenCalled();
+    expect(storage.getTodo.callCount).toEqual(1);
   });
 
 });
