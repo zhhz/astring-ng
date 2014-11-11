@@ -2,7 +2,7 @@ describe("States service", function(){
   beforeEach(module('a-string'));
 
   var service, todos, songService, deferred, rootScope;
-  var todolist, songs;
+  var todolist, songs, books;
   beforeEach(inject(function(States, Todos, Songs, $q, _$rootScope_){
     service = States;
     todos = Todos;
@@ -14,17 +14,26 @@ describe("States service", function(){
                  { 'id': 2, 'title': 'Uncompleted Item 1', 'completed': false },
                  { 'id': 3, 'title': 'Uncompleted Item 2', 'completed': false }];
     songs = [{title: 'song1'}, {title: 'song2'}];
+    books = [{title: 'book1'}, {title: 'book2'}];
   }));
 
   it("should init the States service", function(){
     expect(service.date).toEqual(moment().format('L'));
     expect(service.todos).toEqual([]);
-    expect(service.songs).toBeNull;
+    expect(service.songs).toEqual([]);
     expect(service.currentTodo).toBeNull;
     expect(service.currentSongs).toEqual([]);
     expect(service.timerOn).toEqual(false);
     expect(service.elapse).toEqual(0);
     expect(service.duration).toEqual(0);
+
+    deferred.resolve(books);
+    spyOn(songService, 'getBooks').andReturn(deferred.promise);
+
+    service.init();
+
+    rootScope.$apply();
+    expect(service.songs).toEqual(books);
   });
 
   it('#setDate() should be able to set current selected date', function(){
@@ -57,7 +66,7 @@ describe("States service", function(){
       {title: '2', duration: 2},
       {title: '3', duration: 3}
     ];
-    deferred.resolve(todoList);
+    deferred.resolve({data: todoList});
     spyOn(todos, 'getTodos').andReturn(deferred.promise);
 
     service.fetchTodos();

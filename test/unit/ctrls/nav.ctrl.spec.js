@@ -1,66 +1,44 @@
 describe('NavCtrl', function(){
   beforeEach(module('a-string'));
 
-  var ctrl, deferred, todos, states, rootScope, todoList;
-  beforeEach(inject(function($controller, _$rootScope_, $q, Todos, States){
-    deferred = $q.defer();
-    rootScope = _$rootScope_;
+  var ctrl, states;
+  beforeEach(inject(function($controller, States){
     ctrl = $controller('NavCtrl');
-    todos = Todos;
     states = States;
-    todoList =[{duration: 1}, {duration: 2}, {duration: 3}];
+    spyOn(states, 'fetchTodos');
   }));
 
   it('#gotoToday() should set date to today', function(){
     var today = moment().format('L');
-    deferred.resolve(todoList);
-    spyOn(todos, 'getTodos').andReturn(deferred.promise);
 
     ctrl.gotoToday();
 
-    rootScope.$apply();
-    expect(todos.getTodos).toHaveBeenCalledWith(today);
+    expect(states.fetchTodos.callCount).toEqual(1);
     expect(states.date).toEqual(moment().format('L'));
-    expect(states.todos).toEqual(todoList);
     expect(states.isBefore).toBeFalsy();
     expect(states.isAfter).toBeFalsy();
     expect(states.isToday).toBeTruthy();
-    expect(states.duration).toBe(6);
   });
 
   it('#gotoPrevDay() should set date to previous day', function(){
     var selectedDate = moment(states.date, 'MM-DD-YYYY').subtract(1, 'day').format('L')
-    deferred.resolve(todoList);
-    spyOn(todos, 'getTodos').andReturn(deferred.promise);
 
     ctrl.gotoPrevDay();
 
-    rootScope.$apply();
-
-    expect(todos.getTodos).toHaveBeenCalledWith(selectedDate);
+    expect(states.fetchTodos.callCount).toEqual(1);
     expect(states.date).toEqual(selectedDate);
-    expect(states.todos).toEqual(todoList);
     expect(states.isBefore).toBeTruthy();
     expect(states.isAfter).toBeFalsy();
-    expect(states.duration).toBe(6);
   });
 
   it('#gotoNextDay() should set date to next day', function(){
     var selectedDate = moment(states.date, 'MM-DD-YYYY').add(1, 'day').format('L')
-    deferred.resolve(todoList);
-    spyOn(todos, 'getTodos').andReturn(deferred.promise);
 
     ctrl.gotoNextDay();
 
-    rootScope.$apply();
-
-    expect(todos.getTodos).toHaveBeenCalledWith(selectedDate);
+    expect(states.fetchTodos.callCount).toEqual(1);
     expect(states.date).toEqual(selectedDate);
-    expect(states.todos).toEqual(todoList);
     expect(states.isBefore).toBeFalsy();
     expect(states.isAfter).toBeTruthy();
-    expect(states.duration).toBe(6);
   });
-
-
 });

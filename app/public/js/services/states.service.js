@@ -45,7 +45,7 @@ angular.module('a-string')
       Todos.getTodos(service.date)
         .then(function(resolved){
           service.todos = resolved.data;
-          service.duration = _.reduce(resolved, function(result, v, k){
+          service.duration = _.reduce(resolved.data, function(result, v, k){
             return result + v.duration;
           }, 0);
         }, function(reason){
