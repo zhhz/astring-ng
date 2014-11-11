@@ -1,4 +1,6 @@
-var jwt = require('jwt-simple'),
+var env     = process.env.NODE_ENV || 'development',
+    config  = require('../config/settings')[env],
+    jwt = require('jwt-simple'),
     moment = require('moment');
 
 exports.ensureAuthenticated = function(req, res, next) {

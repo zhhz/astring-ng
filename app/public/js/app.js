@@ -11,15 +11,7 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ui.bootstrap', 'satellizer'])
   .when('/', {
     controller: 'TodoCtrl',
     controllerAs: 'todoCtrl',
-    templateUrl: 'tpls/main.html',
-    resolve: {
-      todos: ['Todos', function(Todos){
-        return Todos.getTodos(moment().format('L'));
-      }],
-      songs: ['Songs', function(Songs){
-        return Songs.getBooks();
-      }]
-    }
+    templateUrl: 'tpls/main.html'
   })
   .when('/signup', {
     templateUrl: 'tpls/signup.html',

@@ -1,11 +1,13 @@
-var jwt = require('jwt-simple'),
+var env     = process.env.NODE_ENV || 'development',
+    config  = require('../config/settings')[env],
+    jwt     = require('jwt-simple'),
     request = require('request'),
-    moment = require('moment');
+    moment  = require('moment');
 
 /**
  * Generate JSON Web Token
  */
-function createToken(user, config) {
+function createToken(user) {
   var payload = {
     sub: user._id,
     iat: moment().unix(),
@@ -14,7 +16,7 @@ function createToken(user, config) {
   return jwt.encode(payload, config.TOKEN_SECRET);
 }
 
-exports.login = function(User, config){
+exports.login = function(User){
   return function(req, res) {
     User.findOne({ email: req.body.email }, '+password', function(err, user) {
       if (!user) {
@@ -30,7 +32,7 @@ exports.login = function(User, config){
   };
 };
 
-exports.signup = function(User, config){
+exports.signup = function(User){
   return function(req, res) {
     User.findOne({ email: req.body.email }, function(err, existingUser) {
       if (existingUser) {
@@ -52,7 +54,7 @@ exports.signup = function(User, config){
 /**
  * Login with Google
  */
-exports.google = function(User, config){
+exports.google = function(User){
   return function(req, res) {
     var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
     var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';

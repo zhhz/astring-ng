@@ -1,6 +1,6 @@
 angular.module('a-string')
-.factory('Todos', ['$q', 'StorageManager',
-  function($q, StorageManager){
+.factory('Todos', ['StorageManager',
+  function(StorageManager){
     var service = {};
 
     service.newTodo = function(){

@@ -46,7 +46,7 @@ angular.module('a-string')
       fetchTodos: function(date){
         var deferred = $q.defer();
         var todos =  _.filter(get(), function(todo){ return todo.startDate === date; });
-        deferred.resolve(todos);
+        deferred.resolve({data: todos});
         return deferred.promise;
       },
 

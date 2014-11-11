@@ -1,8 +1,9 @@
 angular.module('a-string')
-.factory('States', ['$auth', 'Todos', 'Songs', '$log',
-  function($auth, Todos, Songs, $log){
+.factory('States', ['$auth', 'Todos', 'Songs', '$log', 'AlertService',
+  function($auth, Todos, Songs, $log, AlertService){
     var service = {};
 
+    service.alert = AlertService;
     service.date = moment().format('L');
     service.todos = [];
     service.songs = [];
@@ -12,13 +13,25 @@ angular.module('a-string')
     service.elapse = 0;
     service.duration = 0;
 
+    service.init = function(){
+      if(!service.songs || _.isEmpty(service.songs)){
+        Songs.getBooks().then(function(books){
+          service.songs = books;
+        }, function(reason){
+          $log.error(reason);
+        });
+      }
+      service.setDate(moment().format('L'));
+    };
+
     service.isAuthenticated = function(){
       return $auth.isAuthenticated();
     };
 
     service.setDate = function(date){
-      service.date = date;
+      if(!date){return null;}
 
+      service.date = date;
       var today = moment(moment().format('L'), 'MM-DD-YYYY');
       var selectedDate = moment(service.date, 'MM-DD-YYYY');
       service.isBefore = selectedDate.isBefore(today, 'date');
@@ -31,7 +44,7 @@ angular.module('a-string')
     service.fetchTodos = function(){
       Todos.getTodos(service.date)
         .then(function(resolved){
-          service.todos = resolved;
+          service.todos = resolved.data;
           service.duration = _.reduce(resolved, function(result, v, k){
             return result + v.duration;
           }, 0);
