@@ -4,6 +4,22 @@ function createPageObjects(){
   var pos  = {};
   pos.open = function() { browser.get('/'); };
 
+  //======== login and signup links
+  pos.loginLink = function(){ return element(by.id('link-login'));};
+  pos.logoutLink = function(){ return element(by.id('link-logout'));};
+  pos.signupLink = function(){ return element(by.id('link-signup'));};
+
+  pos.email = function(){return element(by.model('loginCtrl.email'));};
+  pos.passwd = function(){return element(by.model('loginCtrl.password'));};
+  pos.loginBtn = function(){return element(by.id('btn-login'));};
+
+  pos.login = function(){
+    pos.loginLink().click();
+    pos.email().sendKeys('zhonghai.zuo@gmail.com');
+    pos.passwd().sendKeys('zuo');
+    pos.loginBtn().click();
+  };
+
   //======== NAV section
   pos.calendarBtn = function() { return element(by.id('calendar-btn')); };
   pos.prevBtn     = function() {return element(by.id('prev-btn'));};
@@ -55,9 +71,6 @@ function createPageObjects(){
         .row(row).column('team.rank'));
   };
 
-  pos.isLoginLinkVisible = function() {
-    return element(by.css('.login-link')).isDisplayed();
-  };
   */
 
   return pos;

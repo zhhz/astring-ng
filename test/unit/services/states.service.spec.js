@@ -10,15 +10,20 @@ describe("States service", function(){
     deferred = $q.defer();
     rootScope = _$rootScope_;
 
-    todolist = [ { 'id': 1, 'title': 'Uncompleted Item 0', 'completed': false },
-                 { 'id': 2, 'title': 'Uncompleted Item 1', 'completed': false },
-                 { 'id': 3, 'title': 'Uncompleted Item 2', 'completed': false }];
+    todolist = [ { '_id': 1, 'title': 'Uncompleted Item 0', 'completed': false },
+                 { '_id': 2, 'title': 'Uncompleted Item 1', 'completed': false },
+                 { '_id': 3, 'title': 'Uncompleted Item 2', 'completed': false }];
     songs = [{title: 'song1'}, {title: 'song2'}];
     books = [{title: 'book1'}, {title: 'book2'}];
   }));
 
   it("should init the States service", function(){
-    expect(service.date).toEqual(moment().format('L'));
+    deferred.resolve(books);
+    spyOn(songService, 'getBooks').andReturn(deferred.promise);
+
+    service.init();
+
+    expect(service.date).toEqual(moment().format('YYYY-MM-DD'));
     expect(service.todos).toEqual([]);
     expect(service.songs).toEqual([]);
     expect(service.currentTodo).toBeNull;
@@ -27,32 +32,27 @@ describe("States service", function(){
     expect(service.elapse).toEqual(0);
     expect(service.duration).toEqual(0);
 
-    deferred.resolve(books);
-    spyOn(songService, 'getBooks').andReturn(deferred.promise);
-
-    service.init();
-
     rootScope.$apply();
     expect(service.songs).toEqual(books);
   });
 
   it('#setDate() should be able to set current selected date', function(){
     // yesterday
-    var date = moment().subtract(1, 'day').format('L');
+    var date = moment().subtract(1, 'day').format('YYYY-MM-DD');
     service.setDate(date);
     expect(service.date).toEqual(date);
     expect(service.isBefore).toBeTruthy();
     expect(service.isAfter).toBeFalsy();
     expect(service.isToday).toBeFalsy();
     // today
-    date = moment().format('L');
+    date = moment().format('YYYY-MM-DD');
     service.setDate(date);
     expect(service.date).toEqual(date);
     expect(service.isBefore).toBeFalsy();
     expect(service.isAfter).toBeFalsy();
     expect(service.isToday).toBeTruthy();
     // tomorrow
-    date = moment().add(1, 'day').format('L');
+    date = moment().add(1, 'day').format('YYYY-MM-DD');
     service.setDate(date);
     expect(service.date).toEqual(date);
     expect(service.isBefore).toBeFalsy();

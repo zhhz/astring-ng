@@ -3,7 +3,7 @@ describe('ActiveTodos controller', function(){
 
   var ctrl, states, todo;
   beforeEach(inject(function($controller, States){
-    todo = { 'id': 1, 'title': 'Uncompleted Item 0', 'completed': false };
+    todo = { '_id': 1, 'title': 'Uncompleted Item 0', 'completed': false };
     ctrl = $controller('ActiveTodosCtrl');
     states = States;
   }));

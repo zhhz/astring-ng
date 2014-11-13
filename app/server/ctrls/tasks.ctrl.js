@@ -1,23 +1,16 @@
-﻿var _     = require("lodash"),
-    utils = require('../utils/utils');
+﻿var _      = require("lodash"),
+    utils  = require('../utils/utils');
+    moment = require('moment');
 
-// /:year/:month/:day
-// ?start=xxxxxx&end=xxxxxx
+// ?date=2014-11-18
 exports.index = function(Task){
   return function(req, res){
-    var from, to, date;
-    var q = req.query;
+    var q = req.query, date;
 
-    if(!q.date){ date = new Date(); }
-    else{ date = new Date(q.date); }
+    if(!q.date){ date = moment().format('YYYY-MM-DD'); }
+    else{ date = q.date; }
 
-    y = date.getFullYear();
-    m = date.getMonth() + 1;
-    d = date.getDate();
-    from = (new Date(y, m - 1, d, 0, 0, 0)).getTime();
-    to = (new Date(y, m - 1, d, 23, 59, 59)).getTime();
-
-    Task.find({createdAt: {$gte: from, $lte: to}, ownerId: req.user}, function(err, tasks){
+    Task.find({startDate: date, ownerId: req.user}, function(err, tasks){
       res.send(tasks);
     });
   };
@@ -26,7 +19,7 @@ exports.index = function(Task){
 exports.create = function(Task){
   return function (req, res) {
     var task = new Task(req.body);
-    task.ownerId = req.user.id;
+    task.ownerId = req.user;
     task.save(function (err) {
       if (err) {
         return res.status(400).send({
@@ -90,13 +83,13 @@ exports.aggregate = function(Task){
 
     var options = {};
     options.query = {
-                      createdAt: {$gte: new Date(from), $lte: new Date(to)},
+                      startDate: {$gte: new Date(from), $lte: new Date(to)},
                       completedAt: {$ne: null},
-                      ownerId: req.user.id
+                      ownerId: req.user
                     };
 
     options.map = function(){
-      // var c = this.createdAt;
+      // var c = this.startDate;
       var c = this.completedAt;
       var date = {year: c.getFullYear(), month: c.getMonth(), day: c.getDate()};
       emit(date, this.duration);
@@ -146,7 +139,7 @@ exports.aggregate = function(Task){
 /* I'm discarding the aggregate for now, alough it is claimed has better perfomence, reasons:
  *   - Mongo group operator $dayOfMonth using ISODate to get the date, this is an issue,
  *     e.g.
- *      "createdAt" : ISODate("2013-09-26T02:02:17.522Z")
+ *      "startDate" : ISODate("2013-09-26T02:02:17.522Z")
  *      the group will think the date is 9/26
  *      but in the local time it is 9/25
  *  - The results is not saved any where, which is good and bad, but if I want to implement a administrator console,
@@ -162,16 +155,16 @@ exports.aggregate = function(Task){
     Task.aggregate(
         { $match: {
                     // you can't use the Date string here
-                    createdAt: {$gte: new Date(from), $lte: new Date(to)},
+                    startDate: {$gte: new Date(from), $lte: new Date(to)},
                     completedAt: {$ne: null},
                     ownerId: req.user.id
                   }
         },
         { $group: {
                     _id: {
-                           year: {$year: "$createdAt"},
-                           month: {$month: "$createdAt"},
-                           day: {$dayOfMonth: "$createdAt"}
+                           year: {$year: "$startDate"},
+                           month: {$month: "$startDate"},
+                           day: {$dayOfMonth: "$startDate"}
                     },
                     total: {$sum: "$duration"}
                   }
@@ -205,13 +198,13 @@ exports.aggregateAll = function(Task){
     Task.aggregate(
         { $match: {
                     completedAt: {$ne: null},
-                    ownerId: req.user.id
+                    ownerId: req.user
                   }
         },
         { $group: {
                     _id: {
-                           year: {$year: "$createdAt"},
-                           month: {$month: "$createdAt"}
+                           year: {$year: "$startDate"},
+                           month: {$month: "$startDate"}
                     },
                     total: {$sum: "$duration"}
                   }

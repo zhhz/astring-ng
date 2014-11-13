@@ -3,22 +3,20 @@ angular.module('a-string')
   function NavCtrl(States, Todos){
     this.states = States;
 
-    var self = this;
-    self.gotoCalendar = function(){console.log('TODO: goto calendar');};
+    this.gotoCalendar = function(){console.log('TODO: goto calendar');};
 
-    self.gotoPrevDay = function(){
-      States.setDate(moment(States.date, 'MM-DD-YYYY')
-                            .subtract(1, 'day').format('L'));
+    this.gotoPrevDay = function(){
+      States.setDate(moment(States.date, 'YYYY-MM-DD')
+                            .subtract(1, 'day').format('YYYY-MM-DD'));
     };
 
-    self.gotoToday = function(){
-      States.setDate(moment().format('L'));
+    this.gotoToday = function(){
+      States.setDate(moment().format('YYYY-MM-DD'));
     };
 
-    self.gotoNextDay = function(){
-      States.setDate(moment(States.date, 'MM-DD-YYYY')
-                            .add(1, 'day').format('L'));
+    this.gotoNextDay = function(){
+      States.setDate(moment(States.date, 'YYYY-MM-DD')
+                            .add(1, 'day').format('YYYY-MM-DD'));
     };
-
   }
 ]);

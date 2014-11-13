@@ -16,11 +16,11 @@ angular.module('a-string')
     };
 
     service.deleteTodo = function(todo){
-      return $http.delete('/api/tasks/' + todo.id);
+      return $http.delete('/api/tasks/' + todo._id);
     };
 
     service.updateTodo = function(todo){
-      return $http.put('/api/tasks/' + todo.id, todo);
+      return $http.put('/api/tasks/' + todo._id, todo);
     };
 
     return service;

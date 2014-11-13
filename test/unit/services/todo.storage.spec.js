@@ -6,7 +6,7 @@ describe("LocalStorage", function(){
   }));
 
   it('#fetchTodos() should return empty array for first time user', function(){
-    var date = moment().format('L');
+    var date = moment().format('YYYY-MM-DD');
     var todos = [];
     // store.fetchTodos(date).then(function(resolved){todos = reolved;});
     expect(todos).toEqual([]);

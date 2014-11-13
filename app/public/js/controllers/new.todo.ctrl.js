@@ -9,8 +9,8 @@ angular.module('a-string')
 
       // why I have to check this? Because user can leave the screen and come
       // back the next day.
-      var today = moment(moment().format('L'), 'MM-DD-YYY');
-      var selectedDate = moment(States.date, 'MM-DD-YYY');
+      var today = moment(moment().format('YYYY-MM-DD'), 'YYYY-MM-DD');
+      var selectedDate = moment(States.date, 'YYYY-MM-DD');
       if(selectedDate.isBefore(today, 'date')){
       // if(selectedDate.isSame(today, 'date')){
         // show modal window ask if the user want to switch to today's todo list
@@ -23,7 +23,7 @@ angular.module('a-string')
 
         modalInstance.result.then(function () {
           $log.info('Modal close at: ' + new Date());
-          States.setDate(moment().format('L'));
+          States.setDate(moment().format('YYYY-MM-DD'));
           self.createTodo();
         }, function () {
           $log.info('Modal dismissed at: ' + new Date());
@@ -35,7 +35,7 @@ angular.module('a-string')
 
     self.createTodo = function(){
       var newTodo = Todos.newTodo();
-      newTodo.startDate = States.currentDate;
+      newTodo.startDate = States.date;
       if(!self.song.title){
         newTodo.title = self.song.trim();
       }else{

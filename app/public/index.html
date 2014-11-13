@@ -14,10 +14,39 @@
     <link rel="stylesheet" href="css/base.css">
     <style>[ng-cloak] { display: none; }</style>
   </head>
-  <body data-ng-app="a-string">
+  <body data-ng-app="a-string" data-ng-controller="TodoCtrl as todoCtrl">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">A-String</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul ng-if="todoCtrl.states.isAuthenticated()" class="nav navbar-nav" ng-cloak>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+          <ul ng-if="!todoCtrl.states.isAuthenticated()" class="nav navbar-nav navbar-right">
+            <li><a href="/#/login" id="link-login">Login</a></li>
+          </ul>
+          <ul ng-if="todoCtrl.states.isAuthenticated()" class="nav navbar-nav navbar-right" ng-cloak>
+            <li><a href="/#/logout" id="link-logout">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <data-ng-view></data-ng-view>
 
+    <div class="row">&emsp;</div>
     <div class="container-fluid">
       <div id="footer" class="row">
         <div class="col-xs-1"></div>

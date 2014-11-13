@@ -1,18 +1,17 @@
 angular.module('a-string')
 .controller('ActiveTodosCtrl', ['States', 'Todos',
   function ActiveTodoCtrl(States, Todos){
-    var self = this;
-    self.states = States;
+    this.states = States;
 
-    self.removeTodo = function (todo) {
+    this.removeTodo = function (todo) {
       States.removeTodo(todo);
     };
 
-    self.doneTodo = function(todo){
+    this.doneTodo = function(todo){
       States.doneTodo(todo);
     };
 
-    self.toggleCurrent = function(todo) {
+    this.toggleCurrent = function(todo) {
       States.toggle(todo);
     };
   }

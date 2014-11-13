@@ -4,14 +4,6 @@ angular.module('a-string')
     var service = {};
 
     service.alert = AlertService;
-    service.date = moment().format('L');
-    service.todos = [];
-    service.songs = [];
-    service.currentTodo = null;
-    service.currentSongs = [];
-    service.timerOn = false;
-    service.elapse = 0;
-    service.duration = 0;
 
     service.init = function(){
       if(!service.songs || _.isEmpty(service.songs)){
@@ -21,7 +13,19 @@ angular.module('a-string')
           $log.error(reason);
         });
       }
-      service.setDate(moment().format('L'));
+      service.reset();
+      service.setDate(moment().format('YYYY-MM-DD'));
+    };
+
+    service.reset = function(){
+      service.date = moment().format('YYYY-MM-DD');
+      service.todos = [];
+      service.songs = [];
+      service.currentTodo = null;
+      service.currentSongs = [];
+      service.timerOn = false;
+      service.elapse = 0;
+      service.duration = 0;
     };
 
     service.isAuthenticated = function(){
@@ -32,8 +36,8 @@ angular.module('a-string')
       if(!date){return null;}
 
       service.date = date;
-      var today = moment(moment().format('L'), 'MM-DD-YYYY');
-      var selectedDate = moment(service.date, 'MM-DD-YYYY');
+      var today = moment(moment().format('YYYY-MM-DD'), 'YYYY-MM-DD');
+      var selectedDate = moment(service.date, 'YYYY-MM-DD');
       service.isBefore = selectedDate.isBefore(today, 'date');
       service.isAfter = selectedDate.isAfter(today, 'date');
       service.isToday = selectedDate.isSame(today);
@@ -87,7 +91,7 @@ angular.module('a-string')
       }
       Todos.removeTodo(todo)
         .then(function(resolved){
-          _.remove(service.todos, function(t){return t.id === todo.id;});
+          _.remove(service.todos, function(t){return t._id === todo._id;});
         }, function(reason){
           $log.error(reason);
         });
@@ -110,7 +114,7 @@ angular.module('a-string')
 
     service.createTodo = function(todo){
       Todos.createTodo(todo).then(function(resolved){
-        service.todos.push(resolved);
+        service.todos.push(resolved.data);
       }, function(reason){
         $log.error(reason);
       });

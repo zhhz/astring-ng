@@ -38,8 +38,8 @@ angular.module('a-string')
 
       getTodo: function(id){
         var deferred = $q.defer();
-        var todo = _.find(get(), function(todo){return todo.id === id;});
-        deferred.resolve(todo);
+        var todo = _.find(get(), function(todo){return todo._id === id;});
+        deferred.resolve({data: todo});
         return deferred.promise;
       },
 
@@ -51,34 +51,33 @@ angular.module('a-string')
       },
 
       createTodo: function(todo){
-        todo.id = md5.createHash((new Date()).getTime() + '');
+        todo._id = md5.createHash((new Date()).getTime() + '');
         var deferred = $q.defer();
         var todos = get();
         todos.push(todo);
         put(todos);
-        deferred.resolve(todo);
+        deferred.resolve({data: todo});
         return deferred.promise;
       },
 
       deleteTodo: function(todo){
         var deferred = $q.defer();
         var todos = get();
-        _.remove(todos, function(t){return t.id === todo.id;});
+        _.remove(todos, function(t){return t._id === todo._id;});
         put(todos);
-        deferred.resolve([]);
+        deferred.resolve({data: []});
         return deferred.promise;
       },
 
       updateTodo: function(todo){
         var deferred = $q.defer();
         var todos = get();
-        _.remove(todos, function(t){return t.id === todo.id;});
+        _.remove(todos, function(t){return t._id === todo._id;});
         todos.push(todo);
         put(todos);
-        deferred.resolve(todo);
+        deferred.resolve({data: todo});
         return deferred.promise;
       }
-
     };
   }
 ]);

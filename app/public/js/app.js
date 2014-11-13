@@ -9,8 +9,6 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ui.bootstrap', 'satellizer'])
 
   $routeProvider
   .when('/', {
-    controller: 'TodoCtrl',
-    controllerAs: 'todoCtrl',
     templateUrl: 'tpls/main.html'
   })
   .when('/signup', {
@@ -19,14 +17,14 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ui.bootstrap', 'satellizer'])
   })
   .when('/login', {
     templateUrl: 'tpls/login.html',
-    controllerAs: 'loginCtrl',
-    controller: 'LoginCtrl'
+    controller: 'LoginCtrl',
+    controllerAs: 'loginCtrl'
   })
   .when('/logout', {
     template: ' ',
     controller: 'LogoutCtrl'
   })
-  .when('profile', {
+  .when('/profile', {
     templateUrl: 'tpls/profile.html',
     controller: 'ProfileCtrl',
     resolve: {

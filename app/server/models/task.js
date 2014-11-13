@@ -4,10 +4,16 @@ var mongoose = require('mongoose'),
 var TaskSchema = new Schema({
   title: {type: String},
   ownerId: {type: String},
+  startDate: {type: String},
   createdAt: {type: Number, default: (new Date()).getTime()},
   duration: {type: Number},
   completedAt: {type: Date},
   completed: {type: Boolean},
+  song: {
+    category: String,
+    book: String,
+    title: String
+  },
   refId: {type: String} // this can be anything, e.g. an event's id
 });
 
@@ -35,7 +41,7 @@ TaskSchema.statics = {
   list: function(options, cb){
     var criteria = options.criteria || {};
     this.find(criteria)
-      .sort({'createdAt': -1}) // sort by date
+      .sort({'startDate': -1}) // sort by date
       .limit(options.perPage)
       .skip(options.perPage * options.page)
       .exec(cb);

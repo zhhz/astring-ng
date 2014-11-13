@@ -8,14 +8,15 @@ describe("Todos service", function(){
     storage = LocalStorage;
     deferred = $q.defer();
     $rootScope = _$rootScope_;
-    date = moment().format('L');
+    date = moment().format('YYYY-MM-DD');
   }));
 
   it("#newTodo should return an un-saved todo object", function(){
     var newTodo = service.newTodo();
     expect(newTodo).toEqual({
-        id: null,
+        _id: null,
         title: '',
+        startDate: null,
         createdAt: (new Date()).getTime(),
         duration: 0,
         completedAt: null,
@@ -63,13 +64,13 @@ describe("Todos service", function(){
   });
 
   it("#getTodo should retrieve the todo from the storage", function(){
-    deferred.resolve({id: 1, startDate: date});
+    deferred.resolve({_id: 1, startDate: date});
     spyOn(storage, 'getTodo').andReturn(deferred.promise);
 
     var todo;
     service.getTodo(1).then(function(resolved){todo = resolved;});
     $rootScope.$apply();
-    expect(todo).toEqual({id: 1, startDate: date});
+    expect(todo).toEqual({_id: 1, startDate: date});
     expect(storage.getTodo).toHaveBeenCalled();
     expect(storage.getTodo.callCount).toEqual(1);
   });

@@ -21,7 +21,7 @@ exports.config = {
 
   // Spec patterns are relative to the location of the spec file.
   // They may include glob patterns.
-  // protractor protractor.conf.js --suite home
+  // protractor protractor.conf.js --suite working
   suites: {
     home    : '../e2e/home/**/*.spec.js',
     working : '../e2e/working/**/*.spec.js'
