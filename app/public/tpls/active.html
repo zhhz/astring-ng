@@ -18,10 +18,10 @@
           <div class="todo-list-label">
             <span class="label label-warning"
               data-ng-show="todo._id === activeCtrl.states.currentTodo._id && activeCtrl.states.currentSongs.length > 0">
-              BPM: {{states.currentSongs[0].bpm}}</span>
+              BPM: {{activeCtrl.states.currentSongs[0].bpm}}</span>
             <span class="label label-info"
               data-ng-show="todo._id === activeCtrl.states.currentTodo._id && activeCtrl.states.currentSongs.length > 0">
-              Major: {{states.currentSongs[0].key}}</span>
+              Major: {{activeCtrl.states.currentSongs[0].key}}</span>
             <span class="label label-primary">{{todo.song.category}}</span>
             <span class="label label-success">{{todo.song.book}}</span>
           </div>

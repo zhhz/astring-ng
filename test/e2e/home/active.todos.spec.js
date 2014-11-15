@@ -12,20 +12,25 @@ describe('Active todos section on home screen', function(){
   it('should have active todos', function(){
     pos.createTodo();
     expect(pos.activeTodoList().count()).toEqual(1);
+
+    // clear
+    pos.deleteBtnForRow(0).click();
   });
 
   it('should be able to finish a todo', function(){
     pos.createTodo();
 
-    expect(pos.activeTodoList().count()).toEqual(1);
     pos.doneBtnForRow(0).click();
     expect(pos.activeTodoList().count()).toEqual(0);
+
+    // clear
+    pos.undoBtnForRow(0).click();
+    pos.deleteBtnForRow(0).click();
   });
 
   it('should be able to delete a todo', function(){
     pos.createTodo();
 
-    expect(pos.activeTodoList().count()).toEqual(1);
     pos.deleteBtnForRow(0).click();
     expect(pos.activeTodoList().count()).toEqual(0);
   });
@@ -39,6 +44,9 @@ describe('Active todos section on home screen', function(){
     expect(rowBody.getAttribute('class')).toContain('current');
     pos.activeTodoList().get(0).click();
     expect(rowBody.getAttribute('class')).toEqual('form-control');
+
+    // clear
+    pos.deleteBtnForRow(0).click();
   });
 
   afterEach(function(){

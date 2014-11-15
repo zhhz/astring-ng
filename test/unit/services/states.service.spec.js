@@ -79,7 +79,7 @@ describe("States service", function(){
   it('#toggle() should set current todo if it dosn\'t have one', function(){
     var todo = todolist[1];
 
-    deferred.resolve(songs);
+    deferred.resolve({data: songs});
     spyOn(songService, 'getSongs').andReturn(deferred.promise);
 
     expect(service.currentTodo).toBeNull;

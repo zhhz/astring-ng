@@ -26,7 +26,7 @@ module.exports = function (app, config) {
   app.get('/api/tasks/:year/:month/:day', auth.ensureAuthenticated, tasksCtrl.index(Task));
   app.post('/api/tasks', auth.ensureAuthenticated, tasksCtrl.create(Task));
   app.put('/api/tasks/:id', auth.ensureAuthenticated, tasksCtrl.update(Task));
-  app.del('/api/tasks/:id', auth.ensureAuthenticated, tasksCtrl.destroy(Task));
+  app.delete('/api/tasks/:id', auth.ensureAuthenticated, tasksCtrl.destroy(Task));
   app.get('/api/tasks/aggregate', auth.ensureAuthenticated, tasksCtrl.aggregate(Task));
   app.get('/api/tasks/aggregate_all', auth.ensureAuthenticated, tasksCtrl.aggregateAll(Task));
 

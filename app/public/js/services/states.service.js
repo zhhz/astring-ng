@@ -62,8 +62,8 @@ angular.module('a-string')
         service.currentTodo = null;
         service.currentSongs = [];
       }else{
-        Songs.getSongs(todo).then(function(songs){
-          service.currentSongs = songs;
+        Songs.getSongs(todo).then(function(res){
+          service.currentSongs = res.data;
         });
         service.currentTodo = todo;
       }

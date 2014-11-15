@@ -3,7 +3,6 @@ var pos = require('../pageobjects')();
 describe('Completed todos section on home screen', function(){
   beforeEach(function(){
     pos.open();
-    pos.createTodo();
   });
 
   it('shouldn\'t have any completed todo when starts', function(){
@@ -11,14 +10,13 @@ describe('Completed todos section on home screen', function(){
   });
 
   it('should have a completed todo', function(){
-    pos.doneBtnForRow(0).click();
-    expect(pos.completedTodoList().count()).toEqual(1);
-  });
-
-  it('should be able to undo the completed todo', function(){
+    pos.createTodo();
     pos.doneBtnForRow(0).click();
     expect(pos.completedTodoList().count()).toEqual(1);
     expect(pos.activeTodoList().count()).toEqual(0);
+  });
+
+  it('should be able to undo the completed todo', function(){
     pos.undoBtnForRow(0).click();
     expect(pos.completedTodoList().count()).toEqual(0);
     expect(pos.activeTodoList().count()).toEqual(1);

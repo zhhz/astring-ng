@@ -35,3 +35,23 @@ userSchema.methods.comparePassword = function(password, done) {
 };
 
 mongoose.model('User', userSchema);
+
+/*** populate the users collection ***/
+if('test' === process.env.NODE_ENV){
+  var users = [
+    { _id: '5465f88762baaf3155d2a5d3',
+      displayName: 'Demo A-String',
+      email: 'astring.app@gmail.com',
+      password: '12345678'
+    }
+  ];
+
+  var User = mongoose.model('User');
+  User.remove({}, function(err){
+    console.log(' ');
+    console.log(' => Users collection removed');
+  });
+  User.create(users, function(err, results){
+    console.log(' => Successfully populated test User:\n    %s', JSON.stringify(results));
+  });
+}

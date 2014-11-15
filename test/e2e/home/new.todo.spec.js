@@ -39,4 +39,7 @@ describe('New todo input on main page', function(){
     expect(input.getAttribute('value')).toEqual('');
     expect(po.newTodoInput().getAttribute('placeholder')).toEqual('What needs to be done?');
   });
+
+  afterEach(function(){
+  });
 });

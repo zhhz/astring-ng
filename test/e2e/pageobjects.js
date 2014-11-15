@@ -15,8 +15,8 @@ function createPageObjects(){
 
   pos.login = function(){
     pos.loginLink().click();
-    pos.email().sendKeys('zhonghai.zuo@gmail.com');
-    pos.passwd().sendKeys('zuo');
+    pos.email().sendKeys('astring.app@gmail.com');
+    pos.passwd().sendKeys('12345678');
     pos.loginBtn().click();
   };
 
