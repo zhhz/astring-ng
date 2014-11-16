@@ -1,3 +1,12 @@
+<a name="0.2.1"></a>
+### 0.2.1 (2014-11-15)
+
+
+#### Features
+
+* adds google OAuth2 for a-string.us ((d7a2e8a5))
+
+
 <a name="0.2.0"></a>
 ## 0.2.0 (2014-11-13)
 
