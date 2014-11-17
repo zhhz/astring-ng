@@ -1,5 +1,6 @@
 angular.module('a-string')
-  .controller('LoginCtrl', function($log, $auth, States) {
+.controller('LoginCtrl', ['$log', '$auth', 'States', 'AlertService',
+  function($log, $auth, States, AlertService) {
     var self = this;
 
     // signed up users login
@@ -10,6 +11,7 @@ angular.module('a-string')
           States.init();
         }).catch(function(response) {
           $log.error(response.data.message);
+          AlertService.set(response.data.message);
         });
     };
 
@@ -20,6 +22,8 @@ angular.module('a-string')
           $log.info('You have successfully logged in');
         }).catch(function(response) {
           $log.error(response.data.message);
+          AlertService.set(response.data.message);
         });
     };
-  });
+  }
+]);
