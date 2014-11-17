@@ -1,3 +1,12 @@
+<a name="0.2.3"></a>
+### 0.2.3 (2014-11-16)
+
+
+#### Bug Fixes
+
+* google OAuth client it ((bcbaec0f))
+
+
 <a name="0.2.2"></a>
 ### 0.2.2 (2014-11-16)
 
