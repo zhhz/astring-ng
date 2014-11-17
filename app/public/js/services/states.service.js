@@ -6,6 +6,7 @@ angular.module('a-string')
     service.alert = AlertService;
 
     service.init = function(){
+      service.reset();
       if(!service.songs || _.isEmpty(service.songs)){
         Songs.getBooks().then(function(books){
           service.songs = books;
@@ -13,14 +14,12 @@ angular.module('a-string')
           $log.error(reason);
         });
       }
-      service.reset();
       service.setDate(moment().format('YYYY-MM-DD'));
     };
 
     service.reset = function(){
       service.date = moment().format('YYYY-MM-DD');
       service.todos = [];
-      service.songs = [];
       service.currentTodo = null;
       service.currentSongs = [];
       service.timerOn = false;

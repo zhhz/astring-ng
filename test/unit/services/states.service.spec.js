@@ -25,7 +25,6 @@ describe("States service", function(){
 
     expect(service.date).toEqual(moment().format('YYYY-MM-DD'));
     expect(service.todos).toEqual([]);
-    expect(service.songs).toEqual([]);
     expect(service.currentTodo).toBeNull;
     expect(service.currentSongs).toEqual([]);
     expect(service.timerOn).toEqual(false);
