@@ -14,7 +14,7 @@ angular.module('a-string')
         scope.errorMessage = newVal;
       });
       scope.hideAlert = function() {
-        scope.errorMessage = null;
+        scope.errorMessage = '';
       };
     }
   };

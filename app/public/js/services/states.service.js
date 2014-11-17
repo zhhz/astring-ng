@@ -82,6 +82,9 @@ angular.module('a-string')
         }, function(reason){
           $log.error(reason);
         });
+      if(!$auth.isAuthenticated()){
+        AlertService.set('Congratulations! You\'v completed the todo. You can upload to the server after you log in.');
+      }
     };
 
     service.removeTodo = function (todo) {

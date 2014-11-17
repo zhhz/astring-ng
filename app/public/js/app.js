@@ -1,7 +1,7 @@
 /**
  * The main app module
  */
-angular.module('a-string', ['ngRoute', 'ngTouch', 'ui.bootstrap', 'satellizer'])
+angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui.bootstrap', 'satellizer'])
 .config(function ($routeProvider, $authProvider) {
   'use strict';
 
