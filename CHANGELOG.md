@@ -1,3 +1,14 @@
+<a name="0.2.4"></a>
+### 0.2.4 (2014-11-17)
+
+
+#### Bug Fixes
+
+* fixes the logout issue ((66e8c121))
+* show error message if login failed ((c10fcece))
+* fixed the issue of songs gets cleared after log in or out ((4bd68647))
+
+
 <a name="0.2.3"></a>
 ### 0.2.3 (2014-11-16)
 
