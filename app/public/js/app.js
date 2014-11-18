@@ -13,7 +13,8 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
   })
   .when('/signup', {
     templateUrl: 'tpls/signup.html',
-    controller: 'SignupCtrl'
+    controller: 'SignupCtrl',
+    controllerAs: 'signupCtrl'
   })
   .when('/login', {
     templateUrl: 'tpls/login.html',

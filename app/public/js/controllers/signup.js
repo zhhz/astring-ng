@@ -1,12 +1,14 @@
 angular.module('a-string')
-  .controller('SignupCtrl', ['$scope', '$auth', '$log', function($scope, $auth, $log) {
-    $scope.signup = function() {
+.controller('SignupCtrl', ['$auth', '$log',
+  function($auth, $log) {
+    this.signup = function() {
       $auth.signup({
-        displayName: $scope.displayName,
-        email: $scope.email,
-        password: $scope.password
+        displayName: this.displayName,
+        email: this.email,
+        password: this.password
       }).catch(function(response) {
         $log.error(response.data.message);
       });
     };
-  }]);
+  }
+]);
