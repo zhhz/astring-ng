@@ -20,7 +20,7 @@
   </div>
 </script>
 
-<div class="row" data-ng-controller="NewTodoCtrl as newCtrl" data-ng-hide="newCtrl.states.isBefore">
+<div data-ng-hide="newCtrl.states.isBefore" class="row" data-ng-controller="NewTodoCtrl as newCtrl">
   <div class="col-xs-2"></div>
   <div class="col-xs-8">
     <form data-ng-submit="newCtrl.addTodo()" class="form-horizontal">
