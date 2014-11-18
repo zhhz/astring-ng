@@ -48,27 +48,20 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
     clientId: '657854390977827'
   });
 
-  $authProvider.github({
-    clientId: '0ba2600b1dbdb756688b'
-  });
-
-  $authProvider.linkedin({
-    clientId: '77cw786yignpzj'
+  $authProvider.twitter({
+    url: '/auth/twitter'
   });
 
   $authProvider.yahoo({
     clientId: 'dj0yJmk9dkNGM0RTOHpOM0ZsJmQ9WVdrOVlVTm9hVk0wTkRRbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0wMA--'
   });
 
-  $authProvider.twitter({
-    url: '/auth/twitter'
+  $authProvider.linkedin({
+    clientId: '77cw786yignpzj'
   });
 
-  $authProvider.oauth2({
-    name: 'foursquare',
-    url: '/auth/foursquare',
-    clientId: 'MTCEJ3NGW2PNNB31WOSBFDSAD4MTHYVAZ1UKIULXZ2CVFC2K',
-    redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
-    authorizationEndpoint: 'https://foursquare.com/oauth2/authenticate'
+  $authProvider.github({
+    clientId: '0ba2600b1dbdb756688b'
   });
+
 });
