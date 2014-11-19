@@ -120,7 +120,7 @@ exports.google = function(User){
  * Login with Facebook
  *--------------------------------------------------------------------------
  */
-export.facebook = function(User){
+exports.facebook = function(User){
   return function(req, res) {
     var accessTokenUrl = 'https://graph.facebook.com/oauth/access_token';
     var graphApiUrl = 'https://graph.facebook.com/me';
@@ -182,5 +182,5 @@ export.facebook = function(User){
         }
       });
     });
-  });
+  };
 };

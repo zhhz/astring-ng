@@ -45,7 +45,7 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
   });
 
   $authProvider.facebook({
-    clientId: '657854390977827'
+    clientId: '1551037841780082'
   });
 
   $authProvider.twitter({
