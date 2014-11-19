@@ -1,3 +1,17 @@
+<a name="0.2.5"></a>
+### 0.2.5 (2014-11-18)
+
+
+#### Bug Fixes
+
+* update the facebook appid and app secret ((5ed4fac1))
+
+
+#### Features
+
+* OAuth with facebook ((7ea348a6))
+
+
 <a name="0.2.4"></a>
 ### 0.2.4 (2014-11-17)
 
