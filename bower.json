@@ -2,21 +2,22 @@
   "name": "A-String",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "~1.3.3",
-    "angular-route": "~1.3.3",
-    "angular-messages": "~1.3.3",
-    "angular-animate": "~1.3.3",
-    "angular-touch": "~1.3.3",
-    "angular-ui-bootstrap-bower": "~0.11.0",
-    "jquery": "~2.1.1",
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-messages": "latest",
+    "angular-animate": "latest",
+    "angular-touch": "latest",
+    "angular-ui-bootstrap-bower": "latest",
+    "jquery": "latest",
     "dial": "git://github.com/zhhz/jQuery-Knob.git",
-    "bootstrap": "~3.3.0",
-    "moment": "~2.8.3",
-    "lodash": "~2.4.1",
-    "satellizer": "~0.8.4",
-    "ionicons": "~1.5.2"
+    "bootstrap": "latest",
+    "moment": "latest",
+    "lodash": "latest",
+    "satellizer": "latest",
+    "ionicons": "latest",
+    "angular-ui-calendar": "latest"
   },
   "devDependencies": {
-    "angular-mocks": "~1.3.3"
+    "angular-mocks": "latest"
   }
 }
