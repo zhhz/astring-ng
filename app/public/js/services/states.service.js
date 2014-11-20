@@ -5,6 +5,10 @@ angular.module('a-string')
 
     service.alert = AlertService;
 
+    service.isAuthenticated = function(){
+      return $auth.isAuthenticated();
+    };
+
     service.init = function(){
       service.reset();
       if(!service.songs || _.isEmpty(service.songs)){
@@ -27,18 +31,14 @@ angular.module('a-string')
       service.duration = 0;
     };
 
-    service.isAuthenticated = function(){
-      return $auth.isAuthenticated();
-    };
-
     service.setDate = function(date){
       if(!date){return null;}
 
       service.date = date;
       var today = moment(moment().format('YYYY-MM-DD'), 'YYYY-MM-DD');
       var selectedDate = moment(service.date, 'YYYY-MM-DD');
-      service.isBefore = selectedDate.isBefore(today, 'date');
-      service.isAfter = selectedDate.isAfter(today, 'date');
+      service.isBefore = selectedDate.isBefore(today);
+      service.isAfter = selectedDate.isAfter(today);
       service.isToday = selectedDate.isSame(today);
 
       service.fetchTodos();

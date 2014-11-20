@@ -11,7 +11,7 @@ angular.module('a-string')
       // back the next day.
       var today = moment(moment().format('YYYY-MM-DD'), 'YYYY-MM-DD');
       var selectedDate = moment(States.date, 'YYYY-MM-DD');
-      if(selectedDate.isBefore(today, 'date')){
+      if(selectedDate.isBefore(today)){
       // if(selectedDate.isSame(today, 'date')){
         // show modal window ask if the user want to switch to today's todo list
         var modalInstance = $modal.open({
