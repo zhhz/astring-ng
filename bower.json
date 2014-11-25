@@ -15,7 +15,7 @@
     "lodash": "latest",
     "satellizer": "latest",
     "ionicons": "latest",
-    "angular-ui-calendar": "latest"
+    "fullcalendar": "latest"
   },
   "devDependencies": {
     "angular-mocks": "latest"

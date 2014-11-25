@@ -1,7 +1,7 @@
 /**
  * The main app module
  */
-angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui.bootstrap', 'satellizer'])
+angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui.bootstrap', 'ui.calendar', 'satellizer'])
 .config(function ($routeProvider, $authProvider) {
   'use strict';
 
@@ -36,6 +36,13 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
       }]
     }
   })
+
+  .when('/calendar', {
+    templateUrl: 'tpls/calendar.html',
+    controller: 'CalendarCtrl',
+    controllerAs: 'calendarCtrl'
+  })
+
   .otherwise({
     redirectTo: '/'
   });

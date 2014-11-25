@@ -24,6 +24,8 @@ module.exports = function(config) {
       'bower_components/lodash/dist/lodash.js',
       'bower_components/moment/moment.js',
       'bower_components/satellizer/satellizer.js',
+      'bower_components/fullcalendar/fullcalendar.js',
+      'bower_components/angular-ui-calendar/src/calendar.js',
       'app/public/js/**/*.js',
       'test/unit/**/*.js'
     ],
