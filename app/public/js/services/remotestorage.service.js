@@ -3,6 +3,7 @@ angular.module('a-string')
   function($http){
     var service = {};
 
+    //========== TODOS TABLE =======================================
     service.getTodo = function(id){
       return $http.get('/api/tasks/' + id);
     };
@@ -21,6 +22,15 @@ angular.module('a-string')
 
     service.updateTodo = function(todo){
       return $http.put('/api/tasks/' + todo._id, todo);
+    };
+
+    //========== EVENTS TABLE =====================================
+    service.createEvent = function(event){
+      return $http.post('/api/events/', event);
+    };
+
+    service.updateEvent = function(event){
+      return $http.put('/api/events/' + event._id, event);
     };
 
     return service;

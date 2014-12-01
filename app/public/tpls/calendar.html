@@ -1,4 +1,120 @@
-<div>{{calendarCtrl.alertMessage}}</div>
+<script type="text/ng-template" id="songSelectorTpl.html">
+  <a>
+    <span bind-html-unsafe="match.model.title | typeaheadHighlight:query"></span>
+    [<span bind-html-unsafe="match.model.category"></span> - <span bind-html-unsafe="match.model.book"></span>]
+  </a>
+</script>
+
+<script type="text/ng-template" id="eventForm.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Event</h3>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="title" class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+          <input id="new-input" type="text"
+            autofocus
+            data-ng-model="eventCtrl.event.title"
+            placeholder="What needs to be done?"
+            typeahead="song as song.title for song in eventCtrl.states.songs | filter:{title:$viewValue}"
+            typeahead-template-url="songSelectorTpl.html"
+            class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="from" class="col-sm-2 control-label">From</label>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <input type="text" class="form-control"
+              datepicker-popup="{{eventCtrl.format}}"
+              ng-model="eventCtrl.event.start"
+              is-open="eventCtrl.fromOpened"
+              min-date="eventCtrl.minDate"
+              max-date="eventCtrl.maxDate"
+              show-button-bar="eventCtrl.btnBar"
+              datepicker-options="eventCtrl.dateOptions"
+              ng-required="true" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="eventCtrl.openFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="from" class="col-sm-2 control-label">To</label>
+        <div class="col-sm-10">
+          <div class="input-group">
+            <input type="text" class="form-control"
+              datepicker-popup="{{eventCtrl.format}}"
+              ng-model="eventCtrl.event.end"
+              is-open="eventCtrl.toOpened"
+              min-date="eventCtrl.minDate"
+              max-date="eventCtrl.maxDate"
+              show-button-bar="eventCtrl.btnBar"
+              datepicker-options="eventCtrl.dateOptions"
+              ng-required="true" />
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default" ng-click="eventCtrl.openTo($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="eventCtrl.event.isRepeative"> Repeat event
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" ng-if="eventCtrl.event.isRepeative">
+        <label for="eventCtrl.event.repeat.frequency" class="col-sm-2 control-label">Freq.</label>
+        <div class="col-sm-10">
+          <select ng-model="eventCtrl.event.repeat.frequency" class="form-control">
+            <option value="daily">daily</option>
+            <option value="weekly">weekly</option>
+            <option value="monthly">monthly</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" ng-if="eventCtrl.event.isRepeative">
+        <label for="eventCtrl.event.repeat.every" class="col-sm-2 control-label">Every</label>
+        <div class="col-sm-10">
+          <select ng-model="eventCtrl.event.repeat.every" class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="eventCtrl.createOrUpdate()">OK</button>
+    <button class="btn btn-warning" ng-click="eventCtrl.cancel()">Cancel</button>
+  </div>
+</script>
+
+<div class="row">
+  <div class="col-sm-11">
+    <div class="btn-toolbar pull-right" role="toolbar">
+      <div class="btn-group">
+        <button ng-click="calendarCtrl.addEvent()" type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
 <div class="row">
   <div class="col-sm-1"></div>
   <div class="col-sm-10 calendar"

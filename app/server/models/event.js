@@ -6,9 +6,17 @@ var mongoose = require('mongoose'),
 var EventSchema = new Schema({
   // compatible with Fullcanlendar
   title: { type: String},
+  details: {
+    title: String,
+    category: String,
+    book: String
+  },
+
   allDay: {type: Boolean, default: true},
+
   start: { type: Date, default: Date.now },
   end: { type: Date, default: Date.now},
+
   // color properties
   backgroundColor: {type: String},
   borderColor: {type: String},
@@ -17,11 +25,13 @@ var EventSchema = new Schema({
   // my own fields
   description: { type: String},
   ownerId: {type: String},
+
+  isRepeative: {type: Boolean, default: false},
   repeat: {
     frequency: {type: String, enum:['daily', 'weekly', 'monthly', 'yearly']},
-    every: {type: Number}
+    every: {type: Number, enum:[1, 2, 3, 4, 5, 6]}
   },
-  private: {type: Boolean, default: true}
+  isPrivate: {type: Boolean, default: true}
 });
 
 /**
@@ -67,12 +77,13 @@ if('test' === process.env.NODE_ENV){
     var events = [
       {
         title: 'Long Long Ago',
-          allDay: true,
-          start: (new Date(y, m, d, 18, 0, 0, 0)),
-          end: (new Date(y, m + 2, d, 18, 0, 0, 0)),
 
-          ownerId: '5465f88762baaf3155d2a5d3',
-          repeat:{frequency: 'daily', every: 2}
+        allDay: true,
+        start: (new Date(y, m, d, 18, 0, 0, 0)),
+        end: (new Date(y, m + 2, d, 18, 0, 0, 0)),
+
+        ownerId: '5465f88762baaf3155d2a5d3',
+        repeat:{frequency: 'daily', every: 2}
       },
       {
         title: 'Play a bit',

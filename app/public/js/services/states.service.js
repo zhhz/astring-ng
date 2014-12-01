@@ -1,6 +1,6 @@
 angular.module('a-string')
-.factory('States', ['$auth', 'Todos', 'Songs', '$log', 'AlertService',
-  function($auth, Todos, Songs, $log, AlertService){
+.factory('States', ['$auth', 'Todos', 'Events', 'Songs', '$log', 'AlertService',
+  function($auth, Todos, Events, Songs, $log, AlertService){
     var service = {};
 
     service.alert = AlertService;
@@ -24,6 +24,7 @@ angular.module('a-string')
     service.reset = function(){
       service.date = moment().format('YYYY-MM-DD');
       service.todos = [];
+      service.events = [];
       service.currentTodo = null;
       service.currentSongs = [];
       service.timerOn = false;
@@ -44,6 +45,7 @@ angular.module('a-string')
       service.fetchTodos();
     };
 
+    // ============== TODO ===================================
     service.fetchTodos = function(){
       Todos.getTodos(service.date)
         .then(function(resolved){
@@ -117,6 +119,26 @@ angular.module('a-string')
     service.createTodo = function(todo){
       Todos.createTodo(todo).then(function(resolved){
         service.todos.push(resolved.data);
+      }, function(reason){
+        $log.error(reason);
+      });
+    };
+
+    // ============== EVENTS ===================================
+    service.createEvent = function(event){
+      Events.createEvent(event).then(function(resolved){
+        service.events.push(resolved.data);
+      }, function(reason){
+        $log.error(reason);
+      });
+    };
+
+    service.updateEvent = function(event){
+      Events.updateEvent(event).then(function(resolved){
+        _.remove(service.events, function(e){
+          e._id === event._id;
+        });
+        service.events.push(resolved.data);
       }, function(reason){
         $log.error(reason);
       });

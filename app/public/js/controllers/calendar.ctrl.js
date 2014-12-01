@@ -1,6 +1,6 @@
 angular.module('a-string')
-.controller('CalendarCtrl', ['$log', 'States',
-  function($log, States){
+.controller('CalendarCtrl', ['$log', '$modal', 'States',
+  function($log, $modal, States){
     var self = this;
 
     var date = new Date();
@@ -8,22 +8,10 @@ angular.module('a-string')
     var m = date.getMonth();
     var y = date.getFullYear();
 
-    var events = [
-      {title: 'All Day Event',start: new Date(y, m, 1)},
-      {title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
-      {id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
-      {title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
-      {title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
-    ];
-
-    self.eventSources = [events];
+    self.eventSources = [States.events];
 
     var alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
       self.alertMessage = ('Event Droped to make dayDelta ' + delta);
-    };
-    var eventClick = function( date, jsEvent, view){
-      self.alertMessage = (date.title + ' was clicked');
     };
     var alertOnResize = function(event, delta, revertFunc, jsEvent, ui, view ){
       self.alertMessage = ('Event Resized to make dayDelta ' + delta);
@@ -34,14 +22,59 @@ angular.module('a-string')
     };
 
     var dayClick = function(){
+      self.alertMessage = 'Day clicked';
     };
 
     self.addEvent = function() {
-      self.events.push({
-        title: 'Open Sesame',
-        start: new Date(y, m, 28),
-        end: new Date(y, m, 29),
-        className: ['openSesame']
+      // show modal window ask if the user want to switch to today's todo list
+      var modalInstance = $modal.open({
+        templateUrl: 'eventForm.html',
+        controller: 'EventCtrl',
+        controllerAs: 'eventCtrl',
+        backdrop: 'static',
+        size: 'sm',
+        resolve: {
+          event: function(){
+            return {
+              start       : moment().format('YYYY-MM-DD'),
+              end         : moment().format('YYYY-MM-DD'),
+              isRepeative : false,
+              repeat      : {
+                frequency : 'daily',
+                every     : 1
+              }
+            };
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        $log.info('Modal close at: ' + new Date());
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+
+    var eventClick = function(event, jsEvent, view){
+      var modalInstance = $modal.open({
+        templateUrl  : 'eventForm.html',
+        controller   : 'EventCtrl',
+        controllerAs : 'eventCtrl',
+        backdrop     : 'static',
+        size         : 'sm',
+        resolve      : {
+          event      : function(){
+            event.start = moment(event.start).format('YYYY-MM-DD');
+            event.end   = moment(event.start).format('YYYY-MM-DD');
+            return event;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+        $log.info('Modal close at: ' + new Date());
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
       });
     };
 
@@ -50,18 +83,19 @@ angular.module('a-string')
     };
 
     self.uiConfig = {
-      calendar:{
-        height: 450,
-        editable: true,
-        header:{
-          left: 'title',
-          center: '',
-          right: 'today prev,next'
+      calendar   : {
+        height   : 450,
+        editable : true,
+        header   : {
+          left   : 'title',
+          center : '',
+          right  : 'today prev,next'
         },
-        eventClick: eventClick,
-        eventDrop: alertOnDrop,
-        eventResize: alertOnResize,
-        eventRender: eventRender
+        eventClick  : eventClick,
+        eventDrop   : alertOnDrop,
+        eventResize : alertOnResize,
+        eventRender : eventRender,
+        dayClick    : dayClick
       }
     };
 

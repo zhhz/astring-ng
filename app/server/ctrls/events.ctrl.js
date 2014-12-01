@@ -27,13 +27,13 @@ exports.create = function(Event){
   return function (req, res) {
 
     var event = new Event(req.body);
-    event.ownerId = req.user.id;
+    event.ownerId = req.user;
 
     event.save(function (err, event, numberAffected) {
       if (err) {
         return res.status(400).send({
-          errors: utils.errors(err.errors),
-          event: event,
+          errors: JSON.stringify(err.errors),
+          event: JSON.stringify(event),
           title: 'Create Event error'
         });
       }
@@ -54,10 +54,6 @@ exports.update = function(Event){
         });
       }
       e = _.extend(e, req.body);
-      // clear the repeat property if neccessary
-      if(typeof(req.body.repeat) === 'undefined'){
-        e.repeat = undefined;
-      }
       e.save(function(err, e_){
         if (err) {
           return res.status(400).send({
