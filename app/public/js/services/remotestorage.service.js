@@ -25,12 +25,20 @@ angular.module('a-string')
     };
 
     //========== EVENTS TABLE =====================================
+    service.getEvents = function(from, to){
+      return $http.get('/api/events?from=' + from + '&to=' + to);
+    };
+
     service.createEvent = function(event){
       return $http.post('/api/events/', event);
     };
 
     service.updateEvent = function(event){
       return $http.put('/api/events/' + event._id, event);
+    };
+
+    service.deleteEvent = function(event){
+      return $http.delete('/api/events/' + event._id);
     };
 
     return service;

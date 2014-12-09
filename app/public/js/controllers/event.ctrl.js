@@ -20,11 +20,17 @@ angular.module('a-string')
 
     self.cancel = function () { $modalInstance.dismiss('no'); };
 
+    self.delete = function() {
+      States.deleteEvent(self.event);
+      $modalInstance.close('yes');
+    };
+
     // config the datepicker
     self.dateOptions = {
       startingDay: 0,
       showWeeks: false
     };
+
     // config for popup
     self.format = 'yyyy-MM-dd';
     self.minDate = new Date();

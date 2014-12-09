@@ -7,12 +7,12 @@ var _      = require('lodash'),
 exports.index = function(Event) {
   return function(req, res) {
     var q       = req.query,
-        from    = q.start,
-        to      = q.end;
+        from    = q.from,
+        to      = q.to;
         ownerId = req.user;
 
     // none repeat events
-    Event.find({start: {$gte: from, $lte: to}, repeat: null, ownerId: ownerId}, function(error, events) {
+    Event.find({start: {$gte: from, $lte: to}, isRepeative: false, ownerId: ownerId}, function(error, events) {
       var cb = function(repeatEvents){
         events = repeatEvents.concat(events);
         res.send(events);
@@ -99,9 +99,9 @@ exports.findEventById = function(Event){
 
 function findOwnedRepeatEvents(Event, ownerId, from, to, cb){
   Event.find({
-      end: {$gte: from},
       start: {$lte: to},
-      repeat: {$ne: null},
+      end: {$gte: from},
+      isRepeative: true,
       ownerId: ownerId
     },
     function(error, events) {

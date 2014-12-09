@@ -2,12 +2,6 @@ angular.module('a-string')
 .controller('CalendarCtrl', ['$log', '$modal', 'States',
   function($log, $modal, States){
     var self = this;
-
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
     self.eventSources = [States.events];
 
     var alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
@@ -36,8 +30,8 @@ angular.module('a-string')
         resolve: {
           event: function(){
             return {
-              start       : moment().format('YYYY-MM-DD'),
-              end         : moment().format('YYYY-MM-DD'),
+              start       : new Date(),
+              end         : new Date(),
               isRepeative : false,
               repeat      : {
                 frequency : 'daily',
@@ -64,9 +58,7 @@ angular.module('a-string')
         size         : 'sm',
         resolve      : {
           event      : function(){
-            event.start = moment(event.start).format('YYYY-MM-DD');
-            event.end   = moment(event.start).format('YYYY-MM-DD');
-            return event;
+            return _.find(States._events, function(e){return e._id === event._id;});
           }
         }
       });
@@ -76,10 +68,6 @@ angular.module('a-string')
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
-    };
-
-    self.remove = function(index) {
-      self.events.splice(index,1);
     };
 
     self.uiConfig = {

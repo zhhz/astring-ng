@@ -36,7 +36,6 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
       }]
     }
   })
-
   .when('/calendar', {
     templateUrl: 'tpls/calendar.html',
     controller: 'CalendarCtrl',

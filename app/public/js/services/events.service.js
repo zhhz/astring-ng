@@ -1,7 +1,11 @@
 angular.module('a-string')
-.factory('Events', ['StorageManager',
-  function(StorageManager){
+.factory('Events', ['$q', 'StorageManager',
+  function($q, StorageManager){
     var service = {};
+
+    service.getEvents = function(from, to){
+      return StorageManager.storage().getEvents(from, to);
+    };
 
     service.createEvent = function(event){
       return StorageManager.storage().createEvent(event);
@@ -9,6 +13,10 @@ angular.module('a-string')
 
     service.updateEvent = function(event){
       return StorageManager.storage().updateEvent(event);
+    };
+
+    service.deleteEvent = function(event){
+      return StorageManager.storage().deleteEvent(event);
     };
 
     return service;
