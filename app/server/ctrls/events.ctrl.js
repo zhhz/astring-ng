@@ -29,7 +29,7 @@ exports.create = function(Event){
     var event = new Event(req.body);
     event.ownerId = req.user;
 
-    event.save(function (err, event, numberAffected) {
+    event.save(function (err, event_, numberAffected) {
       if (err) {
         return res.status(400).send({
           errors: JSON.stringify(err.errors),
@@ -37,7 +37,7 @@ exports.create = function(Event){
           title: 'Create Event error'
         });
       }
-      res.send(event);
+      res.send(event_);
     });
   };
 };

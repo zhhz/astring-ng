@@ -5,7 +5,7 @@ angular.module('a-string')
 
     service.newTodo = function(){
       return {
-        _id: null,
+        // _id: null,
         title: '',
         startDate: null,
         createdAt: (new Date()).getTime(),

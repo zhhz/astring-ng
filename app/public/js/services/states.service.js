@@ -24,8 +24,9 @@ angular.module('a-string')
     service.reset = function(){
       service.date = moment().format('YYYY-MM-DD');
       service.todos = [];
-      service.events = []; // processed/populated events, ready for render
       service._events = [];// local cache for un-processed events
+      service.events = []; // processed/populated events, ready for render in calendar
+      service.eventTasks = []; // processed/populated events, ready for render on tasks/todo screen
       service.currentTodo = null;
       service.currentSongs = [];
       service.timerOn = false;
@@ -44,7 +45,6 @@ angular.module('a-string')
       service.isToday = selectedDate.isSame(today);
 
       service.fetchTodos();
-      service.fetchEvents();
     };
 
     // ============== TODO ===================================
@@ -55,6 +55,8 @@ angular.module('a-string')
           service.duration = _.reduce(resolved.data, function(result, v, k){
             return result + v.duration;
           }, 0);
+          // then we fetch the events
+          service.fetchEvents();
         }, function(reason){
           $log.error(reason);
         });
@@ -126,8 +128,35 @@ angular.module('a-string')
       });
     };
 
+    service.doneEvent = function(event){
+      var todo         = Todos.newTodo();
+      todo.title       = event.title;
+      todo.startDate   = moment(event.start).format('YYYY-MM-DD');
+      todo.completed   = true;
+      todo.completedAt = (new Date()).getTime();
+      todo.duration    = service.elapse;
+      todo.refId       = event._id;
+
+      // 1. create a completed todo
+      Todos.createTodo(todo).then(function(resolved){
+        service.todos.push(resolved.data);
+
+        // 2. update the eventTasks
+        _.remove(service.eventTasks, function(e){
+          return e._id === event._id;
+        });
+      }, function(reason){
+        $log.error(reason);
+      });
+
+
+    };
+
+
     // ============== EVENTS ===================================
     service.fetchEvents = function(from, to){
+      service.eventTasks = [];
+
       // because we only allowed to schedule one month ahead in the calendar
       if(!from) {
         from = moment(service.date, 'YYYY-MM-DD').subtract(1, 'month').format('YYYY-MM-DD');
@@ -140,6 +169,7 @@ angular.module('a-string')
         service._events = resolved.data;
         // then we have an array of populated (e.g. repeative) events
         service.events = processEvents(resolved.data, from ,to);
+        _eventTasksForTheDay(service.events);
       }, function(reason){
         $log.error(reason);
       });
@@ -150,9 +180,7 @@ angular.module('a-string')
         service._events.push(resolved.data);
         // re-populated (e.g. repeative) events
         var newEvents = processEvents([resolved.data]);
-        _.map(newEvents, function(e){
-          service.events.push(e);
-        });
+        _eventTasksForTheDay(newEvents);
       }, function(reason){
         $log.error(reason);
       });
@@ -176,14 +204,12 @@ angular.module('a-string')
       Events.updateEvent(_e).then(function(resolved){
         // remove the cashed event
         _.remove(service._events, function(e){ return e._id === event._id; });
-        // _.remove(service.events, function(e){return e._id === event._id;});
+        _.remove(service.eventTasks, function(e){return e._id === event._id;});
 
         // push the updated event to the local cache
         service._events.push(resolved.data);
         var newEvents = processEvents([resolved.data]);
-        _.map(newEvents, function(e){
-          service.events.push(e);
-        });
+        _eventTasksForTheDay(newEvents);
       }, function(reason){
         $log.error(reason);
       });
@@ -194,6 +220,7 @@ angular.module('a-string')
       Events.deleteEvent(event).then(function(resolved){
         _.remove(service._events, function(e){ return e._id === _e._id;});
         _.remove(service.events, function(e){return e._id === _e._id;});
+        _.remove(service.eventTasks, function(e){return e._id === _e._id;});
       }, function(reason){
         $log.error(reason);
       });
@@ -289,6 +316,16 @@ angular.module('a-string')
         end: date,
         allDay: true
       };
+    }
+
+    function _eventTasksForTheDay(events){
+      _.map(events, function(e){
+        // if the event task is done
+        var find = _.find(service.todos, function(todo){return todo.refId === e._id;});
+        if(!find && moment(e.start).format('YYYY-MM-DD') === service.date){
+          service.eventTasks.push(e);
+        }
+      });
     }
 
     return service;

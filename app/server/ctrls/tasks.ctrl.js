@@ -20,15 +20,15 @@ exports.create = function(Task){
   return function (req, res) {
     var task = new Task(req.body);
     task.ownerId = req.user;
-    task.save(function (err) {
+    task.save(function (err, task_) {
       if (err) {
         return res.status(400).send({
           errors: utils.errors(err.errors || err),
-          task: task,
+          task: task_,
           title: 'Create Task error'
         });
       }
-      res.send(task);
+      res.send(task_);
     });
   };
 };

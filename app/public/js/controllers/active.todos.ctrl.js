@@ -1,6 +1,6 @@
 angular.module('a-string')
-.controller('ActiveTodosCtrl', ['States', 'Todos',
-  function ActiveTodoCtrl(States, Todos){
+.controller('ActiveTodosCtrl', ['States',
+  function ActiveTodoCtrl(States){
     this.states = States;
 
     this.removeTodo = function (todo) {

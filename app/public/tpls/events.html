@@ -1,0 +1,32 @@
+<div data-ng-controller="ActiveEventsCtrl as activeCtrl">
+  <div class="row"
+    data-ng-repeat="event in activeCtrl.states.eventTasks"
+    style="margin-bottom: 3px;">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+      <div class="input-group input-group-lg">
+        <span class="input-group-btn">
+          <button class="btn btn-success"
+            data-ng-click="activeCtrl.doneEvent(event)"
+            data-ng-disabled="data.isBefore" type="button">
+            <span class="glyphicon glyphicon-ok"></span>
+          </button>
+        </span>
+        <div class="form-control" data-ng-click="activeCtrl.toggleCurrent(event)"
+          data-ng-class="{current: event._id === activeCtrl.states.currentTodo._id}">
+          <div class="todo-list">{{event.title}}</div>
+          <div class="todo-list-label">
+            <span class="label label-warning"
+              data-ng-show="event._id === activeCtrl.states.currentTodo._id && activeCtrl.states.currentSongs.length > 0">
+              BPM: {{activeCtrl.states.currentSongs[0].bpm}}</span>
+            <span class="label label-info"
+              data-ng-show="event._id === activeCtrl.states.currentTodo._id && activeCtrl.states.currentSongs.length > 0">
+              Major: {{activeCtrl.states.currentSongs[0].key}}</span>
+            <span class="label label-primary">{{event.song.category}}</span>
+            <span class="label label-success">{{event.song.book}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
