@@ -1,6 +1,6 @@
 angular.module('a-string')
-.factory('Events', ['$q', 'StorageManager',
-  function($q, StorageManager){
+.factory('Events', ['StorageManager',
+  function(StorageManager){
     var service = {};
 
     service.getEvents = function(from, to){

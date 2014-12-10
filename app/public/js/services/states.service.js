@@ -163,8 +163,7 @@ angular.module('a-string')
         to   = moment(service.date, 'YYYY-MM-DD').add(1, 'month').format('YYYY-MM-DD');
       }
 
-      Events.getEvents(from, to)
-      .then(function(resolved){
+      Events.getEvents(from, to).then(function(resolved){
         // we keep a copy of original events
         service._events = resolved.data;
         // then we have an array of populated (e.g. repeative) events

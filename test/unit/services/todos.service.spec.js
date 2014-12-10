@@ -14,7 +14,6 @@ describe("Todos service", function(){
   it("#newTodo should return an un-saved todo object", function(){
     var newTodo = service.newTodo();
     expect(newTodo).toEqual({
-        _id: null,
         title: '',
         startDate: null,
         createdAt: (new Date()).getTime(),
