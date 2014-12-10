@@ -1,6 +1,8 @@
 angular.module('a-string')
 .controller('CalendarCtrl', ['$log', '$modal', 'States',
   function($log, $modal, States){
+    States.activeMenu = 'calendar';
+
     var self = this;
     self.eventSources = [States.events];
 

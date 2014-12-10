@@ -27,11 +27,12 @@
           <a class="navbar-brand" href="/">A-String</a>
         </div>
 
+
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul ng-if="todoCtrl.states.isAuthenticated()" class="nav navbar-nav" ng-cloak>
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="/#/calendar">Calendar</a></li>
+            <li ng-class="{active: todoCtrl.states.activeMenu == 'home' }"><a href="#">Home</a></li>
+            <li ng-class="{active: todoCtrl.states.activeMenu == 'calendar' }"><a href="/#/calendar">Calendar</a></li>
             <li><a href="#">Settings</a></li>
           </ul>
           <ul ng-if="!todoCtrl.states.isAuthenticated()" class="nav navbar-nav navbar-right">
@@ -43,6 +44,7 @@
         </div>
       </div>
     </nav>
+
 
     <div class="row">
       <div class="col-sm-1"></div>
