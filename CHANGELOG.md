@@ -1,3 +1,25 @@
+<a name="0.3.0"></a>
+## 0.3.0 (2014-12-11)
+
+
+#### Bug Fixes
+
+* highlight selected menu ((f1f44250))
+* fixed unit tests ((3beaa5ab))
+* fixed fullcalendar path in karma config ((96e4f05f))
+* fixed the data comparision issue caused by moment lib ((12ecccdb))
+* fixed the link to CHANGELOG.html ((f06a178f))
+
+
+#### Features
+
+* event tasks as todo tasks ((41f77dca))
+* now we have a fully working calendar ((0c4ce6dc))
+* now we can create/update events ((612ac127))
+* implementing serverside events module ((8c52b18c))
+* integrated fullcalendar ((b83bc1a1))
+
+
 <a name="0.2.6"></a>
 ### 0.2.6 (2014-11-19)
 
