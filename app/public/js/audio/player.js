@@ -1,5 +1,5 @@
-if (typeof (AS) === 'undefined') { var AS = {}; }
-if (typeof (MIDI) === 'undefined') { var MIDI = {}; }
+if (typeof (AS) === 'undefined') { var AS = window.AS = {}; }
+if (typeof (MIDI) === 'undefined') { var MIDI = window.MIDI = {}; }
 
 // make the player a singleton
 AS.player = function(){

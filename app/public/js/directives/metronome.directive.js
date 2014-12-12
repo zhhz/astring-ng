@@ -1,4 +1,4 @@
-if (typeof (AS) === 'undefined') { var AS = {}; }
+if (typeof (window.AS) === 'undefined') { var AS = window.AS = {}; }
 
 angular.module('a-string')
 .directive('asMetronome', ['AudioService', 'States', function(AudioService, States){
@@ -29,7 +29,7 @@ angular.module('a-string')
   };
 
   if(!AS.MIDILoaded){
-    new AS.loader(cb);
+    AS.loader(cb);
   }
 
   return {

@@ -7,14 +7,14 @@ angular.module('a-string')
     self.eventSources = [States.events];
 
     var alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
-      self.alertMessage = ('Event Droped to make dayDelta ' + delta);
+      // self.alertMessage = ('Event Droped to make dayDelta ' + delta);
     };
     var alertOnResize = function(event, delta, revertFunc, jsEvent, ui, view ){
-      self.alertMessage = ('Event Resized to make dayDelta ' + delta);
+      // self.alertMessage = ('Event Resized to make dayDelta ' + delta);
     };
 
     var eventRender = function(view, element){
-      $log.debug('view changed: ' + view.start, view.end);
+      // $log.debug('view changed: ' + view.start, view.end);
     };
 
     var dayClick = function(){

@@ -78,7 +78,7 @@ angular.module('a-string')
       put(todos);
       deferred.resolve({data: todo});
       return deferred.promise;
-    }
+    };
 
     service.getEvents = function(from, to){
       var deferred = $q.defer();
@@ -90,14 +90,6 @@ angular.module('a-string')
     service.createEvent = function(event){
       var deferred = $q.defer();
       return deferred.promise;
-    };
-
-    service.updateEvent = function(event){
-      return $http.put('/api/events/' + event._id, event);
-    };
-
-    service.deleteEvent = function(event){
-      return $http.delete('/api/events/' + event._id);
     };
 
     return service;

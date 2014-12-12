@@ -36,10 +36,20 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
       }]
     }
   })
+  .when('/home', {
+    templateUrl: 'tpls/main.html',
+    controller: 'HomeCtrl',
+    controllerAs: 'homeCtrl'
+  })
   .when('/calendar', {
     templateUrl: 'tpls/calendar.html',
     controller: 'CalendarCtrl',
     controllerAs: 'calendarCtrl'
+  })
+  .when('/settings', {
+    templateUrl: 'tpls/settings.html',
+    controller: 'SettingsCtrl',
+    controllerAs: 'settingsCtrl'
   })
 
   .otherwise({

@@ -7,8 +7,8 @@
   https://github.com/mudcube/MIDI.js
   -------------------------------------
 */
-if (typeof (AS) === 'undefined') { var AS = {}; }
-if (typeof (MIDI) === 'undefined') { var MIDI = {}; }
+if (typeof (AS) === 'undefined') { var AS = window.AS = {}; }
+if (typeof (MIDI) === 'undefined') { var MIDI = window.MIDI = {}; }
 if (typeof (MIDI.Soundfont) === 'undefined') { MIDI.Soundfont = {}; }
 
 AS.loader = function(callback){
