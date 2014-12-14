@@ -1,9 +1,13 @@
 angular.module('a-string')
-.controller('EventCtrl', ['$modalInstance', 'States', 'event',
-  function ($modalInstance, States, event) {
+.controller('EventCtrl', ['$modalInstance', 'States', 'Events', 'event',
+  function ($modalInstance, States, Events, event) {
     var self = this;
     self.states = States;
-    self.event = event;
+    if(!event._orig){
+      self.event = event;
+    }else{
+      self.event = event._orig;
+    }
 
     self.createOrUpdate = function () {
       if(typeof(self.event.title) === 'object'){
@@ -11,9 +15,9 @@ angular.module('a-string')
         self.event.title = self.event.details.title;
       }
       if(self.event._id){
-        States.updateEvent(self.event);
+        Events.updateEvent(self.event);
       }else{
-        States.createEvent(self.event);
+        Events.createEvent(self.event);
       }
       $modalInstance.close('yes');
     };
@@ -21,7 +25,7 @@ angular.module('a-string')
     self.cancel = function () { $modalInstance.dismiss('no'); };
 
     self.delete = function() {
-      States.deleteEvent(self.event);
+      Events.deleteEvent(event);
       $modalInstance.close('yes');
     };
 
@@ -34,7 +38,7 @@ angular.module('a-string')
     // config for popup
     self.format = 'yyyy-MM-dd';
     self.minDate = new Date();
-    self.maxDate = moment().add(31, 'day');
+    self.maxDate = moment().add(180, 'day');
     self.btnBar = false;
 
     self.openFrom = function($event) {

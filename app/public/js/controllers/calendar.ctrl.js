@@ -1,10 +1,9 @@
 angular.module('a-string')
-.controller('CalendarCtrl', ['$log', '$modal', 'States',
-  function($log, $modal, States){
+.controller('CalendarCtrl', ['$log', '$modal', 'States', 'Events',
+  function($log, $modal, States, Events){
     States.activeMenu = 'calendar';
 
     var self = this;
-    self.eventSources = [States.events];
 
     var alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
       // self.alertMessage = ('Event Droped to make dayDelta ' + delta);
@@ -58,11 +57,7 @@ angular.module('a-string')
         controllerAs : 'eventCtrl',
         backdrop     : 'static',
         size         : 'sm',
-        resolve      : {
-          event      : function(){
-            return _.find(States._events, function(e){return e._id === event._id;});
-          }
-        }
+        resolve      : { event : function(){ return event; } }
       });
 
       modalInstance.result.then(function () {
@@ -72,20 +67,36 @@ angular.module('a-string')
       });
     };
 
+
+    // this event sources will handle add/update/delte calendar event
+    self.eventSources = [Events.calendarEvents];
+
+    // when you click next/pre on the full calendar
+    var loadEvents = function (from, to, timezone, callback){
+      Events.fetchEvents(from.format('YYYY-MM-DD'), to.format('YYYY-MM-DD'))
+        .then(function(resolved){
+          callback(resolved);
+        }, function(reason){
+          $log.error(reason);
+        });
+    };
+
     self.uiConfig = {
       calendar   : {
         height   : 450,
         editable : true,
         header   : {
-          left   : 'title',
+          left   : 'today prev,next',
           center : '',
-          right  : 'today prev,next'
+          right  : 'title'
         },
         eventClick  : eventClick,
-        eventDrop   : alertOnDrop,
+        droppable   : false,
         eventResize : alertOnResize,
         eventRender : eventRender,
-        dayClick    : dayClick
+        dayClick    : dayClick,
+        // events      : Events.calendarEvents
+        events      : loadEvents
       }
     };
 
