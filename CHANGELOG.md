@@ -1,3 +1,13 @@
+<a name="0.3.1"></a>
+### 0.3.1 (2014-12-14)
+
+
+#### Features
+
+* a better way to handle repeative events and event tasks, better navigation on fu ((22317e1e))
+* implemented home and setting ctrls, no more reload sondfonts ((dad06f49))
+
+
 <a name="0.3.0"></a>
 ## 0.3.0 (2014-12-11)
 
