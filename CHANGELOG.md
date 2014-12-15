@@ -1,3 +1,17 @@
+<a name="0.3.2"></a>
+### 0.3.2 (2014-12-14)
+
+
+#### Bug Fixes
+
+* nav bar for logged in user ((695f4044))
+
+
+#### Features
+
+* adds 'Hunters Chorus' from Suzuki Book2 ((359561b8))
+
+
 <a name="0.3.1"></a>
 ### 0.3.1 (2014-12-14)
 
