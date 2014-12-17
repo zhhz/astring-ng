@@ -44,9 +44,9 @@ angular.module('a-string')
       });
 
       modalInstance.result.then(function () {
-        $log.info('Modal close at: ' + new Date());
+        // $log.info('Modal close at: ' + new Date());
       }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
+        // $log.info('Modal dismissed at: ' + new Date());
       });
     };
 
@@ -61,25 +61,28 @@ angular.module('a-string')
       });
 
       modalInstance.result.then(function () {
-        $log.info('Modal close at: ' + new Date());
+        // $log.info('Modal close at: ' + new Date());
       }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
+        // $log.info('Modal dismissed at: ' + new Date());
       });
     };
 
 
-    // this event sources will handle add/update/delte calendar event
-    self.eventSources = [Events.calendarEvents];
 
-    // when you click next/pre on the full calendar
+    // when you click next/pre on the full calendar or change view
     var loadEvents = function (from, to, timezone, callback){
       Events.fetchEvents(from.format('YYYY-MM-DD'), to.format('YYYY-MM-DD'))
         .then(function(resolved){
-          callback(resolved);
+          // don't do the callback, because the returned event is exactly the same as Events.calendarEvents,
+          // which is monitored by the directive. Otherwise every event will be doubled
+          // callback(resolved);
         }, function(reason){
           $log.error(reason);
         });
     };
+
+    // this event sources will handle add/update/delte calendar event
+    self.eventSources = [loadEvents, Events.calendarEvents];
 
     self.uiConfig = {
       calendar   : {
@@ -94,9 +97,9 @@ angular.module('a-string')
         droppable   : false,
         eventResize : alertOnResize,
         eventRender : eventRender,
-        dayClick    : dayClick,
+        dayClick    : dayClick
         // events      : Events.calendarEvents
-        events      : loadEvents
+        // events      : loadEvents
       }
     };
 

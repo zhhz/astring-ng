@@ -10,6 +10,7 @@ angular.module('a-string')
     // I want return a promise so I can handle the returned events and pipe it to Fullcalendar
     service.fetchEvents = function(from, to){
       while(service.calendarEvents.length > 0){ service.calendarEvents.pop();}
+      _start = null;
 
       var deferred = $q.defer();
       StorageManager.storage().getEvents(from, to)
@@ -80,36 +81,36 @@ angular.module('a-string')
     // Helper functions for processing events
     // TODO: refactor DRY
     ////////////////////////////////////////////////////////////////////////////
-    var DAY_IN_MIL_SEC = 60 * 60 * 24 * 1000,
-        WEEK_IN_MIL_SEC = 60 * 60 * 24 * 1000 * 7;
-    function _processEvents(events, from, to){
-      from = (new Date(from)).getTime();
-      to = (new Date(to + ' 23:59:59')).getTime();
 
-      // holds the regular and populated events
-      var _processedEvents = [];
+    // this function is called from the calendar ctrl, only for handling calendar events
+    function _processEvents(events, from, to){
+      _from = moment(from, 'YYYY-MM-DD').subtract(1, 'month').format('YYYY-MM-DD');
+      _to   = moment(to, 'YYYY-MM-DD').add(1, 'month').format('YYYY-MM-DD');
+
       _.each(events, function(e){
         if(!e.isRepeative){
-          _processedEvents.push(_dupEvent(e.start, e));
+          service.calendarEvents.push(_dupEvent(e.start, e));
         }else{
           var events_ = populateRepeatEvent(e, from, to);
           _.forEach(events_, function(e){
-            _processedEvents.push(e);
+            service.calendarEvents.push(_dupEvent(e.start, e));
           });
         }
       });
-      return _processedEvents;
+      return service.calendarEvents;
     }
+
+
+    // this function is called from todo/states service, for handling the event type tasks
     function processEvents(events, from, to){
       from = (new Date(from)).getTime();
       to = (new Date(to + ' 23:59:59')).getTime();
 
       // holds the regular and populated events
-      // var _processedEvents = [];
       _.each(events, function(e){
         if(!e.isRepeative){
           service.calendarEvents.push(_dupEvent(e.start, e));
-          if(moment(e.start).format('YYYY-MM-DD') === _start){
+          if(_start && moment(e.start).format('YYYY-MM-DD') === _start){
             service.todoEvents.push(e);
           }
         }else{
@@ -117,15 +118,16 @@ angular.module('a-string')
           _.forEach(events_, function(e){
             service.calendarEvents.push(e);
             //FIXME: this is a performance hit
-            if(moment(e.start).format('YYYY-MM-DD') === _start){
+            if(_start && moment(e.start).format('YYYY-MM-DD') === _start){
               service.todoEvents.push(e);
             }
           });
         }
       });
-      // return _processedEvents;
     }
 
+    var DAY_IN_MIL_SEC = 60 * 60 * 24 * 1000,
+        WEEK_IN_MIL_SEC = 60 * 60 * 24 * 1000 * 7;
     function populateRepeatEvent(repeatEvent, from, to){
       var ret = [];
       var every, eventStart, eventEnd, mmnt, step, loop;
