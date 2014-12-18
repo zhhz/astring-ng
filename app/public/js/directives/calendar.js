@@ -19,7 +19,7 @@ angular.module('ui.calendar', [])
 
       var sourceSerialId = 1,
           eventSerialId = 1,
-          sources = $scope.eventSources,
+          sources = $scope.eventSources || [],
           extraEventSignature = $scope.calendarWatchEvent ? $scope.calendarWatchEvent : angular.noop,
 
           wrapFunctionWithScopeApply = function(functionToWrap){
@@ -201,7 +201,7 @@ angular.module('ui.calendar', [])
       controller: 'uiCalendarCtrl',
       link: function(scope, elm, attrs, controller) {
 
-        var sources = scope.eventSources,
+        var sources = scope.eventSources || [],
             sourcesChanged = false,
 
             calendar,
