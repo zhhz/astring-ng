@@ -3,6 +3,9 @@ var env     = process.env.NODE_ENV || 'development',
     jwt = require('jwt-simple'),
     moment = require('moment');
 
+/*
+ * authentication
+ */
 exports.ensureAuthenticated = function(req, res, next) {
   if (!req.headers.authorization) {
     return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });

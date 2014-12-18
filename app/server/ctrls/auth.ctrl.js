@@ -26,7 +26,7 @@ exports.login = function(User){
         if (!isMatch) {
           return res.status(401).send({ message: 'Wrong email and/or password' });
         }
-        res.send({ token: createToken(user, config) });
+        res.send({ token: createToken(user) });
       });
     });
   };
@@ -44,7 +44,7 @@ exports.signup = function(User){
         password: req.body.password
       });
       user.save(function() {
-        res.send({ token: createToken(user, config) });
+        res.send({ token: createToken(user) });
       });
     });
   };
@@ -89,7 +89,7 @@ exports.google = function(User){
               user.google = profile.sub;
               user.displayName = user.displayName || profile.name;
               user.save(function() {
-                var token = createToken(user, config);
+                var token = createToken(user);
                 res.send({ token: token });
               });
             });
@@ -98,13 +98,13 @@ exports.google = function(User){
           // Step 3b. Create a new user account or return an existing one.
           User.findOne({ google: profile.sub }, function(err, existingUser) {
             if (existingUser) {
-              return res.send({ token: createToken(existingUser, config) });
+              return res.send({ token: createToken(existingUser) });
             }
             var user = new User();
             user.google = profile.sub;
             user.displayName = profile.name;
             user.save(function(err) {
-              var token = createToken(user, config);
+              var token = createToken(user);
               res.send({ token: token });
             });
           });
