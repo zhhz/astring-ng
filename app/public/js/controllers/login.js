@@ -1,6 +1,6 @@
 angular.module('a-string')
-.controller('LoginCtrl', ['$log', '$auth', 'States', 'AlertService',
-  function($log, $auth, States, AlertService) {
+.controller('LoginCtrl', ['$location', '$log', '$auth', 'States', 'AlertService',
+  function($location, $log, $auth, States, AlertService) {
     var self = this;
 
     // signed up users login
@@ -8,7 +8,7 @@ angular.module('a-string')
       $auth.login({ email: self.email, password: self.password })
         .then(function() {
           $log.info('You have successfully logged in');
-          States.init();
+          $location.path('/home');
         }).catch(function(response) {
           $log.error(response.data.message);
           AlertService.set(response.data.message);
@@ -20,6 +20,7 @@ angular.module('a-string')
       $auth.authenticate(provider)
         .then(function() {
           $log.info('You have successfully logged in');
+          $location.path('/home');
         }).catch(function(response) {
           $log.error(response.data.message);
           AlertService.set(response.data.message);

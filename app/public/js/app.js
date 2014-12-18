@@ -37,7 +37,7 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
     }
   })
   .when('/home', {
-    templateUrl: 'tpls/main.html',
+    templateUrl: 'tpls/home.html',
     controller: 'HomeCtrl',
     controllerAs: 'homeCtrl'
   })
