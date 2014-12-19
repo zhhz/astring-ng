@@ -3,6 +3,5 @@ angular.module('a-string')
   function TodoCtrl(States) {
     States.init();
     this.states = States;
-    this.states.activeMenu = 'home';
   }
 ]);

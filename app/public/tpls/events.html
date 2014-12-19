@@ -6,7 +6,8 @@
         <span class="input-group-btn">
           <button class="btn btn-success"
             data-ng-click="activeCtrl.doneEvent(event)"
-            data-ng-disabled="data.isBefore" type="button">
+            data-ng-disabled="activeCtrl.states.isBefore"
+            type="button">
             <span class="glyphicon glyphicon-ok"></span>
           </button>
         </span>

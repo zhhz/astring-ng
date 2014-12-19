@@ -5,7 +5,9 @@ angular.module('a-string')
     States.activeMenu = 'home';
     States.init();
 
-    var dayClick = function(){
+    var dayClick = function(date, e, view){
+      States.activeMenu = 'todos';
+      States.setDate(date.format('YYYY-MM-DD'));
       $location.path('/todos');
     };
 

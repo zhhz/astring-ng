@@ -12,7 +12,7 @@
           <button class="btn btn-danger"
             data-ng-click="completedCtrl.activateTodo(todo)"
             type="button"
-            data-ng-disabled="!$last || data.isBefore">
+            data-ng-disabled="!$last || completedCtrl.states.isBefore">
             <span class="glyphicon glyphicon-remove"></span>
           </button>
         </span>
