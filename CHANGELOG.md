@@ -1,3 +1,23 @@
+<a name="0.3.3"></a>
+### 0.3.3 (2014-12-19)
+
+
+#### Bug Fixes
+
+* pull right for the text on home screen ((7fd49a48))
+* lots of fixes on the todo list views ((dd1bee61))
+* check if the ng-modle passed in by the directive ((c82369d4))
+* better way to handle calendar events ((ba047c64))
+* fixed the calendar events ((5ee8e981))
+
+
+#### Features
+
+* using mapreduce to get the time spend on home screen ((c9842d1f))
+* new home page for logged in user - Jerry Scienfeld, Do Not Break the Chain ((3779bfdf))
+* adds new loading css ((b8e2a49c))
+
+
 <a name="0.3.2"></a>
 ### 0.3.2 (2014-12-14)
 
