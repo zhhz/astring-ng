@@ -83,13 +83,12 @@ exports.aggregate = function(Task){
 
     var options = {};
     options.query = {
-                      startDate: {$gte: new Date(from), $lte: new Date(to)},
-                      completedAt: {$ne: null},
+                      completedAt: {$gte: new Date(from), $lte: new Date(to)},
+                      completed:  true,
                       ownerId: req.user
                     };
 
     options.map = function(){
-      // var c = this.startDate;
       var c = this.completedAt;
       var date = {year: c.getFullYear(), month: c.getMonth(), day: c.getDate()};
       emit(date, this.duration);

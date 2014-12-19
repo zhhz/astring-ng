@@ -24,6 +24,10 @@ angular.module('a-string')
       return $http.put('/api/tasks/' + todo._id, todo);
     };
 
+    service.getAggregateTodos = function(from, to){
+      return $http.get('/api/tasks/aggregate?start=' + from + '&end=' + to);
+    };
+
     //========== EVENTS TABLE =====================================
     service.getEvents = function(from, to){
       return $http.get('/api/events?from=' + from + '&to=' + to);

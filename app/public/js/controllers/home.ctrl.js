@@ -1,12 +1,12 @@
 angular.module('a-string')
-.controller('HomeCtrl', ['States', 'Todos', 'Events',
-  function(States, Todos, Events){
+.controller('HomeCtrl', ['States', 'Todos', 'Events', '$modal', '$log', '$location',
+  function(States, Todos, Events, $modal, $log, $location){
     var self = this;
     States.activeMenu = 'home';
     States.init();
 
     var dayClick = function(){
-      self.alertMessage = 'Day clicked';
+      $location.path('/todos');
     };
 
     var eventRender = function(view, element){
@@ -30,9 +30,23 @@ angular.module('a-string')
 
     // when you click next/pre on the full calendar or change view
     var loadTasks = function (from, to, timezone, callback){
-      Events.fetchEvents(from.format('YYYY-MM-DD'), to.format('YYYY-MM-DD'))
+      Todos.getAggregateTodos(from.format('YYYY-MM-DD'), to.format('YYYY-MM-DD'))
         .then(function(resolved){
-          callback(resolved);
+          // NOTE: the model is the aggregate results
+          var tasks = [];
+          var total = 0, date;
+          _.each(resolved.data, function(t){
+            date = t._id;
+            total += t.value;
+            // build the event which the fullcalendar can understand
+            var te = {
+              title: '✔ ' + formatSecondsAsTime(t.value),
+              allDay: true,
+              start: new Date(date.year, date.month, date.day)
+            };
+            tasks.push(te);
+          });
+          callback(tasks);
         }, function(reason){
           $log.error(reason);
         });
@@ -54,5 +68,18 @@ angular.module('a-string')
         events      : loadTasks
       }
     };
+
+
+    function formatSecondsAsTime(seconds) {
+      var hours, hoursString, minutes, minutesString, secondsInt, secs, secondsStr;
+      secondsInt = parseInt(seconds, 10) || 0;
+      secs = parseInt(secondsInt % 60, 10);
+      secondsStr = secs > 9 ? secs : '0' + secs;
+      hours = parseInt(secondsInt / 60 / 60, 10);
+      minutes = parseInt((secondsInt / 60) % 60, 10);
+      hoursString = hours > 9 ? hours : '0' + hours;
+      minutesString = minutes > 9 ? minutes : '0' + minutes;
+      return hoursString + ':' + minutesString + ':' + secondsStr;
+    }
   }
 ]);

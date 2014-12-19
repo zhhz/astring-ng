@@ -35,6 +35,10 @@ angular.module('a-string')
       return StorageManager.storage().updateTodo(todo);
     };
 
+    service.getAggregateTodos = function(from, to){
+      return StorageManager.storage().getAggregateTodos(from, to);
+    };
+
     return service;
   }
 ]);

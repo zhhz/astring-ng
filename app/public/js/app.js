@@ -51,6 +51,9 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
     controller: 'SettingsCtrl',
     controllerAs: 'settingsCtrl'
   })
+  .when('/todos', {
+    templateUrl: 'tpls/main.html'
+  })
 
   .otherwise({
     redirectTo: '/'
