@@ -60,7 +60,7 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
   });
 
   $authProvider.google({
-    clientId: '750530476209-3cu1c6a8o2or8su24khll06odcd3eph3.apps.googleusercontent.com'
+    clientId: '750530476209-4bo2gsc9a54mpo1a0rqlbp9d16cguo8u.apps.googleusercontent.com'
   });
 
   $authProvider.facebook({
