@@ -1,3 +1,12 @@
+<a name="0.3.4"></a>
+### 0.3.4 (2014-12-19)
+
+
+#### Bug Fixes
+
+* fix the google OAuth 2.0(turned on Contacts API and Google+ API on google side) ((9b6445cb))
+
+
 <a name="0.3.3"></a>
 ### 0.3.3 (2014-12-19)
 
