@@ -74,7 +74,6 @@ exports.google = function(User){
 
       // Step 2. Retrieve profile information about the current user.
       request.get({ url: peopleApiUrl, headers: headers, json: true }, function(err, response, profile) {
-
         // Step 3a. Link user accounts.
         if (req.headers.authorization) {
           User.findOne({ google: profile.sub }, function(err, existingUser) {
@@ -91,7 +90,7 @@ exports.google = function(User){
               user.displayName = user.displayName || profile.name;
               user.save(function() {
                 var token = createToken(user);
-                res.send({ token: token });
+                res.send({ token: token, displayName: user.displayName });
               });
             });
           });
@@ -99,14 +98,14 @@ exports.google = function(User){
           // Step 3b. Create a new user account or return an existing one.
           User.findOne({ google: profile.sub }, function(err, existingUser) {
             if (existingUser) {
-              return res.send({ token: createToken(existingUser) });
+              return res.send({ token: createToken(existingUser), displayName: existingUser.displayName });
             }
             var user = new User();
             user.google = profile.sub;
             user.displayName = profile.name;
             user.save(function(err) {
               var token = createToken(user);
-              res.send({ token: token });
+              res.send({ token: token, displayName: user.displayName });
             });
           });
         }

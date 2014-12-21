@@ -7,7 +7,7 @@ angular.module('a-string')
     self.login = function() {
       $auth.login({ email: self.email, password: self.password })
         .then(function() {
-          $log.info('You have successfully logged in');
+          States.displayName = resolved.data.displayName;
           $location.path('/home');
         }).catch(function(response) {
           $log.error(response.data.message);
@@ -18,8 +18,8 @@ angular.module('a-string')
     // OAuth users
     self.authenticate = function(provider) {
       $auth.authenticate(provider)
-        .then(function() {
-          $log.info('You have successfully logged in');
+        .then(function(resolved) {
+          States.displayName = resolved.data.displayName;
           $location.path('/home');
         }).catch(function(response) {
           $log.error(response.data.message);
