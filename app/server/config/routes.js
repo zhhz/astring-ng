@@ -23,6 +23,7 @@ module.exports = function (app, config) {
   app.post('/auth/signup', authCtrl.signup(User));
   app.post('/auth/google', authCtrl.google(User));
   app.post('/auth/facebook', authCtrl.facebook(User));
+  app.get('/auth/twitter', authCtrl.twitter(User));
 
   // tasks routes
   app.get('/api/tasks', auth.ensureAuthenticated, tasksCtrl.index(Task));
