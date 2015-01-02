@@ -176,7 +176,7 @@ exports.facebook = function(User){
             user.displayName = profile.name;
             user.save(function() {
               var token = createToken(user);
-              res.send({ token: token });
+              res.send({ token: token, displayName: user.displayName });
             });
           });
         }
@@ -255,7 +255,7 @@ exports.twitter = function(User){
             user.displayName = profile.screen_name;
             user.save(function() {
               var token = createToken(user);
-              res.send({ token: token });
+              res.send({ token: token, displayName: user.displayName });
             });
           });
         }

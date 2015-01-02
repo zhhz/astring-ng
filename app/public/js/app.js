@@ -60,6 +60,10 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
   });
 
   $authProvider.google({
+    // local dev api provided by zhonghai.zuo@gmail.com
+    // clientId: '806186532220-n46jr9dhsol53a3nqsfno0pe3pt8fkpn.apps.googleusercontent.com'
+
+    // production, by astring.app@gmail.com
     clientId: '750530476209-4bo2gsc9a54mpo1a0rqlbp9d16cguo8u.apps.googleusercontent.com'
   });
 
