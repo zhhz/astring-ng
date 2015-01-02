@@ -6,7 +6,7 @@ angular.module('a-string')
     // signed up users login
     self.login = function() {
       $auth.login({ email: self.email, password: self.password })
-        .then(function() {
+        .then(function(resolved) {
           States.displayName = resolved.data.displayName;
           $location.path('/home');
         }).catch(function(response) {

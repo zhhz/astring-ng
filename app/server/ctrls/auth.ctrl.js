@@ -27,7 +27,7 @@ exports.login = function(User){
         if (!isMatch) {
           return res.status(401).send({ message: 'Wrong email and/or password' });
         }
-        res.send({ token: createToken(user) });
+        res.send({ token: createToken(user), displayName: user.displayName });
       });
     });
   };
