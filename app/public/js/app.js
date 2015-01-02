@@ -1,12 +1,20 @@
 /**
  * The main app module
  */
-angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui.bootstrap', 'ui.calendar', 'satellizer'])
+angular.module('a-string', ['ngRoute',
+                            'ngTouch',
+                            'ngMessages',
+                            'ngAnimate',
+                            'ui.bootstrap',
+                            'ui.calendar',
+                            'satellizer',
+                            'angular-loading-bar'])
+//=======================================
+//  routes
+//=======================================
 .config(function ($routeProvider, $authProvider) {
   'use strict';
-
   // console.warn = console.trace.bind(console);
-
   $routeProvider
   .when('/', {
     templateUrl: 'tpls/main.html'
@@ -58,7 +66,11 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
   .otherwise({
     redirectTo: '/'
   });
-
+})
+//=======================================
+//  auth
+//=======================================
+.config(function ($authProvider) {
   $authProvider.google({
     // local dev api provided by zhonghai.zuo@gmail.com
     // clientId: '806186532220-n46jr9dhsol53a3nqsfno0pe3pt8fkpn.apps.googleusercontent.com'
@@ -87,4 +99,11 @@ angular.module('a-string', ['ngRoute', 'ngTouch', 'ngMessages', 'ngAnimate', 'ui
     clientId: '0ba2600b1dbdb756688b'
   });
 
-});
+})
+//=======================================
+//  loading-bar
+//=======================================
+.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider){
+  cfpLoadingBarProvider.includeSpinner = false;
+}]);
+
