@@ -15,43 +15,44 @@
     <style>[ng-cloak] { display: none; }</style>
   </head>
   <body data-ng-app="a-string">
-    <div data-ng-controller="TodoCtrl as todoCtrl">
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">A-String</a>
-          </div>
+    <div data-ng-controller="TodoCtrl as todoCtrl" class="container-fluid">
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">A-String
+            <img alt="A-String" src="img/violin120.png">
+          </a>
+        </div>
 
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul ng-if="todoCtrl.states.isAuthenticated()" class="nav navbar-nav" ng-cloak>
-              <li ng-class="{active: todoCtrl.states.activeMenu == 'home' }"><a href="/#/home">Home</a></li>
-              <li ng-class="{active: todoCtrl.states.activeMenu == 'calendar' }"><a href="/#/calendar">Calendar</a></li>
-              <li ng-class="{active: todoCtrl.states.activeMenu == 'settings' }"><a href="/#/settings">Settings</a></li>
-            </ul>
-            <ul ng-if="!todoCtrl.states.isAuthenticated()" class="nav navbar-nav navbar-right">
-              <li><a href="/#/login" id="link-login">Login</a></li>
-            </ul>
-            <ul ng-if="todoCtrl.states.isAuthenticated()" class="nav navbar-nav navbar-right" ng-cloak>
-              <li><a href="/#/settings/users">{{todoCtrl.states.displayName}}</a></li>
-              <li><a href="/#/logout" id="link-logout">Logout</a></li>
-            </ul>
-          </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul ng-if="todoCtrl.states.isAuthenticated()" class="nav navbar-nav" ng-cloak>
+            <li ng-class="{active: todoCtrl.states.activeMenu == 'home' }"><a href="/#/home">Home</a></li>
+            <li ng-class="{active: todoCtrl.states.activeMenu == 'calendar' }"><a href="/#/calendar">Calendar</a></li>
+            <li ng-class="{active: todoCtrl.states.activeMenu == 'settings' }"><a href="/#/settings">Settings</a></li>
+          </ul>
+          <ul ng-if="!todoCtrl.states.isAuthenticated()" class="nav navbar-nav navbar-right">
+            <li><a href="/#/login" id="link-login">Login</a></li>
+          </ul>
+          <ul ng-if="todoCtrl.states.isAuthenticated()" class="nav navbar-nav navbar-right" ng-cloak>
+            <li><a href="/#/settings/users">{{todoCtrl.states.displayName}}</a></li>
+            <li><a href="/#/logout" id="link-logout">Logout</a></li>
+          </ul>
         </div>
       </nav>
-
-      <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10"
-          data-as-alert-bar alertmessage="todoCtrl.states.alert.errorMessage"></div>
-        <div class="col-sm-1"></div>
+      <div  class="container-fluid">
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10"
+            data-as-alert-bar alertmessage="todoCtrl.states.alert.errorMessage"></div>
+          <div class="col-sm-1"></div>
+        </div>
       </div>
     </div>
 
