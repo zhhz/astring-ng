@@ -1,3 +1,15 @@
+<a name="0.3.7"></a>
+### 0.3.7 (2015-01-02)
+
+
+#### Bug Fixes
+
+* show display name for registered user ((84c1d6ab))
+* removed loggin entry for linkedin, yahoo and github ((69b0cc7e))
+* show logged in user display name for facebook and twitter users ((fd735fe8))
+* fixed google OAuth ((dc6fa8b9))
+
+
 <a name="0.3.6"></a>
 ### 0.3.6 (2014-12-21)
 
