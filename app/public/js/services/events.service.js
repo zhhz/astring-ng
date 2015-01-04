@@ -88,15 +88,16 @@ angular.module('a-string')
         }else{ // repeat event
           var _from, _to;
           if(!from){
-            _from = e.start.getTime();
+            _from = (new Date(e.start)).getTime();
             // Q: why 45?
             // A: if the repeats start from the first day of the month, most of the time the first week of next
             //    month will be showed on the calendar(month view)
+            // _to = (new Date(_to + ' 23:59:59')).getTime();
             _to = moment(e.start).add('45', 'day').format('YYYY-MM-DD');
-            _to = (new Date(_to + ' 23:59:59')).getTime();
+            _to = moment(_to + ' 23:59:59', 'YYYY-MM-DD HH:mm:ss').toDate().getTime();
           }else{
             _from = (new Date(from)).getTime();
-            _to = (new Date(to + ' 23:59:59')).getTime();
+            _to = moment(to + ' 23:59:59', 'YYYY-MM-DD HH:mm:ss').toDate().getTime();
           }
 
           var events_ = populateRepeatEvent(e, _from, _to);
@@ -112,7 +113,7 @@ angular.module('a-string')
     // this function is called from todo/states service, for handling the event type tasks
     function processEvents(events, from, to, date){
       from = (new Date(from)).getTime();
-      to = (new Date(to + ' 23:59:59')).getTime();
+      to = moment(to + ' 23:59:59', 'YYYY-MM-DD HH:mm:ss').toDate().getTime();
 
       // holds the regular and populated events
       _.each(events, function(e){
