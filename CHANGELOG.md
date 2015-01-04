@@ -1,3 +1,18 @@
+<a name="0.3.9"></a>
+### 0.3.9 (2015-01-04)
+
+
+#### Bug Fixes
+
+* fixed the date parsing issue on mobile devices:    won't work in safari and chro ((3127dbc5))
+* adds 2px padding to the top nav bar to show the loading bar ((fb56615f))
+
+
+#### Features
+
+* adds Musette ((eb7908bf))
+
+
 <a name="0.3.8"></a>
 ### 0.3.8 (2015-01-03)
 
