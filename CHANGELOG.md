@@ -1,3 +1,12 @@
+<a name="0.3.10"></a>
+### 0.3.10 (2015-01-04)
+
+
+#### Bug Fixes
+
+* removed autofocus directive on new task input, it is a little bit annoying on iP ((896bfad0))
+
+
 <a name="0.3.9"></a>
 ### 0.3.9 (2015-01-04)
 
