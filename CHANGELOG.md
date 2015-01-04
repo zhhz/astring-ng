@@ -1,3 +1,18 @@
+<a name="0.3.8"></a>
+### 0.3.8 (2015-01-03)
+
+
+#### Bug Fixes
+
+* oooops, forgot to check in the index page ((cbff0843))
+
+
+#### Features
+
+* show brand image ((5fe88ec1))
+* adds loading bar ((c3536c3d))
+
+
 <a name="0.3.7"></a>
 ### 0.3.7 (2015-01-02)
 
