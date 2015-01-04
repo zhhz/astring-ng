@@ -28,7 +28,6 @@
         <div class="input-group input-group-lg">
           <div class="input-group-addon"> <span class="glyphicon glyphicon-search"></span> </div>
           <input id="new-input" type="text"
-            autofocus
             data-ng-model="newCtrl.song"
             placeholder="What needs to be done?"
             typeahead="song as song.title for song in newCtrl.states.songs | filter:{title:$viewValue}"
