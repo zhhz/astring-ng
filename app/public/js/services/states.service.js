@@ -157,6 +157,8 @@ angular.module('a-string')
         _.remove(service.eventTodos, function(e){
           return e._id === event._id;
         });
+        // 3. clear the timer
+        service.elapse = 0;
       }, function(reason){
         $log.error(reason);
       });
