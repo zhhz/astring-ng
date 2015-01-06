@@ -1,3 +1,12 @@
+<a name="0.3.12"></a>
+### 0.3.12 (2015-01-06)
+
+
+#### Bug Fixes
+
+* clear timer/elapse after an event task is finished ((c9f708b0))
+
+
 <a name="0.3.11"></a>
 ### 0.3.11 (2015-01-06)
 
