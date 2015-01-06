@@ -1,5 +1,4 @@
-var mongoose  = require('mongoose'),
-
+var mongoose   = require('mongoose'),
     auth       = require('../middlewares/auth'),
     authCtrl   = require('../ctrls/auth.ctrl'),
     booksCtrl  = require('../ctrls/books.ctrl'),

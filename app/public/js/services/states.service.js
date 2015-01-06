@@ -1,12 +1,26 @@
 angular.module('a-string')
-.factory('States', ['$q', '$auth', 'Todos', 'Events', 'Songs', '$log', 'AlertService',
-  function($q, $auth, Todos, Events, Songs, $log, AlertService){
+.factory('States', ['$window', '$q', '$auth', 'Todos', 'Events', 'Songs', '$log', 'AlertService',
+  function($window, $q, $auth, Todos, Events, Songs, $log, AlertService){
     var service = {};
 
     service.alert = AlertService;
 
     service.isAuthenticated = function(){
       return $auth.isAuthenticated();
+    };
+
+    service.displayName = function(){
+      var tokenName = 'satellizer_token';
+      var token = $window.localStorage[tokenName];
+      var name = '';
+      if (token) {
+        if (token.split('.').length === 3) {
+          var base64Url = token.split('.')[1];
+          var base64 = base64Url.replace('-', '+').replace('_', '/');
+          name = JSON.parse($window.atob(base64)).dis || '';
+        }
+      }
+      return name;
     };
 
     service.init = function(){

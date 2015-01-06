@@ -1,5 +1,5 @@
 var bodyParser = require('body-parser'),
-    logger = require('morgan');
+    logger     = require('morgan');
 
 module.exports = function (app, express, config) {
 

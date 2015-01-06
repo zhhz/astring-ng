@@ -12,7 +12,8 @@ function createToken(user) {
   var payload = {
     sub: user._id,
     iat: moment().unix(),
-    exp: moment().add(14, 'days').unix()
+    exp: moment().add(14, 'days').unix(),
+    dis: user.displayName
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
 }
@@ -45,7 +46,7 @@ exports.signup = function(User){
         password: req.body.password
       });
       user.save(function() {
-        res.send({ token: createToken(user) });
+        res.send({ token: createToken(user), displayName: user.displayName });
       });
     });
   };
