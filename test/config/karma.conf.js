@@ -25,7 +25,6 @@ module.exports = function(config) {
       'bower_components/moment/moment.js',
       'bower_components/satellizer/satellizer.js',
       'bower_components/fullcalendar/dist/fullcalendar.js',
-      'bower_components/angular-ui-calendar/src/calendar.js',
       'bower_components/angular-loading-bar/src/loading-bar.js',
       'app/public/js/**/*.js',
       'test/unit/**/*.js'
