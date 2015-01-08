@@ -54,10 +54,10 @@ angular.module('a-string', ['ngRoute',
     controller: 'CalendarCtrl',
     controllerAs: 'calendarCtrl'
   })
-  .when('/settings', {
-    templateUrl: 'tpls/settings.html',
-    controller: 'SettingsCtrl',
-    controllerAs: 'settingsCtrl'
+  .when('/tools', {
+    templateUrl: 'tpls/Tools.html',
+    controller: 'ToolsCtrl',
+    controllerAs: 'toolsCtrl'
   })
   .when('/todos', {
     templateUrl: 'tpls/main.html'
