@@ -29,14 +29,18 @@ module.exports = function (app, config) {
   app.post('/api/tasks', auth.ensureAuthenticated, tasksCtrl.create(Task));
   app.put('/api/tasks/:id', auth.ensureAuthenticated, tasksCtrl.update(Task));
   app.delete('/api/tasks/:id', auth.ensureAuthenticated, tasksCtrl.destroy(Task));
-
-  app.get('/api/tasks/aggregate', auth.ensureAuthenticated, tasksCtrl.aggregate(Task));
-  app.get('/api/tasks/aggregateAll', auth.ensureAuthenticated, tasksCtrl.aggregateAll(Task));
+  // statistic functions
+  app.get('/api/tasks/mrByDay', auth.ensureAuthenticated, tasksCtrl.mrByDay(Task));
+  app.get('/api/tasks/mrAll', auth.ensureAuthenticated, tasksCtrl.mrAll(Task));
+  app.get('/api/tasks/timeSpent/:id', auth.ensureAuthenticated, tasksCtrl.timeSpent(Task));
+  app.get('/api/tasks/timeSpent', auth.ensureAuthenticated, tasksCtrl.timeSpent(Task));
 
   // events routes
   app.get('/api/events', auth.ensureAuthenticated, eventsCtrl.index(Event));
   app.post('/api/events', auth.ensureAuthenticated, eventsCtrl.create(Event));
   app.put('/api/events/:id', auth.ensureAuthenticated, eventsCtrl.update(Event));
   app.delete('/api/events/:id', auth.ensureAuthenticated, eventsCtrl.destroy(Event));
+
+
 };
 

@@ -75,7 +75,7 @@ exports.destroy = function(Task){
   };
 };
 
-exports.aggregate = function(Task){
+exports.mrByDay = function(Task){
   return function(req, res){
     var q = req.query;
     var from = new Date(q.start);
@@ -105,6 +105,45 @@ exports.aggregate = function(Task){
     });
   };
 };
+
+exports.timeSpent = function(Task){
+  return function(req, res){
+    var title = req.params.id;
+         // q    = req.query,
+         // from = new Date(q.start),
+         // to   = new Date(q.end);
+
+    if(!title){ //all the songs
+      // Task.find({owerid: req.user, completed: true}, function(err, tasks){
+      Task.find({completed: true}, function(err, tasks){
+        if(err){
+          return res.status(400).send({
+            errors: utils.errors(err.errors || err),
+            title: 'Failed to query tasks.'
+          });
+        }else{
+          res.send(tasks)
+        }
+      });
+    }else{// for the given song
+      var opts = { title: title,
+                   ownerId: req.user,
+                   // completedAt: {$gte: new Date(from), $lte: new Date(to)},
+                   completed: true };
+      Task.find(opts, function(err, tasks){
+        if(err){
+          return res.status(400).send({
+            errors: utils.errors(err.errors || err),
+            title: 'Failed to query tasks.'
+          });
+        }else{
+          res.send(tasks)
+        }
+      });
+    }
+  };
+};
+
 
 /*
  * use mongo's aggreate function, here is the basic pipeline:
@@ -190,40 +229,40 @@ exports.aggregate = function(Task){
 };
 */
 
-
-// monthly results
-exports.aggregateAll = function(Task){
+/*
+ * returns an array of unique songs/tasks complated with total time spent,
+ *   ordered by time desc
+ */
+exports.mrAll = function(Task){
   return function(req, res){
-    Task.aggregate(
-        { $match: {
-                    completedAt: {$ne: null},
-                    ownerId: req.user
-                  }
-        },
-        { $group: {
-                    _id: {
-                           year: {$year: "$startDate"},
-                           month: {$month: "$startDate"}
-                    },
-                    total: {$sum: "$duration"}
-                  }
-        },
-        { $project: {
-                      _id: 0,
-                      month: {
-                        year: "$_id.year",
-                        month: "$_id.month"
-                      },
-                      total: 1
-                    }
-        },
-        function(err, results){
-          if(err){
-            res.status(500).send(err);
-            console.log(err);
-          }
-          res.send(results);
-        }
-    );
+    // var ownerId = req.query.userId;
+
+    var options = {};
+    options.query = {
+      completed : true,
+      // ownerId   : ownerId
+      ownerId   : req.user
+    };
+
+    options.map = function(){
+      emit(this.title, this.duration);
+    };
+    options.reduce = function(key, values){
+      return Array.sum(values);
+    };
+
+    // without sorting
+    // options.out = {inline: 1};
+    // Task.mapReduce(options, function(err, results){res.send(results);});
+
+    options.out = { replace: 'createdCollectionNameForResults' }
+    // options.verbose = true; // debug/profiling
+    Task.mapReduce(options, function (err, model, stats) {
+      // console.log('map reduce took %d ms', stats.processtime)
+      // model.find().where('value').gt(10).exec(function (err, docs) { console.log(docs); });
+      model.find().sort({'value': -1}).exec(function (err, docs) {
+        res.send(docs);
+      });
+    })
   };
 };

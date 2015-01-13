@@ -16,9 +16,9 @@ angular.module('a-string')
 
     // when you click next/pre on the full calendar or change view
     var loadTasks = function (from, to, timezone, callback){
-      Todos.getAggregateTodos(from.format('YYYY-MM-DD'), to.format('YYYY-MM-DD'))
+      Todos.mrByDay(from.format('YYYY-MM-DD'), to.format('YYYY-MM-DD'))
         .then(function(resolved){
-          // NOTE: the model is the aggregate results
+          // NOTE: the model is the mapreduced results
           var tasks = [];
           var total = 0, date;
           _.each(resolved.data, function(t){

@@ -24,8 +24,28 @@ angular.module('a-string')
       return $http.put('/api/tasks/' + todo._id, todo);
     };
 
-    service.getAggregateTodos = function(from, to){
-      return $http.get('/api/tasks/aggregate?start=' + from + '&end=' + to);
+    service.todosMrByDay = function(from, to){
+      return $http.get('/api/tasks/mrByDay?start=' + from + '&end=' + to);
+    };
+
+    service.todosMrAll = function(){
+      return $http.get('/api/tasks/mrAll');
+    };
+
+    service.todoTimelines = function(song){
+      if(!song){
+        return $http.get('/api/tasks/timelines/');
+      }else{
+        return $http.get('/api/tasks/timelines/' + song);
+      }
+    };
+
+    service.todoTimeSpent = function(song){
+      if(!song){
+        return $http.get('/api/tasks/timeSpent/');
+      }else{
+        return $http.get('/api/tasks/timeSpent/' + song);
+      }
     };
 
     //========== EVENTS TABLE =====================================
