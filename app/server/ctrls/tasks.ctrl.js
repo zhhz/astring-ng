@@ -106,6 +106,21 @@ exports.mrByDay = function(Task){
   };
 };
 
+exports.timeline = function(Task){
+  return function(req, res){
+    Task.find({owerid: req.user, completed: true}, function(err, tasks){
+      if(err){
+        return res.status(400).send({
+          errors: utils.errors(err.errors || err),
+          title: 'Failed to query tasks.'
+        });
+      }else{
+        res.send(tasks)
+      }
+    });
+  };
+};
+
 exports.timeSpent = function(Task){
   return function(req, res){
     var title = req.params.id;
@@ -114,8 +129,8 @@ exports.timeSpent = function(Task){
          // to   = new Date(q.end);
 
     if(!title){ //all the songs
-      // Task.find({owerid: req.user, completed: true}, function(err, tasks){
-      Task.find({completed: true}, function(err, tasks){
+      var opts = { ownerId: req.user, completed: true };
+      Task.find(opts, function(err, tasks){
         if(err){
           return res.status(400).send({
             errors: utils.errors(err.errors || err),
