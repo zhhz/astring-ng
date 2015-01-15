@@ -5,7 +5,7 @@
 #### Bug Fixes
 
 * style logged in user name on navbar ((c2bc9cbc))
-* fixed the link on navbar brand, it will take user to today's todo list ((fa9c86ac))
+* fixed the brand link on navbar, it will take user to today's todo list ((fa9c86ac))
 
 
 <a name="0.4.0"></a>
@@ -21,7 +21,7 @@
 
 #### Features
 
-* implemented timeline for the time of songs when first started learning it ((c3ed14d0))
+* tools menu - timeline tab, implemented timeline for the songs when first started learning it ((c3ed14d0))
 * tools menu - time spent tab ((4fb43ef7))
 
 
