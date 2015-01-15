@@ -47,6 +47,10 @@ angular.module('a-string')
       return StorageManager.storage().todoTimeSpent(song);
     };
 
+    service.timeline = function(){
+      return StorageManager.storage().todoTimeline();
+    };
+
     return service;
   }
 ]);

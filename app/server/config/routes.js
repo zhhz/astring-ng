@@ -34,6 +34,7 @@ module.exports = function (app, config) {
   app.get('/api/tasks/mrAll', auth.ensureAuthenticated, tasksCtrl.mrAll(Task));
   app.get('/api/tasks/timeSpent/:id', auth.ensureAuthenticated, tasksCtrl.timeSpent(Task));
   app.get('/api/tasks/timeSpent', auth.ensureAuthenticated, tasksCtrl.timeSpent(Task));
+  app.get('/api/tasks/timeline', auth.ensureAuthenticated, tasksCtrl.timeline(Task));
 
   // events routes
   app.get('/api/events', auth.ensureAuthenticated, eventsCtrl.index(Event));

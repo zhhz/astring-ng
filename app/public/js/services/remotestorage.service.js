@@ -32,12 +32,8 @@ angular.module('a-string')
       return $http.get('/api/tasks/mrAll');
     };
 
-    service.todoTimelines = function(song){
-      if(!song){
-        return $http.get('/api/tasks/timelines/');
-      }else{
-        return $http.get('/api/tasks/timelines/' + song);
-      }
+    service.todoTimeline = function(){
+      return $http.get('/api/tasks/timeline/');
     };
 
     service.todoTimeSpent = function(song){

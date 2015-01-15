@@ -43,18 +43,17 @@ angular.module('a-string')
       event: '@event',
       callback: '&'
     },
-    link: function(scope, element, attrs) {
-      var container = element[0];
-      var buildGraph = function(scope) {
-        var graph = new vis.Timeline(container, scope.data, scope.options);
-        return graph.on(scope.event, function(properties) {
+    link: function($scope, element, attrs) {
+      var container = element[0], graph = null;
+      $scope.$watch('data', function(newval, oldval) {
+        if(graph !== null){ graph.destroy(); }
+
+        graph = new vis.Timeline(container, $scope.data, $scope.options);
+        graph.on($scope.event, function(properties) {
             if (properties.nodes.length !== 0) {
-              scope.callback({params: properties});
+              $scope.callback({params: properties});
             }
         });
-      };
-      scope.$watch('scope.data', function(newval, oldval) {
-        buildGraph(scope);
       }, true);
     }
   };

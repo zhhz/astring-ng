@@ -1,6 +1,7 @@
 ﻿var _      = require("lodash"),
-    utils  = require('../utils/utils');
-    moment = require('moment');
+    utils  = require('../utils/utils'),
+    moment = require('moment'),
+    async  = require('async');
 
 // ?date=2014-11-18
 exports.index = function(Task){
@@ -108,21 +109,31 @@ exports.mrByDay = function(Task){
 
 exports.timeline = function(Task){
   return function(req, res){
-    Task.find({owerid: req.user, completed: true}, function(err, tasks){
-      if(err){
-        return res.status(400).send({
-          errors: utils.errors(err.errors || err),
-          title: 'Failed to query tasks.'
+    Task.distinct('title', {'completed': true, 'ownerId': req.user}, function(err, titles){
+      var ret = [];
+      async.each(titles, function(title, callback){
+        Task.findOne({'ownerId': req.user, 'title': title, 'completed': true}).exec(
+        function(err, task){
+          ret.push(task);
+          callback();
         });
-      }else{
-        res.send(tasks)
-      }
+      }, function(err){
+        if(err){
+          return res.status(400).send({
+            errors: utils.errors(err.errors || err),
+            title: 'Failed to remvoe task.'
+          });
+        }else{
+          res.send(ret);
+        }
+      });
     });
   };
 };
 
 exports.timeSpent = function(Task){
   return function(req, res){
+  console.log(req.user);
     var title = req.params.id;
          // q    = req.query,
          // from = new Date(q.start),
