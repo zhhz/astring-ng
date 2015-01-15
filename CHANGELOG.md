@@ -1,3 +1,20 @@
+<a name="0.4.0"></a>
+## 0.4.0 (2015-01-15)
+
+
+#### Bug Fixes
+
+* load all songs for time spent query ((12f63dd5))
+* slightly adjust index page ((3563cf2a))
+* fixed karma warning ((0ac25560))
+
+
+#### Features
+
+* implemented timeline for the time of songs when first started learning it ((c3ed14d0))
+* tools menu - time spent tab ((4fb43ef7))
+
+
 <a name="0.3.12"></a>
 ### 0.3.12 (2015-01-06)
 
