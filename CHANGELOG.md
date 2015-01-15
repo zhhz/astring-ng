@@ -1,3 +1,13 @@
+<a name="0.4.1"></a>
+### 0.4.1 (2015-01-15)
+
+
+#### Bug Fixes
+
+* style logged in user name on navbar ((c2bc9cbc))
+* fixed the link on navbar brand, it will take user to today's todo list ((fa9c86ac))
+
+
 <a name="0.4.0"></a>
 ## 0.4.0 (2015-01-15)
 
