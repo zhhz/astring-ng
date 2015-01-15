@@ -41,7 +41,9 @@
             <li><a href="/#/login" id="link-login">Login</a></li>
           </ul>
           <ul ng-if="todoCtrl.states.isAuthenticated()" class="nav navbar-nav navbar-right" ng-cloak>
-            <li><a href="/#/settings/users">{{todoCtrl.states._displayName || todoCtrl.states.displayName()}}</a></li>
+            <li>
+              <a href=""><span class="badge" style="font: bold; font-size: 16px;" data-ng-bind="todoCtrl.states._displayName || todoCtrl.states.displayName()"></span></a>
+            </li>
             <li><a href="/#/logout" id="link-logout">Logout</a></li>
           </ul>
         </div>
