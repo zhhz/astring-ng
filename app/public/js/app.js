@@ -55,7 +55,7 @@ angular.module('a-string', ['ngRoute',
     controllerAs: 'calendarCtrl'
   })
   .when('/tools', {
-    templateUrl: 'tpls/Tools.html',
+    templateUrl: 'tpls/tools.html',
     controller: 'ToolsCtrl',
     controllerAs: 'toolsCtrl'
   })
