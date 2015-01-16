@@ -23,7 +23,7 @@ exports.config = {
   // They may include glob patterns.
   // protractor protractor.conf.js --suite working
   suites: {
-    home    : '../e2e/home/**/*.spec.js',
+    cases : '../e2e/cases/**/*.spec.js',
     working : '../e2e/working/**/*.spec.js'
   },
 

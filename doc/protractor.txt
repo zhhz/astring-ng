@@ -1,0 +1,27 @@
+1. start only a suite
+  $💰  protractor test/config/protractor.conf.js --suite working
+
+2. Testing Out Protractor Interactively
+  ************************************************
+  NOTE: ***DO NOT load the dev tools on Chrome****, interactive won't work
+  ************************************************
+
+  When debugging or first writing test suites, you may find it helpful to try out
+    Protractor commands without starting up the entire test suite. You can do this with the element explorer.
+
+  Currently, the explorer runs only with chrome and expects a standalone Selenium Server
+    to be running at http://localhost:4444 (see Setting Up the Selenium Server).
+
+  From the Protractor directory, run with:
+
+  $ node ./bin/elementexplorer.js <urL>
+    This will load up the URL on WebDriver and put the terminal into a REPL loop.
+    You will see a > prompt. The browser, element and protractor variables will be available. Enter a command such as:
+
+  > element(by.id('foobar')).getText()
+  or
+  > browser.get('http://www.angularjs.org')
+  To get a list of functions you can call, try:
+
+  > browser
+  Typing tab at a blank prompt will fill in a suggestion for finding elements.

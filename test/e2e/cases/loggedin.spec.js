@@ -3,7 +3,7 @@ var po = require('../pageobjects')(),
     mongoose = require('mongoose');
 
 describe('Nav section on the main page(logged in)', function() {
-  beforeEach(function(){ po.open(); po.login(); });
+  beforeEach(function(){ po.open(); po.login(); po.brandLink().click(); });
   afterEach(function(){ po.logoutLink().click(); });
 
   it('should show logout link on the nav', function(){
@@ -57,7 +57,7 @@ var reset_test_db = function(){
 
 describe('When user logged in', function(){
 
-  beforeEach(function(){ po.open(); po.login(); });
+  beforeEach(function(){ po.open(); po.login(); po.brandLink().click(); });
 
   // 1. create todo for today
   it('should be able to create a new todo for today', function(){

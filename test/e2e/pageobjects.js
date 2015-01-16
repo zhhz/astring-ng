@@ -4,8 +4,9 @@ function createPageObjects(){
   var pos  = {};
   pos.open = function() { browser.get('/'); };
 
-  //======== login and signup links
-  pos.loginLink = function(){ return element(by.id('link-login'));};
+  pos.brandLink  = function(){ return element(by.css('.navbar-brand'));};
+
+  pos.loginLink  = function(){ return element(by.id('link-login'));};
   pos.logoutLink = function(){ return element(by.id('link-logout'));};
   pos.signupLink = function(){ return element(by.id('link-signup'));};
 
