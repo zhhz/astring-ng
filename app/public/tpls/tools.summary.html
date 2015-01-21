@@ -1,12 +1,22 @@
 <script type="text/ng-template" id="timelineGraph.html">
   <div class="modal-header">
-    <h3 class="modal-title">Timeline</h3>
+    <h3 class="modal-title">{{timelineCtrl.title}}</h3>
   </div>
   <div class="modal-body">
-    <div vis-timeline
-      data="timelineCtrl.data"
-      options="timelineCtrl.options"
-      event="select"></div>
+    <div ng-switch on="timelineCtrl.graph">
+      <div ng-switch-when="2d">
+        <div vis-timeline
+          data="timelineCtrl.data"
+          options="timelineCtrl.options"
+          event="select"></div>
+      </div>
+      <div ng-switch-when="3d">
+        <div vis-graph3d
+          data="timelineCtrl.data"
+          options="timelineCtrl.options"
+          event="select"></div>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" ng-click="timelineCtrl.ok()">OK</button>

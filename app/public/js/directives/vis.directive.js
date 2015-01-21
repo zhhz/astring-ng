@@ -50,15 +50,15 @@ angular.module('a-string')
 
         graph = new vis.Timeline(container, $scope.data, $scope.options);
         graph.on($scope.event, function(properties) {
-            if (properties.nodes.length !== 0) {
-              $scope.callback({params: properties});
-            }
+          if (properties.nodes.length !== 0) {
+            $scope.callback({params: properties});
+          }
         });
       }, true);
     }
   };
 }])
-.directive('visGraph', [function() {
+.directive('visGraph3d', [function() {
   return {
     restrict: 'AE',
     scope: {
@@ -67,13 +67,18 @@ angular.module('a-string')
       event: '@event',
       callback: '&'
     },
-    link: function(scope, element, attrs) {
-      var graph = new vis.Graph3d(element[0], scope.data, scope.options);
-      graph.on(scope.event, function(properties) {
-        if (properties.nodes.length !== 0) {
-          scope.callback({params: properties});
-        }
-      });
+    link: function($scope, element, attrs) {
+      var container = element[0], graph = null;
+      $scope.$watch('data', function(newval, oldval) {
+        if(graph !== null){ graph = null; }
+
+        graph = new vis.Graph3d(container, $scope.data, $scope.options);
+        graph.on($scope.event, function(properties) {
+          if (properties.nodes.length !== 0) {
+            $scope.callback({params: properties});
+          }
+        });
+      }, true);
     }
   };
 }]);
