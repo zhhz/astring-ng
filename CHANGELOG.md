@@ -1,3 +1,18 @@
+<a name="0.4.2"></a>
+### 0.4.2 (2015-01-22)
+
+
+#### Bug Fixes
+
+* fixed e2e test cases ((3aecafe3))
+* fixed a typo ((f60bfec5))
+
+
+#### Features
+
+* show time spent on 3D graph ((c8d94485))
+
+
 <a name="0.4.1"></a>
 ### 0.4.1 (2015-01-15)
 
