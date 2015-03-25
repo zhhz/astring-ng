@@ -1,0 +1,637 @@
+{
+  "title": "Bourree",
+  "category": "Suzuki",
+  "book": "Book2",
+  "bpm": 100,
+  "bpb": 4,
+  "composer": "G. F. Handel",
+  "key": "G",
+  "private": false,
+  "melody": [
+    { "duration": 1, "notes": [ "D5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 1, "notes": [ "E5" ] },
+    { "duration": 2, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 2, "notes": [ "G4" ] },
+    { "duration": 1, "notes": [ "A4" ] },
+
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 1, "notes": [ "A5" ] },
+    { "duration": 1, "notes": [ "A4" ] },
+    { "duration": 1, "notes": [ "Db5" ] },
+
+    { "duration": 3, "notes": [ "D5" ] },
+    { "duration": 1, "notes": [ "D5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 1, "notes": [ "E5" ] },
+    { "duration": 2, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 2, "notes": [ "G4" ] },
+    { "duration": 1, "notes": [ "A4" ] },
+
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "Db5" ] },
+
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 1, "notes": [ "A5" ] },
+    { "duration": 1, "notes": [ "A4" ] },
+    { "duration": 1, "notes": [ "Db5" ] },
+
+    { "duration": 3, "notes": [ "D5" ] },
+    { "duration": 1, "notes": [ "A5" ] },
+
+    { "duration": 1, "notes": [ "A5" ] },
+    { "duration": 1, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 1, "notes": [ "G5" ] },
+    { "duration": 2, "notes": [ "B5" ] },
+    { "duration": 1, "notes": [ "E5" ] },
+
+    { "duration": 1, "notes": [ "Eb5" ] },
+    { "duration": 1, "notes": [ "E5" ] },
+    { "duration": 1, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "A5" ] },
+
+    { "duration": 1, "notes": [ "G5" ] },
+    { "duration": 2, "notes": [ "E5" ] },
+    { "duration": 1, "notes": [ "D5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 1, "notes": [ "C5" ] },
+    { "duration": 1, "notes": [ "C5" ] },
+
+    { "duration": 1, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 1, "notes": [ "D5" ] },
+
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 0.5, "notes": [ "Gb4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "Gb4" ] },
+    { "duration": 1, "notes": [ "D4" ] },
+    { "duration": 1, "notes": [ "D5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 1, "notes": [ "E5" ] },
+    { "duration": 2, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 2, "notes": [ "G4" ] },
+    { "duration": 1, "notes": [ "Gb4" ] },
+
+    { "duration": 0.5, "notes": [ "G4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 1, "notes": [ "G5" ] },
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 3, "notes": [ "G4" ] },
+    { "duration": 1, "notes": [ "A5" ] },
+
+    { "duration": 1, "notes": [ "A5" ] },
+    { "duration": 1, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+
+    { "duration": 1, "notes": [ "G5" ] },
+    { "duration": 2, "notes": [ "B5" ] },
+    { "duration": 1, "notes": [ "E5" ] },
+
+    { "duration": 1, "notes": [ "Eb5" ] },
+    { "duration": 1, "notes": [ "E5" ] },
+    { "duration": 1, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "A5" ] },
+
+    { "duration": 1, "notes": [ "G5" ] },
+    { "duration": 2, "notes": [ "E5" ] },
+    { "duration": 1, "notes": [ "D5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 1, "notes": [ "C5" ] },
+    { "duration": 1, "notes": [ "C5" ] },
+
+    { "duration": 1, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 1, "notes": [ "D5" ] },
+
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 0.5, "notes": [ "Gb4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "Gb4" ] },
+    { "duration": 1, "notes": [ "D4" ] },
+    { "duration": 1, "notes": [ "D5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 1, "notes": [ "E5" ] },
+    { "duration": 2, "notes": [ "G5" ] },
+    { "duration": 0.5, "notes": [ "Gb5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 2, "notes": [ "G4" ] },
+    { "duration": 1, "notes": [ "Gb4" ] },
+
+    { "duration": 0.5, "notes": [ "G4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "D5" ] },
+    { "duration": 0.5, "notes": [ "E5" ] },
+    { "duration": 0.5, "notes": [ "C5" ] },
+
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 1, "notes": [ "G5" ] },
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 3, "notes": [ "G4" ] }
+  ],
+  "accompany": [
+    { "duration": 1, "notes": [ "D5" ] },
+    { "duration": 1, "notes": [ "G5" ] },
+    { "duration": 1, "notes": [ "B4" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 3, "notes": [ "G4" ] },
+
+    { "duration": 1,   "notes": [ "G3", "D4", "B4" ] },
+
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4" ] },
+    { "duration": 1,   "notes": [ "G3", "D4", "B4" ] },
+    { "duration": 1,   "notes": [ "D3", "C4", "Gb4" ] },
+    { "duration": 0.5, "notes": [ "E3", "B3", "E4", "A4" ] },
+    { "duration": 0.5, "notes": [ "G4" ] },
+
+    { "duration": 1,   "notes": [ "C3", "E4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "C4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "B3", "D5" ] },
+    { "duration": 1,   "notes": [ "C4", "E4", "G4", "C5" ] },
+
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4", "C5" ] },
+    { "duration": 0.5,   "notes": [ "G3", "D4", "G4", "C5" ] },
+    { "duration": 0.5,   "notes": [ "B4" ] },
+    { "duration": 1,   "notes": [ "C3", "E4", "G4", "A4" ] },
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4", "A4" ] },
+
+    { "duration": 1,   "notes": [ "G2", "D4", "G4", "B4" ] },
+    { "duration": 0.5,   "notes": [ "G3", "B3", "D4", "G4" ] },
+    { "duration": 0.5,   "notes": [ "Gb4" ] },
+    { "duration": 1,   "notes": ["G3"] },
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4", "A4" ] },
+
+
+
+
+    { "duration": 1,   "notes": [ "G3", "D4", "G4", "B4" ] },
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4", "D5" ] },
+    { "duration": 1,   "notes": [ "E3", "E4", "A4", "Db5" ] },
+    { "duration": 1,   "notes": [ "G3", "E4", "A4", "E5" ] },
+
+    { "duration": 1,   "notes": [ "Gb3", "Gb4", "A4", "D5" ] },
+    { "duration": 1,   "notes": [ "D3", "A4", "D5", "Gb5" ] },
+    { "duration": 1,   "notes": [ "Db3", "A4", "E5" ] },
+    { "duration": 1,   "notes": [ "A2", "A4", "E5", "G5" ] },
+
+    { "duration": 1,   "notes": [ "D3", "A4", "D5", "Gb5" ] },
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4", "D5" ] },
+    { "duration": 1,   "notes": [ "A3", "E4", "A4" ] },
+    { "duration": 1,   "notes": [ "A2", "E4", "A4", "Db5" ] },
+
+    { "duration": 1,   "notes": [ "D2", "D3", "D4", "Gb4", "D5" ] },
+    { "duration": 0.5,   "notes": [ "D3"] },
+    { "duration": 0.5,   "notes": [ "Db3" ] },
+    { "duration": 1,   "notes": ["D3"] },
+    { "duration": 1,   "notes": [ "G3", "D4", "B4" ] },
+
+
+
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4" ] },
+    { "duration": 1,   "notes": [ "G3", "D4", "B4" ] },
+    { "duration": 1,   "notes": [ "D3", "C4", "Gb4" ] },
+    { "duration": 0.5,   "notes": [ "E3", "B3", "E4", "A4"] },
+    { "duration": 0.5,   "notes": [ "G4" ] },
+
+    { "duration": 1,   "notes": [ "C3", "E4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "C4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "B3", "D4" ] },
+    { "duration": 1,   "notes": [ "C4", "E4", "G4", "C5" ] },
+
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4", "C5" ] },
+    { "duration": 0.5,   "notes": [ "G3", "D4", "G4", "C5" ] },
+    { "duration": 0.5,   "notes": [ "B4" ] },
+    { "duration": 1,   "notes": ["C3", "E4", "G4", "A4"] },
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4", "A4" ] },
+
+    { "duration": 1,   "notes": [ "G2", "D4", "G4", "B4" ] },
+    { "duration": 0.5,   "notes": [ "G3", "D4", "B4", "G4" ] },
+    { "duration": 0.5,   "notes": [ "Gb3" ] },
+    { "duration": 1,   "notes": ["G3"] },
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4", "A4" ] },
+
+
+
+
+    { "duration": 1,   "notes": [ "G3", "D4", "G4", "B4" ] },
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4", "D5" ] },
+    { "duration": 1,   "notes": [ "E3", "E4", "A4", "Db5" ] },
+    { "duration": 1,   "notes": [ "G3", "E4", "A4", "E5" ] },
+
+    { "duration": 1,   "notes": [ "Gb3", "Gb4", "A4", "D5" ] },
+    { "duration": 1,   "notes": [ "D3", "A4", "D5", "Gb5" ] },
+    { "duration": 1,   "notes": [ "Db3", "A4", "E5" ] },
+    { "duration": 1,   "notes": [ "A2", "A4", "E5", "G5" ] },
+
+    { "duration": 1,   "notes": [ "D3", "A4", "D5", "Gb5" ] },
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4", "D5" ] },
+    { "duration": 1,   "notes": [ "A3", "E4", "A4" ] },
+    { "duration": 1,   "notes": [ "A2", "E4", "A4", "Db5" ] },
+
+    { "duration": 1,   "notes": [ "D2", "D3", "D4", "Gb4", "D5" ] },
+    { "duration": 0.5,   "notes": [ "D3"] },
+    { "duration": 0.5,   "notes": [ "Db3" ] },
+    { "duration": 1,   "notes": ["D3"] },
+    { "duration": 1,   "notes": [ "D3", "A4", "Gb5" ] },
+
+
+    { "duration": 1,   "notes": [ "D3", "A4", "Gb5" ] },
+    { "duration": 1,   "notes": [ "D4", "Gb4", "D5" ] },
+    { "duration": 0.5,   "notes": [ "B4"] },
+    { "duration": 0.5,   "notes": [ "A4"] },
+    { "duration": 0.5,   "notes": [ "C4", "G4", "E5" ] },
+    { "duration": 0.5,   "notes": [ "A4", "Gb5" ] },
+
+    { "duration": 1,   "notes": [ "B3", "G4", "D4", "G5" ] },
+    { "duration": 0.5,   "notes": [ "G3", "B4"] },
+    { "duration": 0.5,   "notes": [ "A3", "C5" ] },
+    { "duration": 1,   "notes": ["B3", "D5"] },
+    { "duration": 1,   "notes": [ "C4", "G4", "E5" ] },
+
+    { "duration": 1,   "notes": ["B3", "A4", "B4", "Gb5"] },
+    { "duration": 1,   "notes": [ "E3", "G4", "B4", "E5" ] },
+    { "duration": 1,   "notes": ["A3", "Gb4", "C5", "E5"] },
+    { "duration": 1,   "notes": [ "B3", "Gb4", "B4", "D5" ] },
+
+    { "duration": 1,   "notes": [ "E2", "E3", "G4", "B4", "E5" ] },
+    { "duration": 0.5,   "notes": [ "E3", "E4", "G4", "E5"] },
+    { "duration": 0.5,   "notes": [ "Eb3" ] },
+    { "duration": 1,   "notes": ["E3"] },
+    { "duration": 1,   "notes": [ "B3", "Gb4", "A4", "D5" ] },
+
+
+
+
+
+    { "duration": 1,   "notes": [ "E3", "E4", "Ab4"] },
+    { "duration": 0.5,   "notes": [ "Gb3", "E4", "A4"] },
+    { "duration": 0.5,   "notes": [ "Ab3", "B4" ] },
+    { "duration": 1,   "notes": ["A3", "E4", "C5"] },
+    { "duration": 1,   "notes": [ "A2", "E4", "G4", "C5" ] },
+
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4"] },
+    { "duration": 0.5,   "notes": [ "E3", "D4", "G4"] },
+    { "duration": 0.5,   "notes": [ "Gb3", "C5" ] },
+    { "duration": 1,   "notes": ["G3", "D4", "B4"] },
+    { "duration": 1,   "notes": [ "B2", "B3", "G4", "D5" ] },
+
+    { "duration": 1,   "notes": [ "C3", "C4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "B2", "B3", "G4", "D5" ] },
+    { "duration": 1,   "notes": [ "Gb2", "Gb3", "D4", "A4", "C5" ] },
+    { "duration": 1,   "notes": [ "G2", "G3", "D4", "B4" ] },
+
+    { "duration": 1,   "notes": [ "D2", "D3", "D4", "Gb4", "D5"] },
+    { "duration": 0.5,   "notes": [ "D3"] },
+    { "duration": 0.5,   "notes": [ "Db3"] },
+    { "duration": 1,   "notes": ["D3"] },
+    { "duration": 1,   "notes": [ "G3", "D3", "B4"] },
+
+
+
+
+
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4" ] },
+    { "duration": 1,   "notes": [ "G3", "D4", "B4" ] },
+    { "duration": 1,   "notes": [ "D3", "C4", "Gb4" ] },
+    { "duration": 0.5,   "notes": [ "E3", "B3", "E4", "A4"] },
+    { "duration": 0.5,   "notes": [ "G4" ] },
+
+    { "duration": 1,   "notes": [ "C3", "E4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "C4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "B3", "D4" ] },
+    { "duration": 1,   "notes": [ "C4", "E4", "G4", "C5" ] },
+
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4", "C5" ] },
+    { "duration": 0.5,   "notes": [ "G3", "D4", "G4", "C5" ] },
+    { "duration": 0.5,   "notes": [ "B4" ] },
+    { "duration": 1,   "notes": ["C3", "E4", "G4", "A4"] },
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4", "A4" ] },
+
+    { "duration": 1,   "notes": [ "G2", "D4", "G4", "B4" ] },
+    { "duration": 0.5,   "notes": [ "G3", "D4", "B4", "G4" ] },
+    { "duration": 0.5,   "notes": [ "Gb3" ] },
+    { "duration": 1,   "notes": ["G3"] },
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4" ] },
+
+
+
+
+
+
+
+    { "duration": 1,   "notes": ["E2", "E3", "D4", "G4"] },
+    { "duration": 1,   "notes": [ "G2", "G3", "D4", "B4" ] },
+    { "duration": 1,   "notes": ["Gb2", "Gb3", "D4", "A4"] },
+    { "duration": 1,   "notes": [ "D2", "D3", "D4", "Gb4", "A4" ] },
+
+    { "duration": 1,   "notes": [ "G2", "G3", "D4", "G4", "B4" ] },
+    { "duration": 1,   "notes": [ "Gb2", "Gb3", "D4", "G4", "D5"] },
+    { "duration": 1,   "notes": [ "E2", "E3", "G4", "C5"] },
+    { "duration": 1,   "notes": [ "C2", "C3", "G4", "C5", "E5" ] },
+
+    { "duration": 1,   "notes": [ "B2", "B3", "G4", "D5"] },
+    { "duration": 0.5,   "notes": [ "B2", "B3", "G4", "D5", "G5"] },
+    { "duration": 0.5,   "notes": [ "C2", "C3"] },
+    { "duration": 1,   "notes": [ "D2", "D3", "D4", "G4", "B4"] },
+    { "duration": 0.5,   "notes": [ "D2", "D3", "C4", "Gb4", "A4"] },
+    { "duration": 0.5,   "notes": [ "D4"] },
+
+    { "duration": 1,   "notes": [ "G2", "G3", "B4", "G4"] },
+    { "duration": 2,   "notes": [ "G1", "G2"] },
+    { "duration": 1,   "notes": [ "D3", "A4", "Gb4"] },
+
+
+
+
+
+    { "duration": 1,   "notes": [ "D3", "A4", "Gb5" ] },
+    { "duration": 1,   "notes": [ "D4", "Gb4", "D5" ] },
+    { "duration": 0.5,   "notes": [ "B4"] },
+    { "duration": 0.5,   "notes": [ "A4"] },
+    { "duration": 0.5,   "notes": [ "C4", "G4", "E5" ] },
+    { "duration": 0.5,   "notes": [ "A4", "Gb5" ] },
+
+    { "duration": 1,   "notes": [ "B3", "G4", "D4", "G5" ] },
+    { "duration": 0.5,   "notes": [ "G3", "B4"] },
+    { "duration": 0.5,   "notes": [ "A3", "C5" ] },
+    { "duration": 1,   "notes": ["B3", "D5"] },
+    { "duration": 1,   "notes": [ "C4", "G4", "E5" ] },
+
+    { "duration": 1,   "notes": ["B3", "A4", "B4", "Gb5"] },
+    { "duration": 1,   "notes": [ "E3", "G4", "B4", "E5" ] },
+    { "duration": 1,   "notes": ["A3", "Gb4", "C5", "E5"] },
+    { "duration": 1,   "notes": [ "B3", "Gb4", "B4", "D5" ] },
+
+    { "duration": 1,   "notes": [ "E2", "E3", "G4", "B4", "E5" ] },
+    { "duration": 0.5,   "notes": [ "E3", "E4", "G4", "E5"] },
+    { "duration": 0.5,   "notes": [ "Eb3" ] },
+    { "duration": 1,   "notes": ["E3"] },
+    { "duration": 1,   "notes": [ "B3", "Gb4", "A4", "D5" ] },
+
+
+
+
+
+
+    { "duration": 1,   "notes": [ "E3", "E4", "Ab4"] },
+    { "duration": 0.5,   "notes": [ "Gb3", "E4", "A4"] },
+    { "duration": 0.5,   "notes": [ "Ab3", "B4" ] },
+    { "duration": 1,   "notes": ["A3", "E4", "C5"] },
+    { "duration": 1,   "notes": [ "A2", "E4", "G4", "C5" ] },
+
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4"] },
+    { "duration": 0.5,   "notes": [ "E3", "D4", "G4"] },
+    { "duration": 0.5,   "notes": [ "Gb3", "C5" ] },
+    { "duration": 1,   "notes": ["G3", "D4", "B4"] },
+    { "duration": 1,   "notes": [ "B2", "B3", "G4", "D5" ] },
+
+    { "duration": 1,   "notes": [ "C3", "C4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "B2", "B3", "G4", "D5" ] },
+    { "duration": 1,   "notes": [ "Gb2", "Gb3", "D4", "A4", "C5" ] },
+    { "duration": 1,   "notes": [ "G2", "G3", "D4", "B4" ] },
+
+    { "duration": 1,   "notes": [ "D2", "D3", "D4", "Gb4", "D5"] },
+    { "duration": 0.5,   "notes": [ "D3"] },
+    { "duration": 0.5,   "notes": [ "Db3"] },
+    { "duration": 1,   "notes": ["D3"] },
+    { "duration": 1,   "notes": [ "G3", "D3", "B4"] },
+
+
+
+
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4" ] },
+    { "duration": 1,   "notes": [ "G3", "D4", "B4" ] },
+    { "duration": 1,   "notes": [ "D3", "C4", "Gb4" ] },
+    { "duration": 0.5,   "notes": [ "E3", "B3", "E4", "A4"] },
+    { "duration": 0.5,   "notes": [ "G4" ] },
+
+    { "duration": 1,   "notes": [ "C3", "E4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "C4", "G4", "E5" ] },
+    { "duration": 1,   "notes": [ "B3", "D4" ] },
+    { "duration": 1,   "notes": [ "C4", "E4", "G4", "C5" ] },
+
+    { "duration": 1,   "notes": [ "Gb3", "D4", "A4", "C5" ] },
+    { "duration": 0.5,   "notes": [ "G3", "D4", "G4", "C5" ] },
+    { "duration": 0.5,   "notes": [ "B4" ] },
+    { "duration": 1,   "notes": ["C3", "E4", "G4", "A4"] },
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4", "A4" ] },
+
+    { "duration": 1,   "notes": [ "G2", "D4", "G4", "B4" ] },
+    { "duration": 0.5,   "notes": [ "G3", "D4", "B4", "G4" ] },
+    { "duration": 0.5,   "notes": [ "Gb3" ] },
+    { "duration": 1,   "notes": ["G3"] },
+    { "duration": 1,   "notes": [ "D3", "D4", "Gb4" ] },
+
+
+
+
+
+
+
+    { "duration": 1,   "notes": ["E2", "E3", "D4", "G4"] },
+    { "duration": 1,   "notes": [ "G2", "G3", "D4", "B4" ] },
+    { "duration": 1,   "notes": ["Gb2", "Gb3", "D4", "A4"] },
+    { "duration": 1,   "notes": [ "D2", "D3", "D4", "Gb4", "A4" ] },
+
+    { "duration": 1,   "notes": [ "G2", "G3", "D4", "G4", "B4" ] },
+    { "duration": 1,   "notes": [ "Gb2", "Gb3", "D4", "G4", "D5"] },
+    { "duration": 1,   "notes": [ "E2", "E3", "G4", "C5"] },
+    { "duration": 1,   "notes": [ "C2", "C3", "G4", "C5", "E5" ] },
+
+    { "duration": 1,   "notes": [ "B2", "B3", "G4", "D5"] },
+    { "duration": 0.5,   "notes": [ "B2", "B3", "G4", "D5", "G5"] },
+    { "duration": 0.5,   "notes": [ "C2", "C3"] },
+    { "duration": 1,   "notes": [ "D2", "D3", "D4", "G4", "B4"] },
+    { "duration": 0.5,   "notes": [ "D2", "D3", "C4", "Gb4", "A4"] },
+    { "duration": 0.5,   "notes": [ "D4"] },
+
+    { "duration": 1,   "notes": [ "G2", "G3", "B4", "G4"] },
+    { "duration": 2,   "notes": [ "G1", "G2"] }
+
+
+  ]
+}
