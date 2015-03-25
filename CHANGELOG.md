@@ -1,3 +1,12 @@
+<a name="0.4.4"></a>
+### 0.4.4 (2015-03-24)
+
+
+#### Features
+
+* adds Bourree (Suzuki book2 No. 6) ((6adc467c))
+
+
 <a name="0.4.3"></a>
 ### 0.4.3 (2015-01-28)
 
