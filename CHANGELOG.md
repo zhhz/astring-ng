@@ -1,3 +1,17 @@
+<a name="0.4.5"></a>
+### 0.4.5 (2015-04-07)
+
+
+#### Bug Fixes
+
+* fixed karma conf file ((11a99821))
+
+
+#### Features
+
+* adds 'The Two Grenadiers' ((2e446f8f))
+
+
 <a name="0.4.4"></a>
 ### 0.4.4 (2015-03-24)
 
