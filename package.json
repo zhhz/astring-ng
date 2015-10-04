@@ -15,16 +15,16 @@
     "test-server": "NODE_ENV=test node app/server/web-server"
   },
   "dependencies": {
-    "async": "^0.9.0",
-    "bcryptjs": "^2.1.0",
-    "body-parser": "^1.9.2",
-    "express": "^4.5.1",
-    "jwt-simple": "^0.2.0",
-    "lodash": "latest",
-    "moment": "^2.8.3",
-    "mongoose": "^3.9.7",
-    "morgan": "^1.5.0",
-    "request": "^2.40.0"
+    "async": "^1.4.2",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "express": "^5.0.0-alpha.2",
+    "jwt-simple": "^0.3.1",
+    "lodash": "*",
+    "moment": "*",
+    "mongoose": "^4.1.9",
+    "morgan": "*",
+    "request": "*"
   },
   "devDependencies": {
     "conventional-changelog": "0.0.11",
