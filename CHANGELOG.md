@@ -1,3 +1,12 @@
+<a name="0.4.8"></a>
+### 0.4.8 (2015-10-04)
+
+
+#### Bug Fixes
+
+* update dependencies to fix the issue on production server(heroku) after mongolab ((499f69f9))
+
+
 <a name="0.4.7"></a>
 ### 0.4.7 (2015-10-02)
 
