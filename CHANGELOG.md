@@ -1,3 +1,17 @@
+<a name="0.4.9"></a>
+### 0.4.9 (2015-10-07)
+
+
+#### Bug Fixes
+
+* fixe the duplicated book names ((265e404e))
+
+
+#### Features
+
+* add song 'Gavotte from Mignon' ((6715d76a))
+
+
 <a name="0.4.8"></a>
 ### 0.4.8 (2015-10-04)
 
