@@ -1,3 +1,12 @@
+<a name="0.4.10"></a>
+### 0.4.10 (2015-10-21)
+
+
+#### Bug Fixes
+
+* adds introduction part of Gavotte from Mignon ((68aa9751))
+
+
 <a name="0.4.9"></a>
 ### 0.4.9 (2015-10-07)
 
