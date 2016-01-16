@@ -163,7 +163,7 @@
     { "duration": 0.5, "notes": [ "C5" ] },
     { "duration": 0.5, "notes": [ "B4" ] },
 
-    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
     { "duration": 0.5, "notes": [ "G4" ] },
     { "duration": 0.5, "notes": [ "F4" ] },
     { "duration": 0.5, "notes": [ "E4" ] },
@@ -197,7 +197,7 @@
     { "duration": 0.5, "notes": [ "C5" ] },
     { "duration": 0.5, "notes": [ "B4" ] },
 
-    { "duration": 0.5, "notes": [ "C5" ] },
+    { "duration": 0.5, "notes": [ "A4" ] },
     { "duration": 0.5, "notes": [ "G4" ] },
     { "duration": 0.5, "notes": [ "F4" ] },
     { "duration": 0.5, "notes": [ "E4" ] },
