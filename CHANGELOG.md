@@ -1,3 +1,12 @@
+<a name="0.4.14"></a>
+### 0.4.14 (2016-01-17)
+
+
+#### Bug Fixes
+
+* adjust the tempo for Minuet BK2 ((b7657eef))
+
+
 <a name="0.4.13"></a>
 ### 0.4.13 (2016-01-16)
 
