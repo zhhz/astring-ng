@@ -20,7 +20,7 @@
     "body-parser": "*",
     "express": "^5.0.0-alpha.2",
     "jwt-simple": "^0.3.1",
-    "lodash": "*",
+    "lodash": "3.10.1",
     "moment": "*",
     "mongoose": "^4.1.9",
     "morgan": "*",
