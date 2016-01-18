@@ -1,3 +1,12 @@
+<a name="0.5.0"></a>
+## 0.5.0 (2016-01-17)
+
+
+#### Bug Fixes
+
+* lock lodash version for compatible issue, i.e. the _.pluck was removed ((960867cd))
+
+
 <a name="0.4.15"></a>
 ### 0.4.15 (2016-01-17)
 
