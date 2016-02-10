@@ -1,3 +1,12 @@
+<a name="0.5.2"></a>
+### 0.5.2 (2016-02-10)
+
+
+#### Features
+
+* adds Minuet from book2(Boccherini) ((d508f71d))
+
+
 <a name="0.5.1"></a>
 ### 0.5.1 (2016-02-10)
 
