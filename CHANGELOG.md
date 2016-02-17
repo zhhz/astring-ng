@@ -1,3 +1,12 @@
+<a name="0.5.3"></a>
+### 0.5.3 (2016-02-16)
+
+
+#### Bug Fixes
+
+* fixed the piano accompany's D.C. al fine ((c9d39e99))
+
+
 <a name="0.5.2"></a>
 ### 0.5.2 (2016-02-10)
 
