@@ -1,0 +1,56 @@
+Dev
+====================================
+$ gulp watch
+$ npm start
+$ npm test
+
+
+Update dependencies
+====================================
+$ bower update
+$ npm update
+
+  update the dependencies
+$ npm outdated
+
+ or:
+  Simply change every dependency's version to *, then run npm update --save.
+
+    "dependencies": {
+      "express": "*",
+      "mongodb": "*",
+      "underscore": "*",
+      "rjs": "*",
+      "jade": "*",
+      "async": "*"
+    }
+  After:
+    "dependencies": {
+      "express": "~3.2.0",
+      "mongodb": "~1.2.14",
+      "underscore": "~1.4.4",
+      "rjs": "~2.10.0",
+      "jade": "~0.29.0",
+      "async": "~0.2.7"
+    }
+
+Update bower / gulp
+$ npm -g update bower
+$ npm -g update gulp
+
+Other tools
+====================================
+boostrap doc
+  projects/oss-workspace/bootstrap/
+  $ jekyll serve
+  http://localhost:9001
+
+angular doc
+  projects/oss-workspace/angular.js/build/docs
+  $ python -m SimpleHTTPServer
+  http://localhost:8000/index-production.html
+
+google auth:
+===============================================
+astring.app@google.com
+https://console.developers.google.com/project

@@ -1,0 +1,6 @@
+﻿Setup
+===================
+1. install node.js
+2. $ npm install
+3. install bower, gulp
+4. $ bower install
