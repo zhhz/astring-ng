@@ -72,15 +72,12 @@ angular.module('a-string', ['ngRoute',
 //=======================================
 .config(function ($authProvider) {
   $authProvider.google({
-    // local dev api provided by zhonghai.zuo@gmail.com
-    // clientId: '806186532220-n46jr9dhsol53a3nqsfno0pe3pt8fkpn.apps.googleusercontent.com'
-
-    // production, by astring.app@gmail.com
-    clientId: '750530476209-4bo2gsc9a54mpo1a0rqlbp9d16cguo8u.apps.googleusercontent.com'
+    // production
+    clientId: YOUR_CLIENT_ID
   });
 
   $authProvider.facebook({
-    clientId: '680367268728099'
+    clientId: YOUR_CLIENT_ID
   });
 
   $authProvider.twitter({
@@ -88,15 +85,15 @@ angular.module('a-string', ['ngRoute',
   });
 
   $authProvider.yahoo({
-    clientId: 'dj0yJmk9dkNGM0RTOHpOM0ZsJmQ9WVdrOVlVTm9hVk0wTkRRbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0wMA--'
+    clientId: YOUR_CLIENT_ID
   });
 
   $authProvider.linkedin({
-    clientId: '77cw786yignpzj'
+    clientId: YOUR_CLIENT_ID
   });
 
   $authProvider.github({
-    clientId: '0ba2600b1dbdb756688b'
+    clientId: YOUR_CLIENT_ID
   });
 
 })
